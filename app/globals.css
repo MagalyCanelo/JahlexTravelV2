@@ -24,3 +24,19 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+:root {
+  --oliva: #65830B;
+}
+
+.oliva {
+color: var(--oliva);
+}
+
+.oliva-hover:hover {
+  color: var(--oliva);
+}
+
+.montserrat-script {
+font-family: 'Nunito Variable', sans-serif;
+}
