@@ -1,6 +1,7 @@
 import React from "react";
 import { BsFillPlayCircleFill } from "react-icons/bs";
 import ImageSlider from "./ImageSlider";
+import ActionButton from "./ActionButton";
 
 function HeroBanner() {
   return (
@@ -13,11 +14,10 @@ function HeroBanner() {
         <p className="text-xl text-gray-600 lg:mb-6">
           Embárcate en una aventura inolvidable y descubre los rincones de Perú.
         </p>
-        <div className="flex justify-center gap-4 lg:pr-20 my-6">
+        // NO INFIERAS LA DIRECCIÓN DE EL FLEX O ES FLEX-ROW o FLEX-COL 
+        <div className="flex flex-row justify-center lg:justify-start gap-4 lg:pr-20 my-6">
           {/* Botón "Ver Catalogo" */}
-          <button className="bg-oliva-c text-white font-semibold px-5 py-2 rounded-full bg-oliva-o-hover transition">
-            Ver Catalogo
-          </button>
+          <ActionButton title="Ver catálogo" tipo="primary"/>
 
           {/* Botón "Ver video" con triángulo */}
           <button className="text-black font-semibold rounded-full flex items-center">

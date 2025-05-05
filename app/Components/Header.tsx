@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import logo from "@/public/logo.png";
 import { IoMenu } from "react-icons/io5";
 import SidebarMenu from "./SidebarMenu";
+import ActionButton from "./ActionButton";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -44,12 +45,8 @@ const Header = () => {
           />
           <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />{" "}
           <div className="flex flex-row gap-4">
-            <button className="flex items-center bg-[#E6F0AC] text-black px-5 py-2 rounded-full hover:bg-[#d7e99c] transition">
-              Iniciar Sesión
-            </button>
-            <button className="bg-oliva-c text-white px-5 py-2 rounded-full bg-oliva-o-hover transition">
-              Regístrate
-            </button>
+            <ActionButton onClick={()=>{}} tipo="secondary" title="Iniciar Sesión"/>
+            <ActionButton onClick={()=>{}} tipo="primary" title="Regístrate"/>
           </div>
         </div>
       </div>
