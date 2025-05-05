@@ -1,9 +1,10 @@
+"use client";
 import React from "react";
 
 function ActionButton(props: {
   onClick?: () => void;
-  tipo?: "primary" | "secondary";
-  title?: string;
+  tipo: "primary" | "secondary";
+  title: string;
 }) {
   return (
     <button
