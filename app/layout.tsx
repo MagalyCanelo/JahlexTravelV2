@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Fredoka } from "next/font/google";
 import "./globals.css";
 
 const montserratSans = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
+  display: "swap",
+});
+
+const fredokaSans = Fredoka({
+  subsets: ["latin"],
+  variable: "--font-fredoka",
   display: "swap",
 });
 
@@ -20,7 +26,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserratSans} antialiased`}>{children}</body>
+      <body className={`${montserratSans} ${fredokaSans} antialiased`}>
+        {children}
+      </body>
     </html>
   );
 }

@@ -14,7 +14,7 @@ const SidebarMenu = ({ isOpen, onClose }) => {
       </div>
       <ul className="flex flex-col p-6 space-y-4 text-lg font-semibold text-black">
         <li>
-          <a href="#" className="oliva">
+          <a href="#" className="oliva-o">
             Inicio
           </a>
         </li>
