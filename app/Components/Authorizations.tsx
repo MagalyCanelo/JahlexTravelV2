@@ -22,14 +22,14 @@ const Authorizations: React.FC = () => {
     loop: true,
     mode: "snap",
     slides: {
-      perView: 1, // Default: mobile
+      perView: 1,
     },
     breakpoints: {
       "(min-width: 640px)": {
-        slides: { perView: 2, spacing: 20 }, // sm: >=640px
+        slides: { perView: 2, spacing: 20 },
       },
       "(min-width: 1024px)": {
-        slides: { perView: 3, spacing: 20 }, // lg: >=1024px
+        slides: { perView: 3, spacing: 20 },
       },
     },
   });
@@ -53,7 +53,7 @@ const Authorizations: React.FC = () => {
         <div ref={sliderRef} className="keen-slider w-full">
           {logos.map((logo, idx) => (
             <div key={idx} className="keen-slider__slide flex justify-center">
-              <div className="bg-white border rounded-2xl px-6 py-4 shadow-sm flex items-center justify-center h-24 w-full">
+              <div className="bg-white border rounded-2xl px-6 py-4 shadow-sm flex items-center justify-center h-30 w-full">
                 <img
                   src={logo.src}
                   alt={logo.alt}
