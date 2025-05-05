@@ -5,6 +5,7 @@ import Footer from "./Components/Footer";
 import { ToursList } from "./Components/ToursList";
 import { infoTours } from "./data/infoTours";
 import Destinations from "./Components/Destinations";
+import Authorizations from "./Components/Authorizations";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <HeroBanner />
       <Destinations />
       <ToursList tours={infoTours} />
+      <Authorizations />
       <Footer />
     </>
   );
