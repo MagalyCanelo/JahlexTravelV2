@@ -45,8 +45,16 @@ const Header = () => {
           />
           <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />{" "}
           <div className="flex flex-row gap-4">
-            <ActionButton onClick={()=>{}} tipo="secondary" title="Iniciar Sesión"/>
-            <ActionButton onClick={()=>{}} tipo="primary" title="Regístrate"/>
+            <ActionButton
+              onClick={() => {}}
+              tipo="secondary"
+              title="Iniciar Sesión"
+            />
+            <ActionButton
+              onClick={() => {}}
+              tipo="primary"
+              title="Regístrate"
+            />
           </div>
         </div>
       </div>

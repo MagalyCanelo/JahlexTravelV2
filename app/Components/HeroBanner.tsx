@@ -14,10 +14,9 @@ function HeroBanner() {
         <p className="text-xl text-gray-600 lg:mb-6">
           Embárcate en una aventura inolvidable y descubre los rincones de Perú.
         </p>
-        // NO INFIERAS LA DIRECCIÓN DE EL FLEX O ES FLEX-ROW o FLEX-COL 
-        <div className="flex flex-row justify-center lg:justify-start gap-4 lg:pr-20 my-6">
+        <div className="flex flex-row justify-center lg:justify-start gap-4 lg:pr-20 my-6 font-semibold">
           {/* Botón "Ver Catalogo" */}
-          <ActionButton title="Ver catálogo" tipo="primary"/>
+          <ActionButton title="Ver catálogo" tipo="primary" />
 
           {/* Botón "Ver video" con triángulo */}
           <button className="text-black font-semibold rounded-full flex items-center">
