@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Fredoka } from "next/font/google";
 import "./globals.css";
+import Header from "./Components/Header";
 
 const montserratSans = Montserrat({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${montserratSans} ${fredokaSans} antialiased`}>
+        <Header />
         {children}
       </body>
     </html>

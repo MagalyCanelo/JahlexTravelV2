@@ -2,32 +2,33 @@ import ib from "@/public/islas_ballestas.jpg";
 import rnp from "@/public/roja.jpg";
 import huacachina from "@/public/huacachina.jpg";
 import cusco from "@/public/cusco.jpg";
+import Image from "next/image";
 
 const destinations = [
   {
     title: "Paracas",
     location: "Perú",
-    image: ib.src,
+    image: ib,
   },
   {
     title: "Ica",
     location: "Perú",
-    image: rnp.src,
+    image: rnp,
   },
   {
     title: "Nazca",
     location: "Perú",
-    image: huacachina.src,
+    image: huacachina,
   },
   {
     title: "Cañete",
     location: "Perú",
-    image: ib.src,
+    image: ib,
   },
   {
     title: "Cuzco",
     location: "Perú",
-    image: cusco.src,
+    image: cusco,
   },
 ];
 
@@ -40,7 +41,7 @@ const Destinations = () => {
 
       <div className="lg:grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mx-5 lg:mx-0">
         <div className="col-span-1 relative rounded-lg overflow-hidden group shadow-sm hover:shadow-md transition aspect-[5/4] lg:aspect-[3/4] mb-4 lg:mb-0">
-          <img
+          <Image
             src={destinations[0].image}
             alt={destinations[0].title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
@@ -58,7 +59,7 @@ const Destinations = () => {
               key={dest.title}
               className="relative rounded-lg overflow-hidden group shadow-sm hover:shadow-md transition aspect-[5/4] lg:aspect-[4.65/3]"
             >
-              <img
+              <Image
                 src={dest.image}
                 alt={dest.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"

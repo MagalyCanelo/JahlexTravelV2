@@ -1,32 +1,17 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
-
-const images = [
-  {
-    src: "/islas_ballestas.jpg",
-    title: "Islas Ballestas",
-    location: "Paracas - Perú",
-  },
-  {
-    src: "/roja.jpg",
-    title: "Playa Roja",
-    location: "Paracas - Perú",
-  },
-  {
-    src: "/huacachina.jpg",
-    title: "Huacachina",
-    location: "Ica - Perú",
-  },
-  {
-    src: "/cusco.jpg",
-    title: "Cusco",
-    location: "Cusco - Perú",
-  },
-];
+import Image from "next/image";
+import { useImageStore } from "../store/images";
 
 const ImageSlider: React.FC = () => {
   const [current, setCurrent] = useState(0);
+  const imageStore = useImageStore((state) => state.images);
+  const images = imageStore.map((image) => ({
+    src: image.src,
+    title: image.title,
+    location: image.location,
+  }));
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -40,9 +25,12 @@ const ImageSlider: React.FC = () => {
 
   return (
     <div className="relative w-full max-w-[500px] h-[450px] lg:max-w-[660px] lg:h-[560px] mx-auto overflow-hidden rounded-[25px] shadow-lg">
-      <img
+      <Image
+        priority
         src={src}
         alt={title}
+        width={600}
+        height={600}
         className="w-full h-full object-cover transition-opacity duration-3000 ease-in-out opacity-100"
       />
 

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React, { useState, useRef } from "react";
 
 interface ImageSliderProps {
@@ -41,12 +42,14 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      <img
+      <Image
         src={images[currentImageIndex]}
         alt={`Imagen ${currentImageIndex + 1}`}
+        priority
+        width={500}
+        height={450}
         className="w-full h-full object-cover"
       />
-
       <div className="absolute bottom-2 right-3 flex gap-1 z-10">
         {images.map((_, index) => (
           <button
