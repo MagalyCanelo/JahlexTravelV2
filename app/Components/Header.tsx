@@ -22,16 +22,16 @@ const Header = () => {
         </a>
 
         <nav className="lg:flex hidden space-x-12 items-center text-md font-semibold">
-          <a href="#" className="oliva">
+          <a href="#" className="oliva-o">
             Inicio
           </a>
-          <a href="#" className="text-black oliva-hover">
+          <a href="#" className="text-black oliva-o-hover">
             Sobre Nosotros
           </a>
-          <a href="#" className="text-black oliva-hover">
+          <a href="#" className="text-black oliva-o-hover">
             Tours
           </a>
-          <a href="#" className="text-black oliva-hover">
+          <a href="#" className="text-black oliva-o-hover">
             Contacto
           </a>
         </nav>
@@ -40,14 +40,14 @@ const Header = () => {
           {/*  <FaLanguage  /> */}
           <IoMenu
             onClick={toggleMenu}
-            className="oliva text-3xl lg:hidden cursor-pointer"
+            className="oliva-o text-3xl lg:hidden cursor-pointer"
           />
           <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />{" "}
           <div className="flex flex-row gap-4">
             <button className="flex items-center bg-[#E6F0AC] text-black px-5 py-2 rounded-full hover:bg-[#d7e99c] transition">
               Iniciar Sesión
             </button>
-            <button className="bg-[#87AC17] text-white px-5 py-2 rounded-full hover:bg-[#65830B] transition">
+            <button className="bg-oliva-c text-white px-5 py-2 rounded-full bg-oliva-o-hover transition">
               Regístrate
             </button>
           </div>

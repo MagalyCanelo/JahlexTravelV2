@@ -43,11 +43,11 @@ const ImageSlider: React.FC = () => {
       <img
         src={src}
         alt={title}
-        className="w-full h-full object-cover transition-all duration-700 ease-in-out"
+        className="w-full h-full object-cover transition-opacity duration-3000 ease-in-out opacity-100"
       />
 
       {/* Info box */}
-      <div className="absolute bottom-3 left-3 bg-white/70 text-black pl-2 pr-4 py-1 rounded-[20px] max-w-[80%] flex items-center gap-2">
+      <div className="absolute bottom-3 left-3 bg-white/80 text-black pl-2 pr-4 py-1 rounded-[20px] max-w-[80%] flex items-center gap-2">
         <FaMapMarkerAlt className="text-[#ff2d2e] text-2xl" />
         <div className="text-justify">
           <span className="text-sm font-semibold">{title}</span>

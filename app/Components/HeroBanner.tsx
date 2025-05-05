@@ -1,16 +1,37 @@
 import React from "react";
+import { BsFillPlayCircleFill } from "react-icons/bs";
 import ImageSlider from "./ImageSlider";
 
 function HeroBanner() {
   return (
     <section className="hero bg-gray-50 px-12 text-center lg:flex lg:flex-row lg:items-center lg:justify-between">
-      <div className="flex-col text-left lg:pr-6">
-        <h1 className="text-4xl font-bold mb-4 oliva">
-          Reserva Nacional de Paracas
+      <div className="flex-col text-center lg:text-left lg:pr-6 lg:w-1/2">
+        <h1 className="text-5xl font-bold mb-4 oliva-o font-fredoka leading-14">
+          Perú Te Espera:
+          <br /> ¡Únete a Nosotros!
         </h1>
-        <p className="text-lg text-gray-600 mb-8">
-          Una plataforma donde puedes aprender, explorar y crecer.
+        <p className="text-xl text-gray-600 lg:mb-6">
+          Embárcate en una aventura inolvidable y descubre los rincones de Perú.
         </p>
+        <div className="flex justify-center gap-4 lg:pr-20 my-6">
+          {/* Botón "Ver Catalogo" */}
+          <button className="bg-oliva-c text-white font-semibold px-5 py-2 rounded-full bg-oliva-o-hover transition">
+            Ver Catalogo
+          </button>
+
+          {/* Botón "Ver video" con triángulo */}
+          <button className="text-black font-semibold rounded-full flex items-center">
+            {/* Círculo con el ícono de "play" */}
+            <div className="rounded-full px-3 flex items-center justify-center">
+              <BsFillPlayCircleFill
+                size={45}
+                className="oliva-c oliva-o-hover"
+              />
+            </div>
+            {/* Texto "Ver Video" */}
+            <span>Ver Video</span>
+          </button>
+        </div>
       </div>
       <div className="ml-auto">
         <ImageSlider />
