@@ -66,25 +66,3 @@ color: var(--oliva-o);
   font-family: var(--font-fredoka), sans-serif;
 }
 
-.keen-slider {
-  display: flex;
-  overflow-x: auto;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none; /* Firefox */
-}
-
-.keen-slider::-webkit-scrollbar {
-  display: none; /* WebKit */
-}
-
-.keen-slider__slide {
-  flex: 0 0 100%;
-  min-width: 100%;
-  user-select: none;
-  gap: 0 !important;
-}
-

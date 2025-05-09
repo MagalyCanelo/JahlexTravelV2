@@ -8,7 +8,7 @@ import ActionButton from "./ActionButton";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const Header = () => {
+const Header = (props: { className?: string; onClick?: () => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -16,7 +16,7 @@ const Header = () => {
   const pathname = usePathname();
 
   return (
-    <header className="w-full bg-gray-50 shadow-sm">
+    <header className={`w-full bg-gray-50 shadow-sm ${props.className}`}>
       <div className="w-full flex lg:flex-row flex-col-reverse items-center justify-between p-4 lg:p-4 lg:pb-2">
         <Link href="/" className="flex items-center space-x-2 pt-3 lg:pt-0">
           <img
@@ -58,6 +58,16 @@ const Header = () => {
             }
           >
             Contacto
+          </Link>
+          <Link
+            href={"/administrador"}
+            className={
+              pathname === "/administrador"
+                ? "oliva-o"
+                : "text-black oliva-o-hover"
+            }
+          >
+            Administrador{" "}
           </Link>
         </nav>
 
