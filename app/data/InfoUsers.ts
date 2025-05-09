@@ -1,5 +1,5 @@
 import islas_ballestas from "@/public/islas_ballestas.jpg";
-import roja from "@/public/roja.jpg";
+import rnp from "@/public/rnp.jpg";
 import cusco from "@/public/cusco.jpg";
 
 const infoUsers = [
@@ -11,7 +11,7 @@ const infoUsers = [
   },
   {
     name: { first: "Carlos", last: "Ramírez" },
-    picture: { large: roja.src },
+    picture: { large: rnp.src },
     rating: 4,
   },
   {

@@ -8,7 +8,10 @@ const SidebarMenu = (props: { isOpen: boolean; onClose: () => void }) => {
       } transition-transform duration-300 ease-in-out z-50`}
     >
       <div className="flex justify-end p-4">
-        <button onClick={props.onClose} className="text-xl font-bold text-black">
+        <button
+          onClick={props.onClose}
+          className="text-xl font-bold text-black"
+        >
           ×
         </button>
       </div>
