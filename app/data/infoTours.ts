@@ -1,6 +1,6 @@
 import { BaseTour, TourCategory, ActivityLevel, GroupSize } from "../interface/Tour";
 import islas_ballestas from "@/public/islas_ballestas.jpg";
-import roja from "@/public/roja.jpg";
+import rnp from "@/public/rnp.jpg";
 import cusco from "@/public/cusco.jpg";
 
 
@@ -15,7 +15,7 @@ export const infoTours: BaseTour[] = [
     groupSize: GroupSize.MEDIANO,
     schedule: ["8:00", "10:00"],
     availableDates: ["2025-05-10", "2025-05-11"],
-    images: [islas_ballestas.src, roja.src],
+    images: [islas_ballestas.src, rnp.src],
     description: "Un recorrido marítimo por las islas Ballestas.",
     itinerary: [
       "Salida desde el puerto",
@@ -44,7 +44,7 @@ export const infoTours: BaseTour[] = [
     itinerary: [
       "Centro de interpretación",
       "Mirador de la Catedral",
-      "Playa Roja"
+      "Playa rnp"
     ],
     includes: ["Transporte", "Guía", "Entradas"],
     notIncluded: ["Comidas"],

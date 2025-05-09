@@ -16,12 +16,15 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
-    slides: { perView: 1, spacing: -15 },
+    slides: { perView: 1 },
   });
 
   return (
     <div className="relative w-full h-full overflow-hidden rounded-lg">
-      <div ref={sliderRef} className="keen-slider w-full overflow-hidden">
+      <div
+        ref={sliderRef}
+        className="keen-slider w-full h-full overflow-hidden"
+      >
         {images.map((image, index) => (
           <div
             key={index}
