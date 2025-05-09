@@ -16,8 +16,8 @@ export default function Home() {
       <HeroBanner />
       <Destinations />
       <ToursList tours={infoTours} />
-      <CommentList users={infoUsers} />
       <Authorizations />
+      <CommentList users={infoUsers} />
       <Footer />
     </>
   );
