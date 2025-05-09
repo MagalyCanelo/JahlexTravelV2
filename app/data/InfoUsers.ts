@@ -1,6 +1,6 @@
 import islas_ballestas from "@/public/islas_ballestas.jpg";
-import roja from "@/publiC/roja.jpg";
-import cusco from "@/publiC/cusco.jpg";
+import roja from "@/public/roja.jpg";
+import cusco from "@/public/cusco.jpg";
 
 const infoUsers = [
   {
