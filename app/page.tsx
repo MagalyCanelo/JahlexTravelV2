@@ -8,6 +8,9 @@ import Authorizations from "./Components/Authorizations";
 import CommentList from "./Components/CommentList";
 import infoUsers from "@/app/data/InfoUsers";
 import { infoTours } from "./data/infoTours";
+import WhyChooseUs from "./Components/WhyChooseUs";
+import Photos from "./Components/Photos";
+import NewsletterSignup from "./Components/NewsletterSignup";
 
 export default function Home() {
   return (
@@ -17,7 +20,10 @@ export default function Home() {
       <Destinations />
       <ToursList tours={infoTours} />
       <Authorizations />
+      <WhyChooseUs />
+      <Photos />
       <CommentList users={infoUsers} />
+      <NewsletterSignup />
       <Footer />
     </>
   );
