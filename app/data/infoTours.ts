@@ -52,5 +52,29 @@ export const infoTours: BaseTour[] = [
     category: TourCategory.NATURALEZA,
     location: "Paracas - Perú",
     rating: 4.7
+  },
+  {
+    id: 3,
+    title: "Cusco y Machu Picchu",
+    priceRegular: 200,
+    priceOffer: 180,
+    duration: "3 días",
+    activityLevel: ActivityLevel.ALTO,
+    groupSize: GroupSize.PEQUEÑO,
+    schedule: ["7:00", "8:00"],
+    availableDates: ["2025-05-14", "2025-05-15"],
+    images: [cusco.src],
+    description: "Un viaje inolvidable a la ciudad de Cusco y Machu Picchu.",
+    itinerary: [
+      "Día 1: Llegada a Cusco",
+      "Día 2: Tour por la ciudad",
+      "Día 3: Visita a Machu Picchu"
+    ],
+    includes: ["Guía", "Entradas", "Transporte"],
+    notIncluded: ["Comidas", "Alojamiento"],
+    recommendations: ["Llevar ropa cómoda", "Bloqueador solar", "Cámara"],
+    category: TourCategory.CULTURAL,
+    location: "Cusco - Perú",
+    rating: 4.9
   }
 ];

@@ -28,9 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <div className={`${montserratSans} ${fredokaSans} antialiased`}>
-      <header className="bg-oliva-o flex flex-col items-start justify-center fixed top-0 w-full p-4 text-white">
+      <header className="bg-oliva-o flex flex-row items-center justify-between fixed top-0 w-full p-4 text-white">
           <h1 className="text-xl font-bold">Panel de Administrador</h1>
-          <div className="flex flex-row mt-4 gap-4">
+          <div className="flex flex-row gap-4">
             <Link href={"/administrador/"}>Inicio</Link>
             <Link href={"/administrador/agregar"}>
               Agregar sitio turístico

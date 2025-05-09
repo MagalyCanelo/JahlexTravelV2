@@ -18,7 +18,7 @@ export default function WhyChooseUs() {
           width={250}
           height={500}
           alt="Paisaje"
-          className="w-48 lg:80 h-72 lg:h-96 object-cover rounded-lg border-2 border-white shadow-lg transition-transform transform hover:scale-105 absolute top-0 left-0"
+          className="w-48 lg:w-80 h-72 lg:h-96 object-cover rounded-lg border-2 border-white shadow-lg transition-transform transform hover:scale-105 absolute top-0 left-0"
         />
         <Image
           src={ib} // Cambia por tu imagen
