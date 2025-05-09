@@ -59,6 +59,14 @@ const Header = () => {
           >
             Contacto
           </Link>
+          <Link
+            href={"/administrador"}
+            className={
+              pathname === "/administrador" ? "oliva-o" : "text-black oliva-o-hover"
+            }
+          >
+            Administrador{" "}
+          </Link>
         </nav>
 
         <div className="flex flex-row justify-between w-full lg:w-fit items-center space-x-6 text-x text-md font-semibold">
