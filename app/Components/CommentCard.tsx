@@ -1,5 +1,8 @@
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
+import Image from "next/image";
+
 interface CommentCardProps {
-  imagen: string;
+  imagen: string | StaticImport;
   nombre: string;
   comentario: string;
   rating: number;
@@ -21,7 +24,10 @@ const CommentCard: React.FC<CommentCardProps> = ({
         {comentario}
       </p>
       <div className="flex flex-row items-center gap-4 h-fit mt-2">
-        <img
+        <Image
+          quality={10}
+          width={100}
+          height={100}
           src={imagen}
           alt={nombre}
           className="h-16 w-16 rounded-full object-cover"

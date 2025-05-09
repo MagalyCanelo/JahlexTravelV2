@@ -5,36 +5,60 @@ import logo from "@/public/logo.png";
 import { IoMenu } from "react-icons/io5";
 import SidebarMenu from "./SidebarMenu";
 import ActionButton from "./ActionButton";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
+  const pathname = usePathname();
+
   return (
     <header className="w-full bg-gray-50 shadow-sm">
       <div className="w-full flex lg:flex-row flex-col-reverse items-center justify-between p-4 lg:p-4 lg:pb-2">
-        <a href="/" className="flex items-center space-x-2 pt-3 lg:pt-0">
+        <Link href="/" className="flex items-center space-x-2 pt-3 lg:pt-0">
           <img
             src={logo.src}
             alt="Logo de la empresa"
             className="lg:w-58 w-72"
           />
-        </a>
+        </Link>
 
         <nav className="lg:flex hidden space-x-12 items-center text-md font-semibold">
-          <a href="#" className="oliva-o">
+          <Link
+            href="/"
+            className={
+              pathname === "/" ? "oliva-o" : "text-black oliva-o-hover"
+            }
+          >
             Inicio
-          </a>
-          <a href="#" className="text-black oliva-o-hover">
+          </Link>
+          <Link
+            href="/aboutus"
+            className={
+              pathname === "/aboutus" ? "oliva-o" : "text-black oliva-o-hover"
+            }
+          >
             Sobre Nosotros
-          </a>
-          <a href="#" className="text-black oliva-o-hover">
+          </Link>
+          <Link
+            href="/tours"
+            className={
+              pathname === "/tours" ? "oliva-o" : "text-black oliva-o-hover"
+            }
+          >
             Tours
-          </a>
-          <a href="#" className="text-black oliva-o-hover">
+          </Link>
+          <Link
+            href="/contacto"
+            className={
+              pathname === "/contacto" ? "oliva-o" : "text-black oliva-o-hover"
+            }
+          >
             Contacto
-          </a>
+          </Link>
         </nav>
 
         <div className="flex flex-row justify-between w-full lg:w-fit items-center space-x-6 text-x text-md font-semibold">

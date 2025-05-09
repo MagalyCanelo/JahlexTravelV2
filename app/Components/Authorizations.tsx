@@ -8,13 +8,14 @@ import ib from "@/public/islas_ballestas.jpg";
 import rnp from "@/public/roja.jpg";
 import huacachina from "@/public/huacachina.jpg";
 import cusco from "@/public/cusco.jpg";
+import Image from "next/image";
 
 // Logos
 const logos = [
-  { src: ib.src, alt: "Municipalidad de Paracas" },
-  { src: rnp.src, alt: "SUNAT" },
-  { src: huacachina.src, alt: "MINCETUR" },
-  { src: cusco.src, alt: "CULTURA" },
+  { src: ib, alt: "Municipalidad de Paracas" },
+  { src: rnp, alt: "SUNAT" },
+  { src: huacachina, alt: "MINCETUR" },
+  { src: cusco, alt: "CULTURA" },
 ];
 
 const Authorizations: React.FC = () => {
@@ -54,7 +55,8 @@ const Authorizations: React.FC = () => {
           {logos.map((logo, idx) => (
             <div key={idx} className="keen-slider__slide flex justify-center">
               <div className="bg-white border rounded-2xl px-6 py-4 shadow-sm flex items-center justify-center h-30 w-full">
-                <img
+                <Image
+                  quality={50}
                   src={logo.src}
                   alt={logo.alt}
                   className="h-full object-contain"
