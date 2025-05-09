@@ -12,6 +12,7 @@ import { infoTours } from "./data/infoTours";
 export default function Home() {
   return (
     <>
+      <Header />
       <HeroBanner />
       <Destinations />
       <ToursList tours={infoTours} />

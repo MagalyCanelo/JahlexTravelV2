@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Fredoka } from "next/font/google";
 import "../globals.css";
+import Header from "../Components/Header";
 
 const montserratSans = Montserrat({
   subsets: ["latin"],
