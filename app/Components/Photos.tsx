@@ -44,7 +44,7 @@ const gridStyles = [
 
 const DestinationsMasonry: React.FC = () => {
   return (
-    <div className="bg-gray-50 grid grid-cols-7 grid-rows-6 gap-4 p-4 h-screen">
+    <div className="bg-gray-50 grid grid-cols-7 grid-rows-6 gap-4 p-8 h-screen">
       <div className="col-span-4 row-span-2 bg-white shadow-lg rounded-lg ">
         <Image
           src={huacachina}
