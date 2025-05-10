@@ -14,7 +14,7 @@ export default function WhyChooseUs() {
   return (
     <section className="pt-4 pb-11 bg-gray-50 grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 lg:pr-6 lg:pl-8 place-items-center">
       {/* Imágenes */}
-      <div className="relative w-full max-w-xl h-[22rem] lg:h-[400px] flex justify-center items-center mb-10 lg:pb-0 ">
+      <div className="relative w-full max-w-xl h-[22rem] lg:h-[400px] flex justify-center items-center mb-8 lg:pb-0 ">
         {/* Imagen delantera */}
         <div className="absolute left-0 top-0 z-10 transform rotate-[-3deg] transition-transform duration-300 hover:scale-105">
           <Image

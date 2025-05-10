@@ -48,7 +48,7 @@ const DestinationsMasonry: React.FC = () => {
       <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow my-4">
         <h2 className="text-md font-semibold">Galería</h2>
       </div>
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3 md:grid-cols-4 md:gap-4 md:h-auto lg:grid-cols-7 lg:grid-rows-6 lg:gap-4 lg:h-[85vh] auto-rows-fr">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:h-auto lg:grid-cols-7 lg:grid-rows-6 lg:h-[85vh] auto-rows-fr">
         {/* Item 1 */}
         <div className="group col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-4 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
