@@ -19,6 +19,7 @@ const logos = [
 ];
 
 const Authorizations: React.FC = () => {
+
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
@@ -33,12 +34,16 @@ const Authorizations: React.FC = () => {
         slides: { perView: 3, spacing: 20 },
       },
     },
+    created(s) {
+      setInterval(() => {
+        s.next();
+      }, 1500);
+    },
   });
 
   const moveTo = (index: number) => {
     instanceRef.current?.moveToIdx(index);
   };
-
   return (
     <div className="bg-gray-50 flex flex-col gap-2 w-full items-center">
       {/* Contenedor con padding horizontal uniforme */}
@@ -68,16 +73,7 @@ const Authorizations: React.FC = () => {
         </div>
       </div>
 
-      {/* Paginación */}
-      <div className="flex space-x-2 mt-4">
-        {logos.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => moveTo(idx)}
-            className="w-2 h-2 rounded-full bg-gray-300 hover:bg-gray-500 transition"
-          />
-        ))}
-      </div>
+    
     </div>
   );
 };

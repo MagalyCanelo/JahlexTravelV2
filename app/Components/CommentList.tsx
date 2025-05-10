@@ -13,10 +13,12 @@ interface CommentSliderProps {
 }
 
 const CommentSlider: React.FC<CommentSliderProps> = ({ users }) => {
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
-    slides: { perView: 1 },
+    slides: {
+      perView: 1,
+    },
     breakpoints: {
       "(min-width: 640px)": {
         slides: { perView: 2, spacing: 20 },
@@ -24,6 +26,11 @@ const CommentSlider: React.FC<CommentSliderProps> = ({ users }) => {
       "(min-width: 1024px)": {
         slides: { perView: 3, spacing: 20 },
       },
+    },
+    created(s) {
+      setInterval(() => {
+        s.next();
+      }, 2000);
     },
   });
 

@@ -17,6 +17,12 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
 
   return (
     <header className={`w-full bg-gray-50 shadow-sm ${props.className}`}>
+      <nav className="bg-oliva-o p-2 text-xs">
+        <div className="flex flex-row w-full items-center justify-start gap-2">
+          <p>Contacto: +51 147 852 369</p>
+          <p>correo@gmail.com</p>
+        </div>
+      </nav>
       <div className="w-full flex lg:flex-row flex-col-reverse items-center justify-between p-4 lg:p-4 lg:pb-2">
         <Link href="/" className="flex items-center space-x-2 pt-3 lg:pt-0">
           <img
