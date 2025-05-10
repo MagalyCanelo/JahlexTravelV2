@@ -15,7 +15,7 @@ const NewsletterSignup: React.FC = () => {
   };
 
   return (
-    <section className="pt-10 pb-16 px-4 bg-gray-50 text-center">
+    <section className="pt-9 pb-15 px-4 bg-gray-50 text-center">
       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
         ¿Tienes dudas o necesitas más detalles?
       </h2>
@@ -31,7 +31,7 @@ const NewsletterSignup: React.FC = () => {
           placeholder="Tour de tu interés"
           value={tour}
           onChange={(e) => setTour(e.target.value)}
-          className="w-full sm:w-auto flex-1 px-5 py-3 rounded-md shadow-sm border text-gray-800 border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#65830B]"
+          className="w-full sm:w-auto flex-1 px-5 py-3 rounded-md shadow-sm border bg-white text-gray-800 border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#65830B]"
         />
 
         {/* Botón para enviar por WhatsApp */}

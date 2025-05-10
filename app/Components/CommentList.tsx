@@ -47,7 +47,7 @@ const CommentSlider: React.FC<CommentSliderProps> = ({ users }) => {
         ))}
       </div>
       {/* Botón */}
-      <div className="mt-8 text-sm text-gray-700 border-t border-gray-200 pt-4 flex flex-col items-center text-center">
+      <div className="pb-8 mt-2 text-sm text-gray-700 border-b border-gray-200 pt-4 flex flex-col items-center text-center">
         <div className="flex flex-col items-center gap-2">
           <FaTripadvisor className="oliva-o text-4xl" />
           <span>
