@@ -49,6 +49,10 @@ color: var(--oliva-o);
 .oliva-c {
   color: var(--oliva-c);
 }
+
+.border-oliva-c {
+  border-color: var(--oliva-c);
+}
       
 .oliva-c-hover:hover {
   color: var(--oliva-c);

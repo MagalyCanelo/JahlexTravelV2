@@ -4,32 +4,33 @@ import {
   LuBookOpenCheck,
   LuHeadset,
 } from "react-icons/lu";
-import ib from "@/public/islas_ballestas.jpg";
 import rnp from "@/public/rnp.jpg";
+import ib from "@/public/islas_ballestas.jpg";
+import Image from "next/image";
 
 export default function WhyChooseUs() {
   return (
-    <section className="pt-4 pb-32 bg-gray-50 flex flex-col md:flex-row items-center justify-center gap-10 px-6">
+    <section className="pt-4 pb-32 bg-gray-50 grid grid-cols-1 grid-rows-2 lg:grid-rows-1 lg:grid-cols-4 gap-10 px-6 place-items-start ">
       {/* Imágenes */}
-      <div className="relative w-full md:w-1/2 flex justify-center items-center">
-        <div className="relative z-10 w-60 h-80 rounded-2xl overflow-hidden shadow-lg">
-          <img
-            src={ib.src} // Cambia por tu imagen
-            alt="Ciudad"
-            className="w-full h-full object-cover"
-          />
-        </div>
-        <div className="absolute left-16 top-32 w-64 h-96 rounded-2xl overflow-hidden shadow-lg z-20 border-4 border-white">
-          <img
-            src={rnp.src} // Cambia por tu imagen
-            alt="Paisaje"
-            className="w-full h-full object-cover"
-          />
-        </div>
+      <div className="relative w-full mx-auto mt-16 md:w-1/2 flex justify-center items-center col-span-2">
+        <Image
+          src={rnp} // Cambia por tu imagen
+          width={250}
+          height={500}
+          alt="Paisaje"
+          className="w-48 lg:w-80 h-72 lg:h-96 object-cover rounded-lg border-2 border-white shadow-lg transition-transform transform hover:scale-105 absolute top-0 left-0"
+        />
+        <Image
+          src={ib} // Cambia por tu imagen
+          width={250}
+          height={500}
+          alt="Paisaje"
+          className="w-48 lg:w-80 h-72 lg:h-96 object-cover rounded-lg border-2 border-white shadow-lg transition-transform transform hover:scale-105 absolute top-24 left-32"
+        />
       </div>
 
       {/* Contenido */}
-      <div className="w-full md:w-1/2">
+      <div className="lg:w-4/6  col-span-2 flex flex-col  ">
         <h2 className="text-4xl font-semibold text-gray-800 mb-4">
           Why <span className="text-green-500">Choose</span> Us ?
         </h2>

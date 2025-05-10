@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Fredoka } from "next/font/google";
 import "../globals.css";
 import Header from "../Components/Header";
+import Link from "next/link";
 
 const montserratSans = Montserrat({
   subsets: ["latin"],
@@ -27,6 +28,18 @@ export default function RootLayout({
 }>) {
   return (
     <div className={`${montserratSans} ${fredokaSans} antialiased`}>
+      <header className="bg-oliva-o flex flex-row items-center justify-between fixed top-0 w-full p-4 text-white">
+          <h1 className="text-xl font-bold">Panel de Administrador</h1>
+          <div className="flex flex-row gap-4">
+            <Link href={"/administrador/"}>Inicio</Link>
+            <Link href={"/administrador/agregar"}>
+              Agregar sitio turístico
+            </Link>
+            <Link href={"/administrador/editar"}>
+              Editar sitio turístico
+            </Link>
+          </div>
+        </header>
       {children}
     </div>
   );
