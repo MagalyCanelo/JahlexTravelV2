@@ -1,40 +1,64 @@
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
+"use client";
+
+import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import Image from "next/image";
 
-interface CommentCardProps {
-  imagen: string | StaticImport;
-  nombre: string;
-  comentario: string;
+interface User {
+  name: { first: string; last: string };
+  picture: { large: string };
   rating: number;
 }
 
+interface CommentCardProps {
+  user: User;
+  comentario: string;
+  ubicacion?: string;
+}
+
 const CommentCard: React.FC<CommentCardProps> = ({
-  imagen,
-  nombre,
+  user,
   comentario,
-  rating,
+  ubicacion = "",
 }) => {
-  const stars = Array.from({ length: 5 }, (_, i) => (
-    <span key={i}>{i < rating ? "★" : "☆"}</span>
-  ));
+  const { name, picture, rating } = user;
+
+  const renderStars = () => {
+    const stars = [];
+    const fullStars = Math.floor(rating);
+    const hasHalfStar = rating - fullStars >= 0.3 && rating - fullStars <= 0.7;
+    const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+    for (let i = 0; i < fullStars; i++) {
+      stars.push(<FaStar key={`full-${i}`} className="text-[#F7D547]" />);
+    }
+    if (hasHalfStar) {
+      stars.push(<FaStarHalfAlt key="half" className="text-[#F7D547]" />);
+    }
+    for (let i = 0; i < emptyStars; i++) {
+      stars.push(<FaRegStar key={`empty-${i}`} className="text-[#F7D547]" />);
+    }
+    return stars;
+  };
 
   return (
-    <div className="flex flex-col items-start justify-between bg-white shadow-lg max-w-full w-full h-50 p-4 rounded-lg font-nunito">
-      <p className="text-sm text-black mb-2 break-words whitespace-normal overflow-hidden">
-        {comentario}
+    <div className="flex flex-col justify-between bg-white rounded-xl shadow-md p-6 h-full text-left max-w-full w-full">
+      <div className="flex gap-1 text-lg mb-4">{renderStars()}</div>
+      <p className="text-base text-gray-800 mb-6 leading-relaxed">
+        “{comentario}”
       </p>
-      <div className="flex flex-row items-center gap-4 h-fit mt-2">
+      <div className="flex items-center gap-4 mt-auto pt-4 border-t border-gray-200">
         <Image
-          quality={10}
-          width={100}
-          height={100}
-          src={imagen}
-          alt={nombre}
-          className="h-16 w-16 rounded-full object-cover"
+          src={picture.large}
+          alt={`${name.first} ${name.last}`}
+          width={50}
+          height={50}
+          className="rounded-full object-cover w-12 h-12"
         />
-        <div className="flex flex-col justify-start items-start">
-          <h2 className="text-md font-bold text-black">{nombre}</h2>
-          <div className="text-[#F7D547] text-xl leading-none">{stars}</div>
+        <div>
+          <h3 className="text-sm font-bold text-gray-900">
+            {name.first} {name.last}
+          </h3>
+          <p className="text-sm text-gray-500">{ubicacion}</p>
         </div>
       </div>
     </div>

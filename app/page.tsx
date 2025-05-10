@@ -19,8 +19,8 @@ export default function Home() {
       <HeroBanner />
       <Destinations />
       <ToursList tours={infoTours} />
-      <Authorizations />
       <WhyChooseUs />
+      <Authorizations />
       <Photos />
       <CommentList users={infoUsers} />
       <NewsletterSignup />

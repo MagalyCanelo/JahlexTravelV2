@@ -19,7 +19,7 @@ export const ToursList: React.FC<ToursListProps> = ({ tours }) => {
           <TourCard key={tour.id} tour={tour} />
         ))}
       </div>
-      <div className="mt-6 text-center font-semibold">
+      <div className="mt-8 text-center font-semibold">
         <ActionButton onClick={() => {}} tipo="primary" title="Mostrar Todo" />
       </div>
     </section>

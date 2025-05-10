@@ -1,24 +1,19 @@
 "use client";
 
-import React from "react";
-import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css";
-
-import CommentCard from "./CommentCard"; // Asegúrate de ajustar la ruta si está en otro lugar
+import CommentCard from "./CommentCard";
+import infoUsers from "@/app/data/InfoUsers";
 import ActionButton from "./ActionButton";
 
-interface User {
-  name: { first: string; last: string };
-  picture: { large: string };
-  rating: number;
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
+import { FaTripadvisor } from "react-icons/fa";
+
+interface CommentSliderProps {
+  users?: any[]; // O puedes especificar un tipo más preciso si lo conoces
 }
 
-interface CommentListProps {
-  users: User[];
-}
-
-const CommentList: React.FC<CommentListProps> = ({ users }) => {
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+const CommentSlider: React.FC<CommentSliderProps> = ({ users }) => {
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
     slides: { perView: 1 },
@@ -33,30 +28,33 @@ const CommentList: React.FC<CommentListProps> = ({ users }) => {
   });
 
   return (
-    <div className="bg-gray-50 flex flex-col w-full items-center py-6">
-      <div className="w-full px-6">
-        {/* Título */}
-        <div className="text-left mb-4">
-          <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow">
-            <h2 className="text-md font-semibold">Comentarios</h2>
+    <div className="w-full px-6 py-4 bg-gray-50">
+      {/* Título */}
+      <div className="text-left mb-4">
+        <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow">
+          <h2 className="text-md font-semibold">Comentarios</h2>
+        </div>
+      </div>
+      <div ref={sliderRef} className="keen-slider">
+        {infoUsers.map((user, idx) => (
+          <div key={idx} className="keen-slider__slide">
+            <CommentCard
+              user={user}
+              comentario="Una experiencia inolvidable. Todo muy organizado y hermoso."
+              ubicacion="Cusco, Perú"
+            />
           </div>
+        ))}
+      </div>
+      {/* Botón */}
+      <div className="mt-8 text-sm text-gray-700 border-t border-gray-200 pt-4 flex flex-col items-center text-center">
+        <div className="flex flex-col items-center gap-2">
+          <FaTripadvisor className="oliva-o text-4xl" />
+          <span>
+            Presentes en TripAdvisor y recomendados por quienes nos eligieron.
+          </span>
         </div>
-
-        {/* Slider */}
-        <div ref={sliderRef} className="keen-slider w-full">
-          {users.map((user, idx) => (
-            <div key={idx} className="keen-slider__slide flex justify-center">
-              <CommentCard
-                imagen={user.picture.large}
-                nombre={`${user.name.first} ${user.name.last}`}
-                comentario="Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, provident deleniti quisquam."
-                rating={user.rating}
-              />
-            </div>
-          ))}
-        </div>
-        {/* Boton */}
-        <div className="mt-6 text-center font-semibold">
+        <div className="mt-4 text-center font-semibold">
           <ActionButton
             onClick={() => {}}
             tipo="primary"
@@ -68,4 +66,4 @@ const CommentList: React.FC<CommentListProps> = ({ users }) => {
   );
 };
 
-export default CommentList;
+export default CommentSlider;

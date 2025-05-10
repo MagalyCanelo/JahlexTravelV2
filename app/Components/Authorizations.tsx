@@ -44,8 +44,9 @@ const Authorizations: React.FC = () => {
       {/* Contenedor con padding horizontal uniforme */}
       <div className="w-full px-6">
         {/* Etiqueta */}
-        <div className="text-left">
-          <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow my-4">
+        {/* Título */}
+        <div className="text-left mb-4">
+          <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow">
             <h2 className="text-md font-semibold">Autorizaciones</h2>
           </div>
         </div>
@@ -68,7 +69,7 @@ const Authorizations: React.FC = () => {
       </div>
 
       {/* Paginación */}
-      <div className="flex space-x-2 mt-4 mb-6">
+      <div className="flex space-x-2 mt-4">
         {logos.map((_, idx) => (
           <button
             key={idx}
