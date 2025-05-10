@@ -26,6 +26,9 @@ const CommentSlider: React.FC<CommentSliderProps> = ({ users }) => {
       "(min-width: 1024px)": {
         slides: { perView: 3, spacing: 20 },
       },
+      "(min-width: 1280px)": {
+        slides: { perView: 4, spacing: 20 },
+      },
     },
     created(s) {
       setInterval(() => {
@@ -47,16 +50,16 @@ const CommentSlider: React.FC<CommentSliderProps> = ({ users }) => {
           <div key={idx} className="keen-slider__slide">
             <CommentCard
               user={user}
-              comentario="Una experiencia inolvidable. Todo muy organizado y hermoso."
-              ubicacion="Cusco, Perú"
+              comentario={user.comment}
+              ubicacion={user.location}
             />
           </div>
         ))}
       </div>
       {/* Botón */}
-      <div className="pb-8 mt-2 text-sm text-gray-700 border-b border-gray-200 pt-4 flex flex-col items-center text-center">
+      <div className="pb-8 mt-2 text-sm xl:text-md text-gray-700 border-b border-gray-200 pt-4 flex flex-col items-center text-center">
         <div className="flex flex-col items-center gap-2">
-          <FaTripadvisor className="oliva-o text-4xl" />
+          <FaTripadvisor className="oliva-o text-4xl xl:text-5xl" />
           <span>
             Presentes en TripAdvisor y recomendados por quienes nos eligieron.
           </span>

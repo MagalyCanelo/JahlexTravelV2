@@ -17,9 +17,11 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
 
   return (
     <header className={`w-full bg-gray-50 shadow-sm ${props.className}`}>
-      <nav className="bg-oliva-o p-2 text-xs">
+      <nav className="bg-oliva-o px-2 py-1.5 text-xs xl:sm xl:py-2">
         <div className="flex flex-row w-full items-center justify-start gap-2">
-          <p>Contacto: +51 147 852 369</p>
+          <p>
+            <strong>Celular:</strong> +51 147 852 369
+          </p>
           <p>correo@gmail.com</p>
         </div>
       </nav>
@@ -28,11 +30,11 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           <img
             src={logo.src}
             alt="Logo de la empresa"
-            className="lg:w-58 w-72"
+            className="lg:w-58 w-72 xl:w-65"
           />
         </Link>
 
-        <nav className="lg:flex hidden space-x-12 items-center text-md font-semibold">
+        <nav className="lg:flex hidden space-x-12 items-center text-md xl:text-lg font-semibold">
           <Link
             href="/"
             className={
@@ -77,7 +79,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           </Link>
         </nav>
 
-        <div className="flex flex-row justify-between w-full lg:w-fit items-center space-x-6 text-x text-md font-semibold">
+        <div className="flex flex-row justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
           {/*  <FaLanguage  /> */}
           <IoMenu
             onClick={toggleMenu}

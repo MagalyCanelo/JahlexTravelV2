@@ -24,7 +24,7 @@ const ImageSlider: React.FC = () => {
   const { src, title, location } = images[current];
 
   return (
-    <div className="relative w-full max-w-[500px] h-[450px] lg:max-w-[660px] lg:h-[560px] mx-auto overflow-hidden rounded-[25px] shadow-lg">
+    <div className="relative w-full max-w-[500px] h-[450px] lg:max-w-[660px] lg:h-[560px] xl:max-w-[800px] xl:h-[700px] mx-auto overflow-hidden rounded-[25px] shadow-lg">
       <Image
         priority
         src={src}
