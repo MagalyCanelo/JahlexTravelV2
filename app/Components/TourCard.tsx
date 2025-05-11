@@ -4,12 +4,20 @@ import { BaseTour, TourCategory } from "../interface/Tour";
 import { LuHeart, LuClock4, LuMapPin } from "react-icons/lu";
 import ActionButton from "./ActionButton";
 import ImageSlider from "./ImageSliderTours";
+import { useRouter } from "next/navigation";
 
 interface TourCardProps {
   tour: BaseTour;
 }
 
 export const TourCard: React.FC<TourCardProps> = ({ tour }) => {
+  const router = useRouter();
+
+  const handleReservarClick = () => {
+    // Navegamos a la página de detalle del tour
+    router.push(`/detalles/${tour.id}`);
+  };
+
   return (
     <div className="bg-[#fafafa] rounded-2xl border border-[#B7B7B7] p-4 w-full max-w-sm flex flex-col justify-between hover:shadow-lg transition">
       <div className="relative w-full h-60 bg-gray-200 rounded-lg mb-4 overflow-hidden">
@@ -44,7 +52,11 @@ export const TourCard: React.FC<TourCardProps> = ({ tour }) => {
           <span className="text-sm font-normal">/persona</span>
         </span>
         <div className="font-semibold text-sm">
-          <ActionButton onClick={() => {}} tipo="primary" title="Reservar" />
+          <ActionButton
+            onClick={handleReservarClick}
+            tipo="primary"
+            title="Reservar"
+          />
         </div>
       </div>
     </div>
