@@ -7,7 +7,7 @@ function HeroBanner() {
   return (
     <section className="hero bg-gray-50 px-12 text-center lg:flex lg:flex-row lg:items-center lg:justify-between">
       <div className="flex-col text-center lg:text-left lg:pr-6 lg:w-1/2">
-        <h1 className="text-5xl xl:text-7xl font-bold mb-4 oliva-o font-fredoka leading-14 xl:leading-20">
+        <h1 className="md:text-5xl xl:text-7xl font-bold mb-4 oliva-o font-fredoka leading-14 xl:leading-20">
           Perú Te Espera:
           <br /> ¡Únete a Nosotros!
         </h1>

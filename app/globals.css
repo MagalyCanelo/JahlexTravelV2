@@ -50,8 +50,8 @@ color: var(--oliva-o);
   color: var(--oliva-c);
 }
 
-.border-oliva-c {
-  border-color: var(--oliva-c);
+.border-oliva-o {
+  border-color: var(--oliva-o);
 }
       
 .oliva-c-hover:hover {

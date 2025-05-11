@@ -34,7 +34,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           />
         </Link>
 
-        <nav className="lg:flex hidden space-x-12 items-center text-md xl:text-lg font-semibold">
+        <nav className="lg:flex hidden space-x-12 items-center lg:text-md xl:text-lg font-semibold">
           <Link
             href="/"
             className={
