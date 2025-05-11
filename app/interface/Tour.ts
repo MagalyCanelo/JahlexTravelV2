@@ -17,6 +17,7 @@ export interface BaseTour {
     category: TourCategory;
     location: string;
     rating: number;
+    minAge: number;
   }
   
   export enum TourCategory {

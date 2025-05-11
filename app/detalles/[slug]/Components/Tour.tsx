@@ -4,7 +4,7 @@ import TourDetails from "./TourDetails";
 
 function Tour() {
   return (
-    <div className="bg-gray-50 flex flex-col lg:flex-row gap-8 p-6">
+    <div className="bg-gray-50 flex flex-col lg:flex-row gap-6 px-6 py-3">
       {/* Imagen a la izquierda, 3/5 del ancho */}
       <div className="w-full lg:w-3/5">
         <TourImage />
