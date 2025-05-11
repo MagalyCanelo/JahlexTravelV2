@@ -7,7 +7,7 @@ const TourDetails = () => {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div className="rounded-xl shadow-lg px-6 py-5 bg-white max-w-full h-[544px]">
+    <div className="rounded-xl shadow-sm px-6 py-5 bg-white max-w-full h-[544px]">
       <h2 className="text-2xl font-bold mb-2 oliva-o">Tour Islas Ballestas</h2>
       <div className="flex items-center">
         <p className="text-gray-700 font-semibold text-lg">PEN 45.00</p>

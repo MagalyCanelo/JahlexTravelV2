@@ -1,20 +1,34 @@
 import React from "react";
 import TourImage from "./TourImage";
 import TourDetails from "./TourDetails";
+import TourTabsSection from "./TourTabsSection";
+import HelpCard from "./HelpCard";
+import WhyUsCard from "./WhyUsCard";
 
 function Tour() {
   return (
-    <div className="bg-gray-50 flex flex-col lg:flex-row gap-6 px-6 py-3">
-      {/* Imagen a la izquierda, 3/5 del ancho */}
-      <div className="w-full lg:w-3/5">
-        <TourImage />
+    <>
+      <div className="bg-gray-50 flex flex-col lg:flex-row gap-6 px-6 py-3">
+        <div className="w-full lg:w-3/5">
+          <TourImage />
+        </div>
+
+        <div className="w-full lg:w-2/5">
+          <TourDetails />
+        </div>
       </div>
 
-      {/* Detalles a la derecha, 2/5 del ancho */}
-      <div className="w-full lg:w-2/5">
-        <TourDetails />
+      <div className="bg-gray-50 flex flex-col lg:flex-row gap-6 px-6 py-5">
+        <div className="w-full lg:w-3/5">
+          <TourTabsSection />
+        </div>
+
+        <div className="w-full lg:w-2/5 flex flex-col gap-4">
+          <HelpCard tourTitle="Tour Islas Ballestas" />
+          <WhyUsCard />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
