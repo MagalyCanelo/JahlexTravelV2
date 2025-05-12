@@ -12,9 +12,7 @@ const PrecioFilter = () => {
         onClick={() => setShowSlider(!showSlider)}
       >
         <span className="mr-1">Precio:</span>
-        <span className="text-black text-sm font-normal">
-          ${maxPrecio}
-        </span>{" "}
+        <span className="text-black text-sm font-normal">${maxPrecio}</span>
         {/* Precio */}
         <LuFilter className="oliva-o w-5.5 h-5.5 ml-auto" />
       </button>

@@ -7,7 +7,7 @@ function page() {
   return (
     <>
       <Header />
-      <Checkout />;
+      <Checkout />
       <Footer />
     </>
   );
