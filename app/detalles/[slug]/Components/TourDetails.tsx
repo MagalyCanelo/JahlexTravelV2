@@ -1,10 +1,19 @@
 // components/TourDetails.tsx
 import React, { useState } from "react";
+/* import { useNavigate } from "react-router-dom";  */ // Importa useNavigate de react-router-dom
 
 const TourDetails = () => {
   const [date, setDate] = useState("");
   const [hour, setHour] = useState("8:00");
   const [quantity, setQuantity] = useState(1);
+
+  /*   const navigate = useNavigate(); // Inicializa el hook para navegación
+   */
+  // Función que se llama cuando se hace clic en "Reservar ahora"
+  const handleReservation = () => {
+    /*     navigate("/confirmar-reserva");
+     */
+  };
 
   return (
     <div className="rounded-xl shadow-sm px-6 py-5 bg-white max-w-full h-[544px]">
@@ -67,7 +76,10 @@ const TourDetails = () => {
           className="w-full border border-gray-300 text-gray-600  rounded-md p-2"
         />
       </div>
-      <button className="mt-6 w-full bg-oliva-c text-white py-2 rounded-md font-semibold bg-oliva-o-hover">
+      <button
+        onClick={handleReservation} // Añadimos el evento onClick para la redirección
+        className="mt-6 w-full bg-oliva-c text-white py-2 rounded-md font-semibold bg-oliva-o-hover"
+      >
         Reservar ahora
       </button>
     </div>

@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import Checkout from "./Components/checkout";
+import Header from "@/app/Components/Header";
+import Footer from "@/app/Components/Footer";
 
 function page() {
   return (
-    <div>
-        <h1>PAGO</h1>
-    </div>
-  )
+    <>
+      <Header />
+      <Checkout />;
+      <Footer />
+    </>
+  );
 }
 
-export default page
+export default page;
