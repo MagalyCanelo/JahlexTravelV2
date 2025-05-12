@@ -24,6 +24,13 @@ const infoUsers = [
     comment: "El tour fue bueno, pero esperaba un poco más.",
     rating: 3.3,
   },
+  {
+    name: { first: "Lucía", last: "Fernández" },
+    picture: { large: cusco.src },
+    location: "Arequipa, Perú",
+    comment: "El tour fue bueno, pero esperaba un poco más.",
+    rating: 3.3,
+  },
 ];
 
 export default infoUsers;
