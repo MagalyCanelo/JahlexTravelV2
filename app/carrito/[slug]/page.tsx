@@ -5,6 +5,7 @@ function page() {
   return (
     <>
       <Header />
+      <h1>CARRITO</h1>
     </>
   );
 }
