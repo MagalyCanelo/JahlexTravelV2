@@ -5,8 +5,8 @@ export default function ShoppingDetails() {
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm w-full">
       {/* Imagen y detalles del tour */}
-      <div className="flex gap-4 items-start mb-6">
-        <div className="w-30 h-30 relative rounded overflow-hidden">
+      <div className="flex flex-col lg:flex-row gap-4 items-start mb-6">
+        <div className="w-full lg:w-40 h-60 lg:h-32 relative rounded overflow-hidden">
           <Image
             src={rnp.src}
             alt="Caño Cristales"
@@ -14,13 +14,13 @@ export default function ShoppingDetails() {
             objectFit="cover"
           />
         </div>
-        <div>
+        <div className="flex flex-col gap-0 w-full">
           {/* Título y precio */}
-          <div className="flex justify-between items-center w-full text-gray-800 mb-1">
+          <div className="flex flex-row justify-between items-center w-full text-gray-800 mb-1">
             <h2 className="text-lg font-bold oliva-o">
               Caño Cristales River Trip
             </h2>
-            <span className="text-[15px] font-semibold text-gray-800 ml-auto">
+            <span className="text-[15px] font-semibold pr-4 text-gray-800 ml-auto">
               $80.00
             </span>
           </div>
@@ -59,7 +59,7 @@ export default function ShoppingDetails() {
 
       {/* Campo de cupón */}
       <div className="bg-[#f7f9ed] py-4 px-6 rounded-md">
-        <div className="flex items-center gap-4 mb-4">
+        <div className="flex lg:flex-row flex-col items-center gap-4 mb-4">
           <label className="text-sm font-semibold text-gray-800 whitespace-nowrap">
             Ingresa código de descuento:
           </label>

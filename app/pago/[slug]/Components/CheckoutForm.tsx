@@ -3,7 +3,7 @@ import PaymentMethod from "./PaymentMethod";
 
 const CheckoutForm = () => {
   return (
-    <form className="bg-white p-6 rounded-xl shadow-sm">
+    <form className="bg-white text-black p-6 rounded-xl shadow-sm">
       <h2 className="text-2xl font-bold mb-4">Información de contacto</h2>
       <InfoFields />
       <p className="mt-4 font-medium text-sm">

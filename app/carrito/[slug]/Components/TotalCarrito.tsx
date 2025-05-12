@@ -3,11 +3,11 @@ import React from "react";
 
 function TotalCarrito() {
   return (
-    <div className="bg-stone-50 text-stone-800 p-8 h-full grid grid-cols-4">
+    <div className="bg-stone-50 text-stone-800 p-8 grid grid-cols-4">
       <section className="col-span-1"></section>
       <section className="col-span-1"></section>
       <section className="col-span-1"></section>
-      <section className="col-span-1 w-full flex flex-col gap-4">
+      <section className="col-span-4 lg:col-span-1 w-full flex flex-col gap-4">
         <h1 className="text-lg font-bold">Total del carrito</h1>
         <section className="grid grid-cols-1 grid-rows-3 w-full">
           <div className="row-span-2 h-full">
