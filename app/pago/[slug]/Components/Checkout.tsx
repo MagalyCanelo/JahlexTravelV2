@@ -3,7 +3,7 @@ import CheckoutForm from "./CheckoutForm";
 
 export default function CheckoutPage() {
   return (
-    <div className="max-w-5xl mx-auto py-10 px-6">
+    <div className="max-w-5xl mx-auto py-10 px-6 text-black">
       <CartNotice tourName="7 días en Costa Rica – Clásico (Auto-conducido)" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {/* Izquierda: Resumen de pedido */}
