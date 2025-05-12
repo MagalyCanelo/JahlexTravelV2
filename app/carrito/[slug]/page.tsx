@@ -6,12 +6,12 @@ import Footer from "@/app/Components/Footer";
 
 function page() {
   return (
-    <>
+    <div className="h-screen">
       <Header />
       <ToursTable />
       <TotalCarrito />
       <Footer/>
-    </>
+    </div>
   );
 }
 
