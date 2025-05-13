@@ -1,11 +1,13 @@
-import React from "react";
+
 import TourImage from "./TourImage";
 import TourDetails from "./TourDetails";
 import TourTabsSection from "./TourTabsSection";
 import HelpCard from "./HelpCard";
 import WhyUsCard from "./WhyUsCard";
+import { getUserShoppingCar } from "@/service/FirebaseService";
 
 function Tour() {
+
   return (
     <>
       <div className="bg-gray-50 flex flex-col lg:flex-row gap-6 px-6 py-3">

@@ -1,7 +1,10 @@
+"use client";
+import { useShoppingCar } from "@/app/store/ToursStore";
 import Link from "next/link";
 import React from "react";
 
 function TotalCarrito() {
+  const { tours } = useShoppingCar();
   return (
     <div className="bg-stone-50 text-stone-800 p-8 grid grid-cols-4">
       <section className="col-span-1"></section>
@@ -12,10 +15,25 @@ function TotalCarrito() {
         <section className="grid grid-cols-1 grid-rows-3 w-full">
           <div className="row-span-2 h-full">
             <p className="grid grid-cols-2 border-stone-300 items-center justify-between border-y border-x p-1">
-              Subtotal<span>$99</span>
+              Subtotal
+              <span>
+                PEN{" "}
+                {(tours ?? [])
+                  .reduce((acc, tour) => acc + tour.price * tour.quantity, 0)
+                  .toFixed(2)}
+              </span>
             </p>
             <p className="grid grid-cols-2 border-stone-300 items-center justify-between border-b border-x p-1">
-              Total<span>$99</span>
+              Total
+              <span>
+                PEN{" "}
+                {(
+                  (tours ?? []).reduce(
+                    (acc, tour) => acc + tour.price * tour.quantity,
+                    0
+                  ) * 1.18
+                ).toFixed(2)}
+              </span>
             </p>
           </div>
           <Link

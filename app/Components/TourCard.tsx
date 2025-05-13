@@ -5,6 +5,7 @@ import { LuHeart, LuClock4, LuMapPin } from "react-icons/lu";
 import ActionButton from "./ActionButton";
 import ImageSlider from "./ImageSliderTours";
 import { useRouter } from "next/navigation";
+import { useToursStore } from "../store/ToursStore";
 
 interface TourCardProps {
   tour: BaseTour;
@@ -12,9 +13,10 @@ interface TourCardProps {
 
 export const TourCard: React.FC<TourCardProps> = ({ tour }) => {
   const router = useRouter();
-
+  const useTour = useToursStore();
   const handleReservarClick = () => {
     // Navegamos a la página de detalle del tour
+    useTour.setSelectedTour(tour);
     router.push(`/detalles/${tour.id}`);
   };
 
