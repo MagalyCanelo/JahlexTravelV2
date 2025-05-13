@@ -12,44 +12,44 @@ const TourDetails = () => {
   const { selectedTour } = useToursStore();
 
   return (
-    <div className="rounded-xl shadow-sm px-6 py-5 bg-white max-w-full h-[544px]">
-      <h2 className="text-2xl font-bold mb-2 oliva-o">{selectedTour?.title}</h2>
-      <div className="flex items-center">
-        <p className="text-gray-700 font-semibold text-lg">
+    <div className="rounded-xl shadow-sm px-6 py-5 bg-white max-w-full h-[544px] xl:h-[655px]">
+      <h2 className="text-2xl xl:text-3xl font-bold mb-2 xl:mb-3 oliva-o">{selectedTour?.title}</h2>
+      <div className="flex items-center mb-4">
+        <p className="text-gray-700 font-semibold text-lg xl:text-xl">
           PEN {selectedTour?.priceOffer}
         </p>
-        <p className="text-gray-500 line-through ml-2">
+        <p className="text-gray-500 line-through ml-2 xl:text-lg">
           PEN {selectedTour?.priceRegular}
         </p>
       </div>
 
-      <div className="mt-3 border-t border-b border-gray-200 py-3">
-        <p className="text-sm text-gray-700 mb-1">
+      <div className="mt-3 border-t border-b border-gray-200 py-3 xl:py-5">
+        <p className="text-sm xl:text-[16px] text-gray-700 mb-1 xl:mb-2">
           <span className="font-medium">Duración:</span>{" "}
           {selectedTour?.duration}
         </p>
-        <p className="text-sm text-gray-700 mb-1">
+        <p className="text-sm xl:text-[16px] text-gray-700 mb-1 xl:mb-2">
           <span className="font-medium">Nivel de actividad:</span>{" "}
           {selectedTour?.activityLevel}
         </p>
-        <p className="text-sm text-gray-700 mb-1">
+        <p className="text-sm xl:text-[16px] text-gray-700 mb-1 xl:mb-2">
           <span className="font-medium">Tamaño del grupo:</span>{" "}
           {selectedTour?.groupSize}
         </p>
-        <p className="text-sm text-gray-700">
+        <p className="text-sm xl:text-[16px] text-gray-700">
           <span className="font-medium">Edad Minima:</span>{" "}
           {selectedTour?.minAge ? selectedTour.minAge : "1 año"}
         </p>
       </div>
 
       <div className="mt-4">
-        <label className="block text-sm font-semibold text-gray-700 mb-1">
+        <label className="block text-sm xl:text-[16px] font-semibold text-gray-700 mb-1 xl:mb-2">
           Horario
         </label>
         <select
           value={hour}
           onChange={(e) => setHour(e.target.value)}
-          className="w-full border border-gray-300 text-gray-600 rounded-md p-2"
+          className="w-full border border-gray-300 text-gray-600 rounded-md p-2 xl:h-12"
         >
           {selectedTour?.schedule.map((time) => (
             <option key={time} value={time}>
@@ -59,24 +59,24 @@ const TourDetails = () => {
         </select>
       </div>
       <div className="mt-4">
-        <label className="block text-sm font-semibold text-gray-700 mb-1">
+        <label className="block text-sm xl:text-[16px] font-semibold text-gray-700 mb-1 xl:mb-3">
           Fecha
         </label>
         <input
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="w-full border border-gray-300 text-gray-600 rounded-md p-2"
+          className="w-full border border-gray-300 text-gray-600 rounded-md p-2 xl:h-12"
           min={new Date().toISOString().split("T")[0]}
         />
       </div>
       <div className="mt-4 flex gap-4 items-end">
         {/* Selector de cantidad de pasajeros */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
+          <label className="block text-sm xl:text-[16px] font-semibold text-gray-700 mb-1 xl:mb-2">
             Pasajeros
           </label>
-          <div className="flex items-center border border-gray-300 rounded-md px-3 py-2 w-28 h-10 justify-between">
+          <div className="flex items-center border border-gray-300 rounded-md px-3 py-2 w-28 h-10 xl:h-12 justify-between">
             <button
               type="button"
               onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
@@ -97,13 +97,13 @@ const TourDetails = () => {
 
         {/* Selector de idioma */}
         <div className="w-full">
-          <label className="block text-sm font-semibold text-gray-700 mb-1">
+          <label className="block text-sm xl:text-[16px] font-semibold text-gray-700 mb-1 xl:mb-2">
             Idioma
           </label>
           <select
             value={hour}
             onChange={(e) => setHour(e.target.value)}
-            className="w-full border border-gray-300 text-gray-600 rounded-md h-10 p-2"
+            className="w-full border border-gray-300 text-gray-600 rounded-md h-10 p-2 xl:h-12"
           >
             <option value="es">Español</option>
             <option value="en">Inglés</option>
@@ -122,7 +122,7 @@ const TourDetails = () => {
             hour
           );
         }}
-        className="mt-6 flex flex-row items-center justify-center w-full bg-oliva-c text-white py-2 rounded-md font-semibold bg-oliva-o-hover"
+        className="mt-6 xl:text-[18px] flex flex-row items-center justify-center w-full bg-oliva-c text-white py-2 rounded-md font-semibold bg-oliva-o-hover xl:h-12"
       >
         Reservar ahora
       </Link>

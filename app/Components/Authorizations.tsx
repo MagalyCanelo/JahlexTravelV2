@@ -59,7 +59,7 @@ const Authorizations: React.FC = () => {
         <div ref={sliderRef} className="keen-slider w-full">
           {logos.map((logo, idx) => (
             <div key={idx} className="keen-slider__slide flex justify-center">
-              <div className="bg-white border rounded-2xl px-6 py-4 shadow-sm flex items-center justify-center h-30 w-full">
+              <div className="bg-white rounded-2xl px-6 py-4 shadow-sm flex items-center justify-center h-30 xl:h-35 w-full">
                 <Image
                   quality={50}
                   src={logo.src}

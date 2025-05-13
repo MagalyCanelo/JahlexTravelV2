@@ -17,7 +17,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
 
   return (
     <header className={`w-full bg-gray-50 shadow-sm ${props.className}`}>
-      <nav className="bg-oliva-o px-2 py-1.5 text-xs xl:sm xl:py-2">
+      <nav className="bg-oliva-o px-2 py-1.5 text-xs xl:sm xl:py-2 text-white xl:text-sm">
         <div className="flex flex-row w-full items-center justify-start gap-2">
           <p>
             <strong>Celular:</strong> +51 147 852 369

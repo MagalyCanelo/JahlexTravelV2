@@ -18,7 +18,7 @@ const TourImage = () => {
         <Image
           src={selectedImage}
           alt="Imagen del tour"
-          className="w-full h-[544px] object-cover"
+          className="w-full h-[544px] xl:h-[655px] object-cover"
           priority
         />
         <div className="absolute bottom-3 left-3 bg-white/80 text-black pl-2 pr-4 py-1 rounded-[20px] max-w-[80%] flex items-center gap-2">
@@ -36,7 +36,7 @@ const TourImage = () => {
           <button
             key={index}
             onClick={() => setSelectedImage(img)}
-            className={`w-20 h-20 rounded overflow-hidden border-2 ${
+            className={`w-20 h-20 xl:w-22 xl:h-22 rounded overflow-hidden border-2 ${
               selectedImage.src === img.src
                 ? "border-[#87AC17]"
                 : "border-gray-300"

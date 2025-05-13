@@ -66,7 +66,7 @@ const Destinations = () => {
               />
               <div className="absolute inset-0 transition" />
               <div className="absolute bottom-2 left-2 z-10 bg-[rgba(101,131,11,0.8)] px-2 py-1 rounded-md flex flex-col space-y-0.1">
-                <h3 className="text-sm font-semibold text-c drop-shadow-sm">
+                <h3 className="text-sm text-white font-semibold text-c drop-shadow-sm">
                   {dest.title}
                 </h3>
                 <p className="text-xs text-white drop-shadow-sm">

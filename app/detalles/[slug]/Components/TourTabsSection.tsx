@@ -24,7 +24,7 @@ const TourTabsSection = () => {
       <div className="w-full">
         <div className="mb-4 flex justify-center items-center space-x-4">
           <button
-            className={`px-4 py-2 rounded-lg font-medium transition ${
+            className={`px-4 py-2 rounded-lg font-medium xl:text-[17px] transition ${
               activeTab === "itinerary"
                 ? "bg-oliva-c text-white"
                 : "bg-[#E6F0AC] text-gray-800"
@@ -34,7 +34,7 @@ const TourTabsSection = () => {
             Itinerario
           </button>
           <button
-            className={`px-4 py-2 rounded-lg font-medium transition ${
+            className={`px-4 py-2 rounded-lg font-medium xl:text-[17px] transition ${
               activeTab === "includes"
                 ? "bg-oliva-c text-white"
                 : "bg-[#E6F0AC] text-gray-800"
@@ -44,7 +44,7 @@ const TourTabsSection = () => {
             Descripción
           </button>
           <button
-            className={`px-4 py-2 rounded-lg font-medium transition ${
+            className={`px-4 py-2 rounded-lg font-medium xl:text-[17px] transition ${
               activeTab === "import"
                 ? "bg-oliva-c text-white"
                 : "bg-[#E6F0AC] text-gray-800"
@@ -55,7 +55,7 @@ const TourTabsSection = () => {
           </button>
         </div>
 
-        <div className="bg-white p-4 rounded-xl shadow-sm text-gray-700">
+        <div className="bg-white p-4 rounded-xl shadow-sm text-gray-700 xl:text-[16px]">
           {renderContent()}
         </div>
       </div>

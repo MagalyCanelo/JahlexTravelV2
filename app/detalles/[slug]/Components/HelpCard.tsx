@@ -24,13 +24,13 @@ const HelpCard: React.FC<HelpCardProps> = ({ tourTitle }) => {
 
   return (
     <div className="bg-white rounded-xl shadow-sm p-4">
-      <h3 className="text-gray-700 font-semibold text-md mb-3 text-center">
+      <h3 className="text-gray-700 font-semibold text-md xl:text-[17px] mb-3 text-center">
         ¿Necesita ayuda con esta reserva?
       </h3>
 
       {!showForm ? (
         <button
-          className="w-full bg-oliva-c text-white py-2 rounded-lg font-semibold bg-oliva-o-hover"
+          className="w-full bg-oliva-c text-white py-2 rounded-lg font-semibold bg-oliva-o-hover xl:text-[17px]"
           onClick={handleButtonClick}
         >
           Contáctenos
@@ -45,7 +45,7 @@ const HelpCard: React.FC<HelpCardProps> = ({ tourTitle }) => {
             className="space-y-4"
           >
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 xl:text-[16px] xl:mb-1">
                 Nombre
               </label>
               <input
@@ -59,7 +59,7 @@ const HelpCard: React.FC<HelpCardProps> = ({ tourTitle }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700">
+              <label className="block text-sm font-medium text-gray-700 xl:text-[16px] xl:mb-1">
                 ¿Cuál es tu duda?
               </label>
               <textarea
@@ -73,7 +73,7 @@ const HelpCard: React.FC<HelpCardProps> = ({ tourTitle }) => {
 
             <button
               type="submit"
-              className="w-full bg-oliva-c text-white py-2 rounded-lg font-semibold"
+              className="w-full bg-oliva-c text-white py-2 rounded-lg font-semibold xl:text-[17px]"
             >
               Enviar al WhatsApp
             </button>

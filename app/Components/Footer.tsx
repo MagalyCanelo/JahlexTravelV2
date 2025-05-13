@@ -105,7 +105,7 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <section className="bg-oliva-o py-1.5 text-xs text-center xl:sm xl:py-2">
+      <section className="bg-oliva-o py-1.5 text-xs text-center xl:sm xl:py-2 text-white xl:text-sm">
         <p>
           © 2025 Jahlex Travel Adventure. All Rights Reserved.{" "}
           <span className="text-xs">Diseñado por Magaly Canelo</span>
