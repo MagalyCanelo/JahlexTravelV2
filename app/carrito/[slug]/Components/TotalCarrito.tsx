@@ -19,7 +19,7 @@ function TotalCarrito() {
               <span>
                 PEN{" "}
                 {(tours ?? [])
-                  .reduce((acc, tour) => acc + tour.price, 0)
+                  .reduce((acc, tour) => acc + tour.price * tour.quantity, 0)
                   .toFixed(2)}
               </span>
             </p>
@@ -28,8 +28,10 @@ function TotalCarrito() {
               <span>
                 PEN{" "}
                 {(
-                  (tours ?? []).reduce((acc, tour) => acc + tour.price, 0) *
-                  1.18
+                  (tours ?? []).reduce(
+                    (acc, tour) => acc + tour.price * tour.quantity,
+                    0
+                  ) * 1.18
                 ).toFixed(2)}
               </span>
             </p>

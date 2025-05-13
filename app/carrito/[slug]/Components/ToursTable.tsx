@@ -1,22 +1,27 @@
 "use client";
 import ActionButton from "@/app/Components/ActionButton";
 import { ShoppingCarTour } from "@/app/interface/Tour";
-import { useShoppingCar } from "@/app/store/ToursStore";
-import { getUserShoppingCar } from "@/service/FirebaseService";
+import { useShoppingCar, useToursStore } from "@/app/store/ToursStore";
+import {
+  cleanTourFromUserShoppingCar,
+  getUserShoppingCar,
+} from "@/service/FirebaseService";
+import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 
 function ToursTable() {
   const [openModal, setOpenModal] = useState(false);
   const shoppingCar = useShoppingCar();
+  const selectedTour = useToursStore();
   const [userShoppingCar, setUserShoppingCar] =
     useState<ShoppingCarTour | null>(null);
   useEffect(() => {
     getUserShoppingCar("123456").then((v) => {
       console.log(v);
       setUserShoppingCar(v);
-      shoppingCar.setTours(v?.tours!);
+      shoppingCar.setTours(v?.tours ? v.tours : []);
     });
-  }, []);
+  }, [shoppingCar.tours]);
   return (
     <div className="p-8 bg-stone-50 h-96 overflow-auto">
       <dialog
@@ -27,7 +32,15 @@ function ToursTable() {
         <div className="flex flex-row gap-4 w-full mt-4">
           <button
             onClick={() => {
-              setOpenModal(!openModal);
+              if (selectedTour.selectedTour) {
+                cleanTourFromUserShoppingCar(
+                  selectedTour.selectedTour,
+                  "123456"
+                ).then((v) => {
+                  shoppingCar.setTours(v);
+                  setOpenModal(!openModal);
+                });
+              }
             }}
             className=" cursor-pointer bg-red-500 hover:bg-red-600 font-semibold text-white px-4 py-2 rounded-lg"
           >
@@ -51,7 +64,7 @@ function ToursTable() {
               Tour
             </th>
             <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">
-              Precio
+              Precio U.
             </th>
             <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">
               Fecha Reservada
@@ -73,6 +86,7 @@ function ToursTable() {
                   <button
                     className="cursor-pointer"
                     onClick={() => {
+                      selectedTour.setSelectedTour(v);
                       setOpenModal(true);
                     }}
                   >
@@ -111,6 +125,7 @@ function ToursTable() {
             );
           })}
           <tr>
+            <td className="px-6 py-4 whitespace-nowrap border-b"></td>
             <td className="px-6 py-4 whitespace-nowrap border-b"></td>
             <td className="px-6 py-4 whitespace-nowrap border-b"></td>
             <td className="px-6 py-4 whitespace-nowrap border-b"></td>

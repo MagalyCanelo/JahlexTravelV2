@@ -1,5 +1,9 @@
 import { db } from "@/app/config/config";
-import { BaseTour, ShoppingCarTour } from "@/app/interface/Tour";
+import {
+  BaseTour,
+  BaseTourExtended,
+  ShoppingCarTour,
+} from "@/app/interface/Tour";
 import {
   arrayUnion,
   deleteField,
@@ -43,17 +47,19 @@ export async function cleanTourFromUserShoppingCar(
   const ref = doc(db, `Carrito/${userId}`);
   try {
     const currentDoc = await getDoc(ref);
-    let existingTours: BaseTour[] = [];
+    let existingTours: BaseTourExtended[] = [];
     if (currentDoc.exists()) {
       existingTours = currentDoc.data().tours || [];
     }
-    const updatedTours = existingTours.filter((t: BaseTour) => t.id !== tour.id);
+    const updatedTours = existingTours.filter(
+      (t: BaseTourExtended) => t.id !== tour.id
+    );
     const docData = { tours: updatedTours };
     await setDoc(ref, docData, { merge: true });
-    return true;
+    return updatedTours;
   } catch (error) {
     console.error("Error removing tour from cart:", error);
-    return false;
+    return [] as BaseTourExtended[];
   }
 }
 
@@ -61,7 +67,7 @@ export async function cleanUserShoppingCar(userId: string) {
   const ref = doc(db, `Carrito/${userId}`);
   try {
     const docData = {
-      tours: [] // Reset tours to an empty array
+      tours: [], // Reset tours to an empty array
     };
     await setDoc(ref, docData, { merge: true });
     return true;

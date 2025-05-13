@@ -36,7 +36,7 @@ export default function ShoppingDetails() {
               <div className="flex flex-row justify-between items-center w-full text-gray-800 mb-1">
                 <h2 className="text-lg font-bold oliva-o">{v.title}</h2>
                 <span className="text-[15px] font-semibold pr-2 text-gray-800 ml-auto">
-                  PEN {v.price.toFixed(2)}
+                  PEN {(v.price * v.quantity).toFixed(2)}
                 </span>
               </div>
 
@@ -60,7 +60,7 @@ export default function ShoppingDetails() {
           <span className="font-medium text-gray-700">
             PEN{" "}
             {userShoppingCar?.tours
-              .reduce((acc, tour) => acc + tour.price, 0)
+              .reduce((acc, tour) => acc + tour.price * tour.quantity, 0)
               .toFixed(2)}
           </span>
         </div>
@@ -70,7 +70,7 @@ export default function ShoppingDetails() {
             PEN{" "}
             {(
               (userShoppingCar?.tours ?? []).reduce(
-                (acc, tour) => acc + tour.price,
+                (acc, tour) => acc + tour.price * tour.quantity,
                 0
               ) * 0.18
             ).toFixed(2)}
@@ -86,7 +86,7 @@ export default function ShoppingDetails() {
             PEN{" "}
             {(
               (userShoppingCar?.tours ?? []).reduce(
-                (acc, tour) => acc + tour.price,
+                (acc, tour) => acc + tour.price * tour.quantity,
                 0
               ) * 1.18
             ).toFixed(2)}
