@@ -1,5 +1,6 @@
 // components/TourDetails.tsx
 import { useToursStore } from "@/app/store/ToursStore";
+import { addTourToUserShoppingCar } from "@/service/FirebaseService";
 import Link from "next/link";
 import React, { useState } from "react";
 /* import { useNavigate } from "react-router-dom";  */ // Importa useNavigate de react-router-dom
@@ -111,7 +112,16 @@ const TourDetails = () => {
       </div>
       <Link
         href={"/pago/codigodepago"}
-        href={"/pago/codigodepago"}
+        onClick={() => {
+          addTourToUserShoppingCar(
+            selectedTour!,
+            quantity,
+            "123456",
+            selectedTour?.priceOffer!,
+            date,
+            hour
+          );
+        }}
         className="mt-6 flex flex-row items-center justify-center w-full bg-oliva-c text-white py-2 rounded-md font-semibold bg-oliva-o-hover"
       >
         Reservar ahora

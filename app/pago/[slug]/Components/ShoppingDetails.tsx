@@ -1,41 +1,59 @@
+"use client";
 import Image from "next/image";
 import rnp from "@/public/rnp.jpg";
+import { useEffect, useState } from "react";
+import { ShoppingCarTour } from "@/app/interface/Tour";
+import { getUserShoppingCar } from "@/service/FirebaseService";
 
 export default function ShoppingDetails() {
+  const [userShoppingCar, setUserShoppingCar] =
+    useState<ShoppingCarTour | null>(null);
+  useEffect(() => {
+    getUserShoppingCar("123456").then((v) => {
+      console.log(v);
+      setUserShoppingCar(v);
+    });
+  }, []);
   return (
     <div className="bg-white p-6 rounded-xl shadow-sm w-full">
       {/* Imagen y detalles del tour */}
-      <div className="flex flex-col lg:flex-row gap-4 items-start mb-6">
-        <div className="w-full lg:w-40 h-60 lg:h-32 relative rounded overflow-hidden">
-          <Image
-            src={rnp.src}
-            alt="Caño Cristales"
-            layout="fill"
-            objectFit="cover"
-          />
-        </div>
-        <div className="flex flex-col gap-0 w-full">
-          {/* Título y precio */}
-          <div className="flex flex-row justify-between items-center w-full text-gray-800 mb-1">
-            <h2 className="text-lg font-bold oliva-o">
-              Caño Cristales River Trip
-            </h2>
-            <span className="text-[15px] font-semibold pr-2 text-gray-800 ml-auto">
-              $80.00
-            </span>
-          </div>
+      {userShoppingCar &&
+        userShoppingCar.tours.map((v) => (
+          <div
+            key={v.id}
+            className="flex flex-col lg:flex-row gap-4 items-start mb-6"
+          >
+            <div className="w-full lg:w-40 h-60 lg:h-32 relative rounded overflow-hidden">
+              <Image
+                src={rnp.src}
+                alt="Caño Cristales"
+                layout="fill"
+                objectFit="cover"
+              />
+            </div>
+            <div className="flex flex-col gap-0 w-full">
+              {/* Título y precio */}
+              <div className="flex flex-row justify-between items-center w-full text-gray-800 mb-1">
+                <h2 className="text-lg font-bold oliva-o">
+                  Caño Cristales River Trip
+                </h2>
+                <span className="text-[15px] font-semibold pr-2 text-gray-800 ml-auto">
+                  $80.00
+                </span>
+              </div>
 
-          <p className="text-sm text-gray-700">
-            <strong>Fecha:</strong> 15/05/25
-            <br />
-            <strong>Hora:</strong> 12:00 am
-            <br />
-            <strong>Idioma:</strong> Español
-            <br />
-            <strong>Reserva:</strong> 2 personas
-          </p>
-        </div>
-      </div>
+              <p className="text-sm text-gray-700">
+                <strong>Fecha:</strong> 15/05/25
+                <br />
+                <strong>Hora:</strong> 12:00 am
+                <br />
+                <strong>Idioma:</strong> Español
+                <br />
+                <strong>Reserva:</strong> 2 personas
+              </p>
+            </div>
+          </div>
+        ))}
 
       {/* Totales con fondo gris claro */}
       <div className="bg-[#f7f9ed] p-4 rounded-md space-y-1 text-sm mb-6">

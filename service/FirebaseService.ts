@@ -1,22 +1,32 @@
 import { db } from "@/app/config/config";
-import { BaseTour } from "@/app/interface/Tour";
-import { deleteField, doc, setDoc } from "firebase/firestore";
+import { BaseTour, ShoppingCarTour } from "@/app/interface/Tour";
+import {
+  arrayUnion,
+  deleteField,
+  doc,
+  getDoc,
+  setDoc,
+} from "firebase/firestore";
 
 export async function addTourToUserShoppingCar(
   tour: BaseTour,
   ammount: number,
-  userId: string
+  userId: string,
+  price: number,
+  date: string,
+  hour: string
 ) {
   const ref = doc(db, `Carrito/${userId}`);
   try {
     const docData = {
-      tours: {
-        [tour.id]: {
-          ...tour,
-          quantity: ammount,
-          addedAt: new Date().toISOString(),
-        },
-      },
+      tours: arrayUnion({
+        ...tour,
+        quantity: ammount,
+        price: price,
+        date: date,
+        hour: hour,
+        addedAt: new Date().toISOString(),
+      }),
     };
     await setDoc(ref, docData, { merge: true });
     return true;
@@ -32,11 +42,13 @@ export async function cleanTourFromUserShoppingCar(
 ) {
   const ref = doc(db, `Carrito/${userId}`);
   try {
-    const docData = {
-      tours: {
-        [tour.id]: deleteField(),
-      },
-    };
+    const currentDoc = await getDoc(ref);
+    let existingTours: BaseTour[] = [];
+    if (currentDoc.exists()) {
+      existingTours = currentDoc.data().tours || [];
+    }
+    const updatedTours = existingTours.filter((t: BaseTour) => t.id !== tour.id);
+    const docData = { tours: updatedTours };
     await setDoc(ref, docData, { merge: true });
     return true;
   } catch (error) {
@@ -49,12 +61,27 @@ export async function cleanUserShoppingCar(userId: string) {
   const ref = doc(db, `Carrito/${userId}`);
   try {
     const docData = {
-      tours: deleteField(),
+      tours: [] // Reset tours to an empty array
     };
     await setDoc(ref, docData, { merge: true });
     return true;
   } catch (error) {
     console.error("Error cleaning shopping cart:", error);
     return false;
+  }
+}
+
+export async function getUserShoppingCar(userId: string) {
+  const ref = doc(db, `Carrito/${userId}`);
+  try {
+    const docSnap = await getDoc(ref);
+    if (docSnap.exists()) {
+      return docSnap.data() as ShoppingCarTour;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting shopping cart:", error);
+    return null;
   }
 }
