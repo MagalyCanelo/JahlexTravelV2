@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { BaseTour } from "../interface/Tour";
+import { BaseTour, BaseTourExtended, ShoppingCarTour } from "../interface/Tour";
 
 interface ToursStore {
   tours: BaseTour[];
@@ -17,4 +17,13 @@ export const useToursStore = create<ToursStore>((set) => ({
   setSelectedTour: (tour) => set({ selectedTour: tour }),
   addTour: (tour) => set((state) => ({ tours: [...state.tours, tour] })),
   clearTours: () => set({ tours: [] }),
+}));
+
+interface BaseTourExtendedStore extends ShoppingCarTour {
+  setTours: (tours: BaseTourExtended[]) => void;
+}
+
+export const useShoppingCar = create<BaseTourExtendedStore>((set) => ({
+  tours: [],
+  setTours: (tours: BaseTourExtended[]) => set({ tours }),
 }));

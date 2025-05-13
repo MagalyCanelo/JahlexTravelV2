@@ -46,6 +46,7 @@ export interface ShoppingCarTour {
 export interface BaseTourExtended extends BaseTour {
   addedAt: string;
   date: string;
+  quantity: number;
   hour: string;
   price: number;
 }
