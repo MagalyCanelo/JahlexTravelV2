@@ -20,17 +20,17 @@ export default function ShoppingDetails() {
             <h2 className="text-lg font-bold oliva-o">
               Caño Cristales River Trip
             </h2>
-            <span className="text-[15px] font-semibold pr-4 text-gray-800 ml-auto">
+            <span className="text-[15px] font-semibold pr-2 text-gray-800 ml-auto">
               $80.00
             </span>
           </div>
 
           <p className="text-sm text-gray-700">
-            <strong>Fecha:</strong> 15 May, 2025
+            <strong>Fecha:</strong> 15/05/25
             <br />
             <strong>Hora:</strong> 12:00 am
             <br />
-            <strong>Precio por persona:</strong> 40 soles
+            <strong>Idioma:</strong> Español
             <br />
             <strong>Reserva:</strong> 2 personas
           </p>
@@ -60,7 +60,7 @@ export default function ShoppingDetails() {
       {/* Campo de cupón */}
       <div className="bg-[#f7f9ed] py-4 px-6 rounded-md">
         <div className="flex lg:flex-row flex-col items-center gap-4 mb-4">
-          <label className="text-sm font-semibold text-gray-800 whitespace-nowrap">
+          <label className="text-md font-semibold text-gray-800 whitespace-nowrap">
             Ingresa código de descuento:
           </label>
           <input

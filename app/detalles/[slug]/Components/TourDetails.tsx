@@ -69,19 +69,48 @@ const TourDetails = () => {
           min={new Date().toISOString().split("T")[0]}
         />
       </div>
-      <div className="mt-4">
-        <label className="block text-sm font-semibold text-gray-700 mb-1">
-          Pasajeros
-        </label>
-        <input
-          type="number"
-          min={1}
-          value={quantity}
-          onChange={(e) => setQuantity(Number(e.target.value))}
-          className="w-full border border-gray-300 text-gray-600  rounded-md p-2"
-        />
+      <div className="mt-4 flex gap-4 items-end">
+        {/* Selector de cantidad de pasajeros */}
+        <div>
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
+            Pasajeros
+          </label>
+          <div className="flex items-center border border-gray-300 rounded-md px-3 py-2 w-28 h-10 justify-between">
+            <button
+              type="button"
+              onClick={() => setQuantity((prev) => Math.max(1, prev - 1))}
+              className="text-xl text-gray-600"
+            >
+              −
+            </button>
+            <span className="text-gray-700">{quantity}</span>
+            <button
+              type="button"
+              onClick={() => setQuantity((prev) => prev + 1)}
+              className="text-xl text-gray-600"
+            >
+              +
+            </button>
+          </div>
+        </div>
+
+        {/* Selector de idioma */}
+        <div className="w-full">
+          <label className="block text-sm font-semibold text-gray-700 mb-1">
+            Idioma
+          </label>
+          <select
+            value={hour}
+            onChange={(e) => setHour(e.target.value)}
+            className="w-full border border-gray-300 text-gray-600 rounded-md h-10 p-2"
+          >
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+          </select>
+        </div>
       </div>
       <Link
+        href={"/pago/codigodepago"}
         href={"/pago/codigodepago"}
         className="mt-6 flex flex-row items-center justify-center w-full bg-oliva-c text-white py-2 rounded-md font-semibold bg-oliva-o-hover"
       >
