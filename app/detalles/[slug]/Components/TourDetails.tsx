@@ -12,8 +12,10 @@ const TourDetails = () => {
   const { selectedTour } = useToursStore();
 
   return (
-    <div className="rounded-xl shadow-sm px-6 py-5 bg-white max-w-full h-[544px] xl:h-[655px]">
-      <h2 className="text-2xl xl:text-3xl font-bold mb-2 xl:mb-3 oliva-o">{selectedTour?.title}</h2>
+    <div className="rounded-xl shadow-sm px-6 py-5 bg-white max-w-full min-h-[544px] xl:min-h-[655px]">
+      <h2 className="text-2xl xl:text-3xl font-bold mb-2 xl:mb-3 oliva-o">
+        {selectedTour?.title}
+      </h2>
       <div className="flex items-center mb-4">
         <p className="text-gray-700 font-semibold text-lg xl:text-xl">
           PEN {selectedTour?.priceOffer}

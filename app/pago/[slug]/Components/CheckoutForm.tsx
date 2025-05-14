@@ -12,7 +12,7 @@ const CheckoutForm = () => {
       <PaymentMethod />
       <button
         type="submit"
-        className="mt-6 w-full bg-oliva-c bg-oliva-o-hover text-white py-2 rounded font-semibold"
+        className="mt-4 w-full bg-oliva-c bg-oliva-o-hover text-white py-2 rounded font-semibold"
       >
         Completar mi pedido
       </button>
