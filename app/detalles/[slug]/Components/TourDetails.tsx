@@ -1,15 +1,33 @@
-// components/TourDetails.tsx
+"use client";
 import { useToursStore } from "@/app/store/ToursStore";
 import { addTourToUserShoppingCar } from "@/service/FirebaseService";
 import Link from "next/link";
 import React, { useState } from "react";
-/* import { useNavigate } from "react-router-dom";  */ // Importa useNavigate de react-router-dom
 
 const TourDetails = () => {
   const [date, setDate] = useState("");
   const [hour, setHour] = useState("8:00");
   const [quantity, setQuantity] = useState(1);
+  const [language, setLanguage] = useState("es"); // ✅ idioma separado
+  const [error, setError] = useState("");
   const { selectedTour } = useToursStore();
+
+  const handleReservation = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (!date || !hour || !language || quantity < 1) {
+      e.preventDefault(); // Bloquea la navegación
+      return;
+    }
+
+    setError("");
+    addTourToUserShoppingCar(
+      selectedTour!,
+      quantity,
+      "123456",
+      selectedTour?.priceOffer!,
+      date,
+      hour
+    );
+  };
 
   return (
     <div className="rounded-xl shadow-sm px-6 py-5 bg-white max-w-full min-h-[544px] xl:min-h-[655px]">
@@ -44,6 +62,7 @@ const TourDetails = () => {
         </p>
       </div>
 
+      {/* Horario */}
       <div className="mt-4">
         <label className="block text-sm xl:text-[16px] font-semibold text-gray-700 mb-1 xl:mb-2">
           Horario
@@ -60,6 +79,8 @@ const TourDetails = () => {
           ))}
         </select>
       </div>
+
+      {/* Fecha */}
       <div className="mt-4">
         <label className="block text-sm xl:text-[16px] font-semibold text-gray-700 mb-1 xl:mb-3">
           Fecha
@@ -68,12 +89,22 @@ const TourDetails = () => {
           type="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-          className="w-full border border-gray-300 text-gray-600 rounded-md p-2 xl:h-12"
+          className={`w-full border ${
+            error && !date ? "border-red-500" : "border-gray-300"
+          } text-gray-600 rounded-md p-2 xl:h-12`}
           min={new Date().toISOString().split("T")[0]}
+          required
         />
+        {error && !date && (
+          <p className="text-red-500 mt-1 text-sm">
+            Por favor selecciona una fecha.
+          </p>
+        )}
       </div>
+
+      {/* Pasajeros + idioma */}
       <div className="mt-4 flex gap-4 items-end">
-        {/* Selector de cantidad de pasajeros */}
+        {/* Pasajeros */}
         <div>
           <label className="block text-sm xl:text-[16px] font-semibold text-gray-700 mb-1 xl:mb-2">
             Pasajeros
@@ -97,33 +128,32 @@ const TourDetails = () => {
           </div>
         </div>
 
-        {/* Selector de idioma */}
+        {/* Idioma */}
         <div className="w-full">
           <label className="block text-sm xl:text-[16px] font-semibold text-gray-700 mb-1 xl:mb-2">
             Idioma
           </label>
           <select
-            value={hour}
-            onChange={(e) => setHour(e.target.value)}
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
             className="w-full border border-gray-300 text-gray-600 rounded-md h-10 p-2 xl:h-12"
           >
+            <option value="">Selecciona un idioma</option>
             <option value="es">Español</option>
             <option value="en">Inglés</option>
           </select>
         </div>
       </div>
+
+      {/* Mensaje de error */}
+      {error && (
+        <p className="text-red-500 mt-4 text-sm font-medium">{error}</p>
+      )}
+
+      {/* Botón de reserva */}
       <Link
-        href={"/pago/codigodepago"}
-        onClick={() => {
-          addTourToUserShoppingCar(
-            selectedTour!,
-            quantity,
-            "123456",
-            selectedTour?.priceOffer!,
-            date,
-            hour
-          );
-        }}
+        href="/pago/codigodepago"
+        onClick={handleReservation}
         className="mt-6 xl:text-[18px] flex flex-row items-center justify-center w-full bg-oliva-c text-white py-2 rounded-md font-semibold bg-oliva-o-hover xl:h-12"
       >
         Reservar ahora

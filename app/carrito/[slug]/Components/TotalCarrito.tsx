@@ -5,45 +5,45 @@ import React from "react";
 
 function TotalCarrito() {
   const { tours } = useShoppingCar();
+  const subtotal = (tours ?? []).reduce(
+    (acc, tour) => acc + tour.price * tour.quantity,
+    0
+  );
+  const total = subtotal * 1.18;
+
   return (
-    <div className="bg-stone-50 text-stone-800 p-8 grid grid-cols-4">
-      <section className="col-span-1"></section>
-      <section className="col-span-1"></section>
-      <section className="col-span-1"></section>
-      <section className="col-span-4 lg:col-span-1 w-full flex flex-col gap-4">
-        <h1 className="text-lg font-bold">Total del carrito</h1>
-        <section className="grid grid-cols-1 grid-rows-3 w-full">
-          <div className="row-span-2 h-full">
-            <p className="grid grid-cols-2 border-stone-300 items-center justify-between border-y border-x p-1">
-              Subtotal
-              <span>
-                PEN{" "}
-                {(tours ?? [])
-                  .reduce((acc, tour) => acc + tour.price * tour.quantity, 0)
-                  .toFixed(2)}
-              </span>
-            </p>
-            <p className="grid grid-cols-2 border-stone-300 items-center justify-between border-b border-x p-1">
-              Total
-              <span>
-                PEN{" "}
-                {(
-                  (tours ?? []).reduce(
-                    (acc, tour) => acc + tour.price * tour.quantity,
-                    0
-                  ) * 1.18
-                ).toFixed(2)}
-              </span>
-            </p>
-          </div>
-          <Link
-            href={"/pago/codigodepago"}
-            className="row-span-1 flex flex-row items-center justify-center w-full bg-oliva-c text-white font-semibold p-2 rounded-full"
-          >
-            Finalizar compra
-          </Link>
-        </section>
-      </section>
+    <div className="px-6 pt-2 pb-6 bg-stone-50">
+      <div className="max-w-md mx-auto sm:ml-auto sm:mr-0 bg-white shadow-sm rounded-2xl p-5">
+        <h2 className="text-lg font-bold text-gray-800 text-center mb-4">
+          Total del carrito
+        </h2>
+
+        <table className="min-w-full text-sm text-gray-700">
+          <tbody>
+            <tr className="border-b border-stone-200">
+              <td className="px-4 py-2 text-left font-medium">Subtotal</td>
+              <td className="px-4 py-2 text-right sm:text-center">
+                PEN {subtotal.toFixed(2)}
+              </td>
+            </tr>
+            <tr className="border-b border-stone-200">
+              <td className="px-4 py-2 text-left font-medium">
+                Total (incl. IGV)
+              </td>
+              <td className="px-4 py-2 text-right sm:text-center">
+                PEN {total.toFixed(2)}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <Link
+          href="/pago/codigodepago"
+          className="block mt-6 w-full bg-oliva-c bg-oliva-o-hover text-white font-semibold text-center py-2 rounded-full transition"
+        >
+          Finalizar compra
+        </Link>
+      </div>
     </div>
   );
 }

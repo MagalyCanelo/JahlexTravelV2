@@ -6,8 +6,7 @@ import {
   cleanTourFromUserShoppingCar,
   getUserShoppingCar,
 } from "@/service/FirebaseService";
-import { useRouter } from "next/navigation";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 function ToursTable() {
   const [openModal, setOpenModal] = useState(false);
@@ -15,21 +14,25 @@ function ToursTable() {
   const selectedTour = useToursStore();
   const [userShoppingCar, setUserShoppingCar] =
     useState<ShoppingCarTour | null>(null);
+
   useEffect(() => {
     getUserShoppingCar("123456").then((v) => {
-      console.log(v);
       setUserShoppingCar(v);
-      shoppingCar.setTours(v?.tours ? v.tours : []);
+      shoppingCar.setTours(v?.tours ?? []);
     });
   }, [shoppingCar.tours]);
+
   return (
-    <div className="p-8 bg-stone-50 h-96 overflow-auto">
+    <div className="px-6 pt-2 pb-4 bg-stone-50">
+      {/* Modal */}
       <dialog
         open={openModal}
-        className="bg-white m-auto p-4 rounded-lg border border-stone-400 shadow"
+        className="bg-white p-6 rounded-2xl shadow-lg border border-stone-300 max-w-sm m-auto"
       >
-        <h1 className="font-semibold text-center">Confirmar eliminación</h1>
-        <div className="flex flex-row gap-4 w-full mt-4">
+        <h2 className="text-md font-semibold text-center text-gray-800">
+          ¿Confirmar eliminación?
+        </h2>
+        <div className="mt-4 flex gap-4 justify-center">
           <button
             onClick={() => {
               if (selectedTour.selectedTour) {
@@ -38,106 +41,96 @@ function ToursTable() {
                   "123456"
                 ).then((v) => {
                   shoppingCar.setTours(v);
-                  setOpenModal(!openModal);
+                  setOpenModal(false);
                 });
               }
             }}
-            className=" cursor-pointer bg-red-500 hover:bg-red-600 font-semibold text-white px-4 py-2 rounded-lg"
+            className="text-md bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl font-medium transition"
           >
             Remover
           </button>
           <button
-            onClick={() => {
-              setOpenModal(!openModal);
-            }}
-            className=" cursor-pointer border-2 text-stone-500 hover:text-black hover:font-semibold hover:border-black transition-all border-stone-500 px-4 py-2 rounded-lg"
+            onClick={() => setOpenModal(false)}
+            className="border-2 border-stone-400 text-gray-700 hover:border-gray-800 px-4 py-2 rounded-xl transition font-medium"
           >
             Cancelar
           </button>
         </div>
       </dialog>
-      <table className="min-w-full bg-stone-50 border border-gray-300 ">
-        <thead>
-          <tr className="text-stone-800">
-            <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider"></th>
-            <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">
-              Tour
-            </th>
-            <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">
-              Precio U.
-            </th>
-            <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">
-              Fecha Reservada
-            </th>
-            <th className="px-6 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">
-              Hora
-            </th>
-            <th className="px-3 py-3 border-b text-left text-xs font-bold uppercase tracking-wider">
-              Pasajeros
-            </th>
-          </tr>
-        </thead>
 
-        <tbody>
-          {userShoppingCar?.tours.map((v) => {
-            return (
-              <tr className="hover:bg-gray-50 text-black">
-                <td className="px-6 py-4 whitespace-nowrap border-b">
+      {/* Tabla */}
+      <div className="overflow-x-auto rounded-2xl shadow-sm">
+        <table className="min-w-full text-sm text-left text-gray-700 bg-white rounded-2xl overflow-hidden">
+          <thead className="bg-oliva-c text-white uppercase text-sm">
+            <tr>
+              <th className="px-4 py-3 text-center">{/* Ícono */}</th>
+              <th className="px-4 py-3 text-center min-w-[200px] sm:min-w-[250px]">
+                Tour
+              </th>{" "}
+              {/* Aquí ampliamos la columna 'Tour' */}
+              <th className="px-4 py-3 text-center min-w-[140px] sm:min-w-[175px]">
+                Precio U.
+              </th>
+              <th className="px-4 py-3 text-center min-w-[140px] sm:min-w-[175px]">
+                Fecha
+              </th>
+              <th className="px-4 py-3 text-center min-w-[140px] sm:min-w-[175px]">
+                Hora
+              </th>
+              <th className="px-4 py-3 text-center min-w-[140px] sm:min-w-[175px]">
+                Pasajeros
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {userShoppingCar?.tours.map((v, idx) => (
+              <tr
+                key={idx}
+                className="border-t border-stone-200 hover:bg-stone-100 transition-colors"
+              >
+                {/* Ícono eliminar */}
+                <td className="px-4 py-3 text-center">
                   <button
-                    className="cursor-pointer"
                     onClick={() => {
                       selectedTour.setSelectedTour(v);
                       setOpenModal(true);
                     }}
+                    className="text-red-500 hover:text-red-600 transition inline-flex items-center justify-center"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
-                      strokeWidth={4}
+                      strokeWidth={2.5}
                       stroke="currentColor"
-                      className="size-6 text-red-500"
+                      className="w-5 h-5 sm:w-6 sm:h-6"
                     >
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        d="M6 18 18 6M6 6l12 12"
+                        d="M6 18L18 6M6 6l12 12"
                       />
                     </svg>
                   </button>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap border-b">
+
+                {/* Tour - alineado a la izquierda */}
+                <td className="px-4 py-3 font-medium text-left text-sm">
                   {v.title}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap border-b">
-                  PEN {v.price}
+
+                {/* Todo lo demás centrado */}
+                <td className="px-4 py-3 text-center text-sm">PEN {v.price}</td>
+                <td className="px-4 py-3 text-center text-sm">
+                  {new Date(v.date).toLocaleDateString("es-PE")}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap border-b">
-                  {v.date}
-                </td>
-                <td className="px-6 py-4 whitespace-nowrap border-b">
-                  {v.hour}
-                </td>
-                <td className="px-3 py-4 whitespace-nowrap border-b">
-                  {v.quantity}
-                </td>
+                <td className="px-4 py-3 text-center text-sm">{v.hour}</td>
+                <td className="px-4 py-3 text-center text-sm">{v.quantity}</td>
               </tr>
-            );
-          })}
-          <tr>
-            <td className="px-6 py-4 whitespace-nowrap border-b"></td>
-            <td className="px-6 py-4 whitespace-nowrap border-b"></td>
-            <td className="px-6 py-4 whitespace-nowrap border-b"></td>
-            <td className="px-6 py-4 whitespace-nowrap border-b"></td>
-            <td className="px-6 py-4 whitespace-nowrap border-b"></td>
-            <td className="px-3 py-4 whitespace-nowrap border-b">
-              <button className="bg-stone-400 px-2 py-1 rounded-lg">
-                Actualizar carrito
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
