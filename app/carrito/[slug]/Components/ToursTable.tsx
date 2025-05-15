@@ -27,7 +27,7 @@ function ToursTable() {
       {/* Modal */}
       <dialog
         open={openModal}
-        className="bg-white p-6 rounded-2xl shadow-lg border border-stone-300 max-w-sm m-auto"
+        className="bg-white p-6 rounded-2xl shadow-lg border fixed top-0 bottom-0 border-stone-300 max-w-sm m-auto"
       >
         <h2 className="text-md font-semibold text-center text-gray-800">
           ¿Confirmar eliminación?

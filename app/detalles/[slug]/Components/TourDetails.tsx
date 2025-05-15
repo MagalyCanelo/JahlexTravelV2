@@ -6,19 +6,24 @@ import React, { useState } from "react";
 
 const TourDetails = () => {
   const [date, setDate] = useState("");
-  const [hour, setHour] = useState("8:00");
   const [quantity, setQuantity] = useState(1);
   const [language, setLanguage] = useState("es"); // ✅ idioma separado
   const [error, setError] = useState("");
   const { selectedTour } = useToursStore();
+  const [hour, setHour] = useState(selectedTour?.schedule[0]);
 
   const handleReservation = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (!date || !hour || !language || quantity < 1) {
       e.preventDefault(); // Bloquea la navegación
+      alert("Por favor, selecciona una fecha, horario, idioma y asegúrate de tener al menos un pasajero.");
       return;
     }
 
     setError("");
+    if (!selectedTour?.schedule.includes(hour)) {
+      setError("El horario seleccionado no es válido.");
+      return;
+    }
     addTourToUserShoppingCar(
       selectedTour!,
       quantity,
