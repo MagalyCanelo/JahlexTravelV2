@@ -6,9 +6,10 @@ import React, { useState, useRef } from "react";
 
 interface ImageSliderProps {
   images: string[];
+  isStatic: boolean;
 }
 
-const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
+const ImageSlider: React.FC<ImageSliderProps> = ({ images, isStatic }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const touchStartX = useRef<number | null>(null);
   const touchEndX = useRef<number | null>(null);
@@ -25,20 +26,32 @@ const ImageSlider: React.FC<ImageSliderProps> = ({ images }) => {
         ref={sliderRef}
         className="keen-slider w-full h-full overflow-hidden"
       >
-        {images.map((image, index) => (
-          <div
-            key={index}
-            className="keen-slider__slide flex justify-center items-center p-0 gap-0"
-          >
+        {!isStatic ? (
+          images.map((image, index) => (
+            <div
+              key={index}
+              className="keen-slider__slide flex justify-center items-center p-0 gap-0"
+            >
+              <Image
+                src={image}
+                alt={`Imagen ${index + 1}`}
+                width={2000}
+                height={800}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))
+        ) : (
+          <div className="p-0 gap-0">
             <Image
-              src={image}
-              alt={`Imagen ${image + 1}`}
-              width={1000}
+              src={images[0]}
+              alt="Imagen estática"
+              width={2000}
               height={800}
-              className="w-full h-full object-cover"
+              className="w-96 h-full"
             />
           </div>
-        ))}
+        )}
       </div>
 
       <div className="absolute bottom-2 right-3 flex gap-1 z-10">
