@@ -4,7 +4,3 @@ interface User {
     rating: number;
   }
   
-  interface CommentSliderProps {
-    users: User[];
-  }
-  

@@ -9,7 +9,7 @@ import TourTabsSection from "./TourTabsSection";
 import WhyUsCard from "./WhyUsCard";
 
 function Tour() {
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
     slides: {

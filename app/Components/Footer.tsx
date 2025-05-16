@@ -1,4 +1,5 @@
 import { FaFacebookF, FaTiktok, FaTripadvisor } from "react-icons/fa";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -9,7 +10,13 @@ const Footer = () => {
           <div className="flex flex-col justify-center h-full max-md:border-b-2 max-md:pb-8 max-md:border-[#65830B] md:border-0 md:pb-0">
             <div className="flex items-center mb-4 justify-center">
               <div className="flex flex-col items-center">
-                <img src="/logo.png" alt="Jahlex Logo" className="w-65" />
+                <Image
+                  src="/logo.png"
+                  alt="Jahlex Logo"
+                  className="w-65"
+                  height={100}
+                  width={100}
+                />
                 <p className="text-gray-600 text-center mt-2 text-sm">
                   <strong>RUC:</strong> 1234567890
                 </p>

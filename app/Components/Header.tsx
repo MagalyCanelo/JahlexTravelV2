@@ -8,6 +8,7 @@ import { IoMenu } from "react-icons/io5";
 import ActionButton from "./ActionButton";
 import SidebarMenu from "./SidebarMenu";
 import TopBar from "./TopBar";
+import Image from "next/image";
 
 const Header = (props: { className?: string; onClick?: () => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -21,10 +22,12 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
       <TopBar />
       <div className="w-full flex lg:flex-row flex-col-reverse items-center justify-between p-4 lg:p-4 lg:pb-2">
         <Link href="/" className="flex items-center space-x-2 pt-3 lg:pt-0">
-          <img
+          <Image
             src={logo.src}
             alt="Logo de la empresa"
             className="lg:w-58 w-72 xl:w-65"
+            height={100}
+            width={100}
           />
         </Link>
 

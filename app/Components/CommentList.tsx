@@ -9,7 +9,7 @@ import { useKeenSlider } from "keen-slider/react";
 import { FaTripadvisor } from "react-icons/fa";
 
 interface CommentSliderProps {
-  users?: any[]; // O puedes especificar un tipo más preciso si lo conoces
+  users?: { comment: string; location: string };
 }
 
 const CommentSlider: React.FC<CommentSliderProps> = ({ users }) => {

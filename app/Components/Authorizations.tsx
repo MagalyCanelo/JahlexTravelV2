@@ -40,9 +40,6 @@ const Authorizations: React.FC = () => {
     },
   });
 
-  const moveTo = (index: number) => {
-    instanceRef.current?.moveToIdx(index);
-  };
   return (
     <div className="bg-gray-50 flex flex-col gap-2 w-full items-center">
       {/* Contenedor con padding horizontal uniforme */}

@@ -88,21 +88,6 @@ export default function TopBar(): ReactElement {
   );
 }
 
-// Componente para ítems de contacto
-interface ContactItemProps {
-  icon: ReactElement;
-  text: string;
-}
-
-function ContactItem({ icon, text }: ContactItemProps): ReactElement {
-  return (
-    <div className="flex items-center gap-1">
-      {icon}
-      <span>{text}</span>
-    </div>
-  );
-}
-
 // Componente para íconos sociales
 interface SocialLinkProps {
   href: string;
