@@ -46,6 +46,15 @@ function Tour() {
       </div>
 
       <div className="bg-stone-50 px-4 pb-8">
+        <div className="bg-gray-50 flex flex-col lg:flex-row gap-6 px-6 py-5">
+          <div className="w-full lg:w-3/5">
+            <TourTabsSection />
+          </div>
+          <div className="w-full lg:w-2/5 flex flex-col gap-4">
+            <HelpCard tourTitle="Tour Islas Ballestas" />
+            <WhyUsCard />
+          </div>
+        </div>
         <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow my-4">
           <h2 className="text-md font-semibold">Más destinos</h2>
         </div>
