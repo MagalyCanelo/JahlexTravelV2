@@ -112,10 +112,12 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-      <section className="bg-oliva-o py-1.5 text-xs text-center xl:sm xl:py-2 text-white xl:text-sm">
+      <section className="bg-oliva-o py-1.5 text-[10px] md:text-sm text-center xl:sm xl:py-2 text-white xl:text-sm">
         <p>
           © 2025 Jahlex Travel Adventure. All Rights Reserved.{" "}
-          <span className="text-xs">Diseñado por Magaly Canelo</span>
+          <span className="text-[10px] md:text-sm">
+            Diseñado por Magaly Canelo
+          </span>
         </p>
       </section>
     </>

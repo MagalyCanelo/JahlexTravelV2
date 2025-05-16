@@ -25,7 +25,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           <Image
             src={logo.src}
             alt="Logo de la empresa"
-            className="lg:w-58 w-72 xl:w-65"
+            className="lg:w-50 w-60 xl:w-65"
             height={100}
             width={100}
           />
