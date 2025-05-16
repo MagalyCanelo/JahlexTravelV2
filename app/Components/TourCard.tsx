@@ -9,7 +9,7 @@ import { useToursStore } from "../store/ToursStore";
 
 interface TourCardProps {
   tour: BaseTour;
-  isStatic:boolean
+  isStatic: boolean;
 }
 
 export const TourCard: React.FC<TourCardProps> = ({ tour, isStatic }) => {
@@ -22,9 +22,9 @@ export const TourCard: React.FC<TourCardProps> = ({ tour, isStatic }) => {
   };
 
   return (
-    <div className="bg-[#fafafa] rounded-2xl border border-[#B7B7B7] p-4 w-full max-w-sm flex flex-col justify-between hover:shadow-lg transition">
+    <div className="bg-[#fafafa] rounded-2xl border border-[#B7B7B7] shadow-sm p-4 w-full max-w-sm flex flex-col justify-between hover:shadow-lg transition">
       <div className="relative w-full h-60 bg-gray-200 rounded-lg mb-4 overflow-hidden">
-        <ImageSlider images={tour.images} isStatic={isStatic}/>
+        <ImageSlider images={tour.images} isStatic={isStatic} />
 
         <button className="absolute top-2 right-2 bg-white p-1 rounded-full z-10">
           <LuHeart className="h-5 w-5 oliva-o" />

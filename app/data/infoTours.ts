@@ -86,7 +86,7 @@ export const infoTours: BaseTour[] = [
   },
   {
     id: 4,
-    title: "Aventura en la Amazonía",
+    title: "Tour de aventura en la Amazonía",
     priceRegular: 150,
     priceOffer: 130,
     duration: "1 día",
