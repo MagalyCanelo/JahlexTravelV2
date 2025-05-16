@@ -3,9 +3,10 @@ import rnp from "@/public/rnp.jpg";
 import huacachina from "@/public/huacachina.jpg";
 import cusco from "@/public/cusco.jpg";
 import { create } from "zustand";
+import type { StaticImageData } from "next/image";
 
 interface Image {
-  src: any; // or StaticImageData if you're using Next.js
+  src: StaticImageData;
   title: string;
   location: string;
 }

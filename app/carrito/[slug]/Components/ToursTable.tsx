@@ -19,7 +19,7 @@ function ToursTable() {
       setUserShoppingCar(v);
       shoppingCar.setTours(v?.tours ?? []);
     });
-  }, [shoppingCar.tours]);
+  }, [shoppingCar, shoppingCar.tours]);
 
   return (
     <div className="px-6 pt-2 pb-4 bg-stone-50">
