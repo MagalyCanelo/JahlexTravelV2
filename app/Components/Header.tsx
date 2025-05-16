@@ -7,6 +7,17 @@ import SidebarMenu from "./SidebarMenu";
 import ActionButton from "./ActionButton";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {
+  FaPhone,
+  FaEnvelope,
+  FaGlobe,
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+  FaWhatsapp,
+  FaTripadvisor,
+} from "react-icons/fa";
+import TopBar from "./TopBar";
 
 const Header = (props: { className?: string; onClick?: () => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,14 +28,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
 
   return (
     <header className={`w-full bg-gray-50 shadow-sm ${props.className}`}>
-      <nav className="bg-oliva-o px-2 py-1.5 text-xs xl:sm xl:py-2 text-white xl:text-sm">
-        <div className="flex flex-row w-full items-center justify-start gap-2">
-          <p>
-            <strong>Celular:</strong> +51 147 852 369
-          </p>
-          <p>correo@gmail.com</p>
-        </div>
-      </nav>
+      <TopBar />
       <div className="w-full flex lg:flex-row flex-col-reverse items-center justify-between p-4 lg:p-4 lg:pb-2">
         <Link href="/" className="flex items-center space-x-2 pt-3 lg:pt-0">
           <img
