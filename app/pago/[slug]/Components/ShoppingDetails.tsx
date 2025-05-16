@@ -1,9 +1,9 @@
 "use client";
-import Image from "next/image";
-import rnp from "@/public/rnp.jpg";
-import { useEffect, useState } from "react";
 import { ShoppingCarTour } from "@/app/interface/Tour";
+import rnp from "@/public/rnp.jpg";
 import { getUserShoppingCar } from "@/service/FirebaseService";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function ShoppingDetails() {
   const [userShoppingCar, setUserShoppingCar] =

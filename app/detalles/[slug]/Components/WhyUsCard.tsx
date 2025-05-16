@@ -1,5 +1,4 @@
-import React from "react";
-import { FaStar, FaUserTie, FaCheckCircle, FaClock } from "react-icons/fa";
+import { FaClock, FaStar, FaUserTie } from "react-icons/fa";
 
 const WhyUsCard = () => {
   return (

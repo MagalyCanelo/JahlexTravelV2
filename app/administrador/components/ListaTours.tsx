@@ -44,6 +44,7 @@ function ListaTours() {
     category: TourCategory.MARITIMO,
     location: "",
     rating: 0,
+    minAge: 0,
   });
 
   //delete the tour

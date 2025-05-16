@@ -1,10 +1,9 @@
 "use client";
 
-import { LuSearch } from "react-icons/lu";
 import { TourCard } from "@/app/Components/TourCard";
-import { infoTours } from "@/app/data/infoTours";
 import { BaseTour } from "@/app/interface/Tour";
-import React, { useState } from "react";
+import { useState } from "react";
+import { LuSearch } from "react-icons/lu";
 import DestinoFilter from "./DestinoFilter";
 
 function ListaTours(props: { listaTours: BaseTour[] }) {

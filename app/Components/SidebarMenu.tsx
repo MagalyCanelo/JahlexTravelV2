@@ -1,5 +1,3 @@
-import React from "react";
-
 const SidebarMenu = (props: { isOpen: boolean; onClose: () => void }) => {
   return (
     <div

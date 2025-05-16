@@ -1,46 +1,10 @@
-import React from "react";
 import Image from "next/image";
+import React from "react";
 
+import cusco from "@/public/cusco.jpg";
+import huacachina from "@/public/huacachina.jpg";
 import ib from "@/public/islas_ballestas.jpg";
 import rnp from "@/public/rnp.jpg";
-import huacachina from "@/public/huacachina.jpg";
-import cusco from "@/public/cusco.jpg";
-
-const destinations = [
-  {
-    title: "Paracas",
-    location: "Perú",
-    image: ib,
-  },
-  {
-    title: "Ica",
-    location: "Perú",
-    image: rnp,
-  },
-  {
-    title: "Nazca",
-    location: "Perú",
-    image: huacachina,
-  },
-  {
-    title: "Cañete",
-    location: "Perú",
-    image: ib,
-  },
-  {
-    title: "Cuzco",
-    location: "Perú",
-    image: cusco,
-  },
-];
-
-const gridStyles = [
-  "col-span-2 row-span-2", // Grande
-  "col-span-1 row-span-1",
-  "col-span-2 row-span-1",
-  "col-span-1 row-span-2",
-  "col-span-1 row-span-1",
-];
 
 const DestinationsMasonry: React.FC = () => {
   return (

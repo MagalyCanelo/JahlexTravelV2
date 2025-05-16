@@ -1,7 +1,7 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { FaMapMarkerAlt } from "react-icons/fa";
 import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import { FaMapMarkerAlt } from "react-icons/fa";
 import { useImageStore } from "../store/images";
 
 const ImageSlider: React.FC = () => {

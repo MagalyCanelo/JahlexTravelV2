@@ -7,7 +7,14 @@ import {
   GroupSize,
   TourCategory,
 } from "@/app/interface/Tour";
-import { collection, doc, getDocs, getDoc, setDoc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  doc,
+  getDocs,
+  getDoc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 
 function TurForm(props: { func: "agregar" | "editar" }) {
@@ -30,6 +37,7 @@ function TurForm(props: { func: "agregar" | "editar" }) {
     category: TourCategory.MARITIMO,
     location: "",
     rating: 0,
+    minAge: 0,
   });
 
   const handleChange = (
@@ -76,6 +84,7 @@ function TurForm(props: { func: "agregar" | "editar" }) {
             category: TourCategory.MARITIMO,
             location: "",
             rating: 0,
+            minAge: 0,
           });
         })
         .catch((error) => {
@@ -85,41 +94,49 @@ function TurForm(props: { func: "agregar" | "editar" }) {
     if (props.func === "editar") {
       const tourRef = doc(db, "tours", formData.title);
       // Create an object with only non-empty fields
-      const updateData = Object.entries(formData).reduce((acc, [key, value]) => {
-      // Check if the value is not empty (considering arrays and strings)
-      if (Array.isArray(value) ? value.length > 0 : value !== "" && value !== 0) {
-        acc[key as keyof BaseTour] = value;
-      }
-      return acc;
-      }, {} as Partial<BaseTour>);
+      const updateData = Object.entries(formData).reduce(
+        (acc, [key, value]) => {
+          // Check if the value is not empty (considering arrays and strings)
+          if (
+            Array.isArray(value)
+              ? value.length > 0
+              : value !== "" && value !== 0
+          ) {
+            acc[key as keyof BaseTour] = value;
+          }
+          return acc;
+        },
+        {} as Partial<BaseTour>
+      );
 
       updateDoc(tourRef, updateData)
-      .then(() => {
-        alert("Tour editado exitosamente");
-        setFormData({
-          id: 0,
-          title: "",
-          priceRegular: 0,
-          priceOffer: 0,
-          duration: "",
-          activityLevel: ActivityLevel.BAJO,
-          groupSize: GroupSize.MEDIANO,
-          schedule: [],
-          availableDates: [],
-          images: [],
-          description: "",
-          itinerary: [],
-          includes: [],
-          notIncluded: [],
-          recommendations: [],
-          category: TourCategory.MARITIMO,
-          location: "",
-          rating: 0,
+        .then(() => {
+          alert("Tour editado exitosamente");
+          setFormData({
+            id: 0,
+            title: "",
+            priceRegular: 0,
+            priceOffer: 0,
+            duration: "",
+            activityLevel: ActivityLevel.BAJO,
+            groupSize: GroupSize.MEDIANO,
+            schedule: [],
+            availableDates: [],
+            images: [],
+            description: "",
+            itinerary: [],
+            includes: [],
+            notIncluded: [],
+            recommendations: [],
+            category: TourCategory.MARITIMO,
+            location: "",
+            rating: 0,
+            minAge: 0,
+          });
+        })
+        .catch((error) => {
+          console.error("Error al editar el tour:", error);
         });
-      })
-      .catch((error) => {
-        console.error("Error al editar el tour:", error);
-      });
     }
   };
 

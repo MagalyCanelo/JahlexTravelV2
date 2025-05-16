@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { BaseTour } from "../interface/Tour";
-import { TourCard } from "./TourCard";
 import ActionButton from "./ActionButton";
+import { TourCard } from "./TourCard";
 
 interface ToursListProps {
   tours: BaseTour[];
@@ -16,7 +16,7 @@ export const ToursList: React.FC<ToursListProps> = ({ tours }) => {
       </div>
       <div className="grid grid-cols-1 place-items-center sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 w-full">
         {tours.map((tour) => (
-          <TourCard key={tour.id} tour={tour} />
+          <TourCard key={tour.id} tour={tour} isStatic={false} />
         ))}
       </div>
       <div className="mt-8 text-center font-semibold">

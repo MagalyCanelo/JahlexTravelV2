@@ -1,11 +1,11 @@
 "use client";
 
-import CommentCard from "./CommentCard";
 import infoUsers from "@/app/data/InfoUsers";
 import ActionButton from "./ActionButton";
+import CommentCard from "./CommentCard";
 
-import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { useKeenSlider } from "keen-slider/react";
 import { FaTripadvisor } from "react-icons/fa";
 
 interface CommentSliderProps {

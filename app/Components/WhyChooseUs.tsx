@@ -1,14 +1,14 @@
 "use client";
 
+import ib from "@/public/islas_ballestas.jpg";
+import rnp from "@/public/rnp.jpg";
+import Image from "next/image";
 import {
   LuCircleDollarSign,
-  LuShieldCheck,
   LuCompass,
   LuHeadset,
+  LuShieldCheck,
 } from "react-icons/lu";
-import rnp from "@/public/rnp.jpg";
-import ib from "@/public/islas_ballestas.jpg";
-import Image from "next/image";
 
 export default function WhyChooseUs() {
   return (

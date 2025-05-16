@@ -6,10 +6,9 @@ import {
 } from "@/app/interface/Tour";
 import {
   arrayUnion,
-  deleteField,
   doc,
   getDoc,
-  setDoc,
+  setDoc
 } from "firebase/firestore";
 
 export async function addTourToUserShoppingCar(

@@ -1,22 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
 import logo from "@/public/logo.png";
-import { IoMenu } from "react-icons/io5";
-import SidebarMenu from "./SidebarMenu";
-import ActionButton from "./ActionButton";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  FaPhone,
-  FaEnvelope,
-  FaGlobe,
-  FaFacebookF,
-  FaInstagram,
-  FaTiktok,
-  FaWhatsapp,
-  FaTripadvisor,
-} from "react-icons/fa";
+import { useState } from "react";
+import { IoMenu } from "react-icons/io5";
+import ActionButton from "./ActionButton";
+import SidebarMenu from "./SidebarMenu";
 import TopBar from "./TopBar";
 
 const Header = (props: { className?: string; onClick?: () => void }) => {

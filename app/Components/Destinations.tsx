@@ -1,7 +1,7 @@
+import cusco from "@/public/cusco.jpg";
+import huacachina from "@/public/huacachina.jpg";
 import ib from "@/public/islas_ballestas.jpg";
 import rnp from "@/public/rnp.jpg";
-import huacachina from "@/public/huacachina.jpg";
-import cusco from "@/public/cusco.jpg";
 import Image from "next/image";
 
 const destinations = [

@@ -1,7 +1,6 @@
 "use client";
 import { useShoppingCar } from "@/app/store/ToursStore";
 import Link from "next/link";
-import React from "react";
 
 function TotalCarrito() {
   const { tours } = useShoppingCar();

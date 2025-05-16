@@ -1,7 +1,6 @@
-import React from "react";
+import CartNotice from "./CartNotice";
 import CheckoutForm from "./CheckoutForm";
 import ShoppingDetails from "./ShoppingDetails";
-import CartNotice from "./CartNotice";
 
 function CheckoutPage() {
   return (

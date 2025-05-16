@@ -1,6 +1,4 @@
-import React, { useState } from "react";
-import HelpCard from "./HelpCard";
-import WhyUsCard from "./WhyUsCard";
+import { useState } from "react";
 
 const TourTabsSection = () => {
   const [activeTab, setActiveTab] = useState("itinerary");

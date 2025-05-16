@@ -1,11 +1,11 @@
 "use client";
+import { useRouter } from "next/navigation";
 import React from "react";
-import { BaseTour, TourCategory } from "../interface/Tour";
-import { LuHeart, LuClock4, LuMapPin } from "react-icons/lu";
+import { LuClock4, LuHeart, LuMapPin } from "react-icons/lu";
+import { BaseTour } from "../interface/Tour";
+import { useToursStore } from "../store/ToursStore";
 import ActionButton from "./ActionButton";
 import ImageSlider from "./ImageSliderTours";
-import { useRouter } from "next/navigation";
-import { useToursStore } from "../store/ToursStore";
 
 interface TourCardProps {
   tour: BaseTour;

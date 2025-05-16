@@ -1,10 +1,9 @@
 "use client";
-import React, { useState } from "react";
-import Image from "next/image";
-import rnp from "@/public/rnp.jpg";
 import img1 from "@/public/huacachina.jpg";
 import img2 from "@/public/islas_ballestas.jpg";
-import img3 from "@/public/rnp.jpg";
+import { default as img3, default as rnp } from "@/public/rnp.jpg";
+import Image from "next/image";
+import { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
 const images = [rnp, img1, img2, img3];

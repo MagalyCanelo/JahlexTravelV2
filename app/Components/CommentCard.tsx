@@ -1,7 +1,7 @@
 "use client";
 
-import { FaStar, FaStarHalfAlt, FaRegStar } from "react-icons/fa";
 import Image from "next/image";
+import { FaRegStar, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 interface User {
   name: { first: string; last: string };

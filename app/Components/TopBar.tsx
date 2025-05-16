@@ -1,12 +1,12 @@
 import {
-  FaPhoneAlt,
   FaEnvelope,
-  FaGlobe,
   FaFacebookF,
+  FaGlobe,
   FaInstagram,
+  FaPhoneAlt,
   FaTiktok,
-  FaWhatsapp,
   FaTripadvisor,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 import type { ReactElement } from "react";

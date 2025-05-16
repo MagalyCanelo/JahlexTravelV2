@@ -1,8 +1,7 @@
 "use client";
 import { useKeenSlider } from "keen-slider/react";
-import type { KeenSliderInstance, KeenSliderHooks } from "keen-slider";
 import Image from "next/image";
-import React, { useState, useRef } from "react";
+import React, { useRef, useState } from "react";
 
 interface ImageSliderProps {
   images: string[];
@@ -11,8 +10,6 @@ interface ImageSliderProps {
 
 const ImageSlider: React.FC<ImageSliderProps> = ({ images, isStatic }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const touchStartX = useRef<number | null>(null);
-  const touchEndX = useRef<number | null>(null);
 
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
     loop: true,

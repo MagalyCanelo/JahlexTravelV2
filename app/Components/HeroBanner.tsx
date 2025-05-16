@@ -1,7 +1,6 @@
-import React from "react";
 import { BsFillPlayCircleFill } from "react-icons/bs";
-import ImageSlider from "./ImageSlider";
 import ActionButton from "./ActionButton";
+import ImageSlider from "./ImageSlider";
 
 function HeroBanner() {
   return (

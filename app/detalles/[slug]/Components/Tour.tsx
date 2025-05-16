@@ -1,15 +1,12 @@
 "use client";
-import TourImage from "./TourImage";
-import TourDetails from "./TourDetails";
-import TourTabsSection from "./TourTabsSection";
-import HelpCard from "./HelpCard";
-import WhyUsCard from "./WhyUsCard";
-import { getUserShoppingCar } from "@/service/FirebaseService";
-import { useKeenSlider } from "keen-slider/react";
-import Image from "next/image";
-import { useToursStore } from "@/app/store/ToursStore";
-import { infoTours } from "@/app/data/infoTours";
 import { TourCard } from "@/app/Components/TourCard";
+import { infoTours } from "@/app/data/infoTours";
+import { useKeenSlider } from "keen-slider/react";
+import HelpCard from "./HelpCard";
+import TourDetails from "./TourDetails";
+import TourImage from "./TourImage";
+import TourTabsSection from "./TourTabsSection";
+import WhyUsCard from "./WhyUsCard";
 
 function Tour() {
   const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({

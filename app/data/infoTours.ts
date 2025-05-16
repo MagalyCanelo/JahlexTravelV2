@@ -1,12 +1,12 @@
-import {
-  BaseTour,
-  TourCategory,
-  ActivityLevel,
-  GroupSize,
-} from "../interface/Tour";
+import cusco from "@/public/cusco.jpg";
 import islas_ballestas from "@/public/islas_ballestas.jpg";
 import rnp from "@/public/rnp.jpg";
-import cusco from "@/public/cusco.jpg";
+import {
+  ActivityLevel,
+  BaseTour,
+  GroupSize,
+  TourCategory,
+} from "../interface/Tour";
 
 export const infoTours: BaseTour[] = [
   {
