@@ -4,12 +4,13 @@ import { LuFilter } from "react-icons/lu";
 import { TourCard } from "@/app/Components/TourCard";
 import { infoTours } from "@/app/data/infoTours";
 import { BaseTour } from "@/app/interface/Tour";
-import React from "react";
+import React, { useState } from "react";
 import PrecioFilter from "./PrecioFilter";
 import DestinoFilter from "./DestinoFilter";
 
-function ListaTours() {
-  const listaTours: BaseTour[] = infoTours;
+function ListaTours(props: { listaTours: BaseTour[] }) {
+  const [search, setSearch] = useState("");
+
   return (
     <div className="bg-gray-50">
       <div className="flex flex-col lg:flex-row justify-between items-center bg-[#f6f6f6] text-black p-4 w-fit mx-auto px-8 rounded-xl border-2 border-stone-200 gap-8">
@@ -18,6 +19,8 @@ function ListaTours() {
             className="border-0 outline-0"
             type="text"
             placeholder="Buscar"
+            value={search}
+            onChange={(v) => setSearch(v.target.value)}
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,12 +42,24 @@ function ListaTours() {
           <DestinoFilter />
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-content-center gap-4 p-8">
-        {listaTours.map((tour) => (
-          <div className="flex justify-center" key={tour.id}>
-            <TourCard tour={tour}></TourCard>
-          </div>
-        ))}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-content-center gap-4 p-8 h-full">
+        {(() => {
+          const filteredTours = props.listaTours.filter((tour) =>
+            tour.title.toLowerCase().includes(search.toLowerCase())
+          );
+          if (filteredTours.length === 0) {
+            return (
+              <div className="col-span-full text-center h-96 flex flex-col items-center justify-center text-stone-600">
+                No se encontró el tour
+              </div>
+            );
+          }
+          return filteredTours.map((tour) => (
+            <div className="flex justify-center" key={tour.id}>
+              <TourCard tour={tour}></TourCard>
+            </div>
+          ));
+        })()}
       </div>
     </div>
   );
