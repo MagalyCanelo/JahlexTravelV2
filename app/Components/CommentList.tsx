@@ -10,16 +10,16 @@ import { FaTripadvisor } from "react-icons/fa";
 
 interface CommentSliderProps {
   users?: {
-    name: { first: string; last: string; };
-    picture: { large: string; };
+    name: { first: string; last: string };
+    picture: { large: string };
     location: string;
     comment: string;
     rating: number;
   }[];
 }
 
-const CommentSlider: React.FC<CommentSliderProps> = ({ users }) => {
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+const CommentSlider: React.FC<CommentSliderProps> = ({}) => {
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
     slides: {

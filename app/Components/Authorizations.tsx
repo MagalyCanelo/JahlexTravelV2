@@ -19,7 +19,7 @@ const logos = [
 ];
 
 const Authorizations: React.FC = () => {
-  const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
     slides: {

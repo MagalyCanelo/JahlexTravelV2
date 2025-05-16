@@ -19,7 +19,7 @@ const ImageSlider: React.FC = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [images]);
 
   const { src, title, location } = images[current];
 

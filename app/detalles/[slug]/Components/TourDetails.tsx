@@ -22,15 +22,16 @@ const TourDetails = () => {
     }
 
     setError("");
-    if (!selectedTour?.schedule.includes(hour)) {
-      setError("El horario seleccionado no es válido.");
+    if (!selectedTour || selectedTour.priceOffer === undefined) {
+      setError("Faltan datos del tour.");
       return;
     }
+
     addTourToUserShoppingCar(
-      selectedTour!,
+      selectedTour,
       quantity,
       "123456",
-      selectedTour?.priceOffer!,
+      selectedTour.priceOffer,
       date,
       hour
     );

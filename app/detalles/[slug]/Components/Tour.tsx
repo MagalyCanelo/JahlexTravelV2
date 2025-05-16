@@ -7,6 +7,7 @@ import TourDetails from "./TourDetails";
 import TourImage from "./TourImage";
 import TourTabsSection from "./TourTabsSection";
 import WhyUsCard from "./WhyUsCard";
+import { KeenSliderInstance } from "keen-slider";
 
 function Tour() {
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
@@ -23,7 +24,7 @@ function Tour() {
         slides: { perView: 3, spacing: 20 },
       },
     },
-    created(s: any) {
+    created(s: KeenSliderInstance) {
       setInterval(() => {
         s.next();
       }, 1500);
