@@ -26,8 +26,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             src={logo.src}
             alt="Logo de la empresa"
             className="lg:w-50 w-60 xl:w-65"
-            height={100}
-            width={100}
+            height={1080}
+            width={1080}
           />
         </Link>
 

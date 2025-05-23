@@ -29,8 +29,8 @@ const ImageSlider: React.FC = () => {
         priority
         src={src}
         alt={title}
-        width={600}
-        height={600}
+        width={1080}
+        height={1080}
         className="w-full h-full object-cover transition-opacity duration-3000 ease-in-out opacity-100"
       />
 
