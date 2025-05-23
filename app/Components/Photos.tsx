@@ -19,8 +19,8 @@ const DestinationsMasonry: React.FC = () => {
             src={huacachina}
             alt="Huacachina"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-            width={500}
-            height={500}
+            width={1080}
+            height={1080}
           />
         </div>
 
@@ -30,8 +30,8 @@ const DestinationsMasonry: React.FC = () => {
             src={rnp}
             alt="RNP"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-            width={500}
-            height={500}
+            width={1080}
+            height={1080}
           />
         </div>
 
@@ -41,8 +41,8 @@ const DestinationsMasonry: React.FC = () => {
             src={ib}
             alt="IB"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-            width={500}
-            height={500}
+            width={1080}
+            height={1080}
           />
         </div>
 
@@ -52,8 +52,8 @@ const DestinationsMasonry: React.FC = () => {
             src={cusco}
             alt="Cusco"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-            width={500}
-            height={500}
+            width={1080}
+            height={1080}
           />
         </div>
 
@@ -63,8 +63,8 @@ const DestinationsMasonry: React.FC = () => {
             src={rnp}
             alt="RNP 2"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-            width={500}
-            height={500}
+            width={1080}
+            height={1080}
           />
         </div>
 
@@ -74,8 +74,8 @@ const DestinationsMasonry: React.FC = () => {
             src={ib}
             alt="IB Small"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-            width={500}
-            height={500}
+            width={1080}
+            height={1080}
           />
         </div>
 
@@ -85,8 +85,8 @@ const DestinationsMasonry: React.FC = () => {
             src={cusco}
             alt="Cusco 2"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-            width={500}
-            height={500}
+            width={1080}
+            height={1080}
           />
         </div>
 
@@ -96,8 +96,8 @@ const DestinationsMasonry: React.FC = () => {
             src={rnp}
             alt="RNP 3"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-            width={500}
-            height={500}
+            width={1080}
+            height={1080}
           />
         </div>
 
@@ -107,8 +107,8 @@ const DestinationsMasonry: React.FC = () => {
             src={ib}
             alt="IB Full"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
-            width={500}
-            height={500}
+            width={1080}
+            height={1080}
           />
         </div>
       </div>

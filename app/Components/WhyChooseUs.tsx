@@ -19,8 +19,8 @@ export default function WhyChooseUs() {
         <div className="absolute left-0 top-0 z-10 transform rotate-[-3deg] transition-transform duration-300 hover:scale-105">
           <Image
             src={rnp}
-            width={300}
-            height={400}
+            width={1080}
+            height={1080}
             alt="Paisaje"
             className="w-60 lg:w-80 h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
           />
@@ -30,8 +30,8 @@ export default function WhyChooseUs() {
         <div className="absolute left-48 md:left-55 top-18 z-0 transform rotate-[2deg] transition-transform duration-300 hover:scale-105">
           <Image
             src={ib}
-            width={300}
-            height={400}
+            width={1080}
+            height={1080}
             alt="Paisaje"
             className="w-60 lg:w-80 h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
           />
