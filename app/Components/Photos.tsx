@@ -5,6 +5,8 @@ import cusco from "@/public/cusco.jpg";
 import huacachina from "@/public/huacachina.jpg";
 import ib from "@/public/islas_ballestas.jpg";
 import rnp from "@/public/rnp.jpg";
+import moto_scooter from "@/public/moto_scooter.jpg";
+import lunahuana from "@/public/lunahuana.jpg";
 
 const DestinationsMasonry: React.FC = () => {
   return (
@@ -27,8 +29,8 @@ const DestinationsMasonry: React.FC = () => {
         {/* Item 2 */}
         <div className="group col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
-            src={rnp}
-            alt="RNP"
+            src={moto_scooter}
+            alt="Moto Scooter"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             width={1080}
             height={1080}
@@ -82,8 +84,8 @@ const DestinationsMasonry: React.FC = () => {
         {/* Item 7 */}
         <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
-            src={cusco}
-            alt="Cusco 2"
+            src={lunahuana}
+            alt="Lunahuana"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             width={1080}
             height={1080}

@@ -1,7 +1,7 @@
 import cusco from "@/public/cusco.jpg";
-import huacachina from "@/public/huacachina.jpg";
 import ib from "@/public/islas_ballestas.jpg";
-import rnp from "@/public/rnp.jpg";
+import ica from "@/public/huacachina.jpg";
+import cañete from "@/public/cañete.jpg";
 import Image from "next/image";
 
 const destinations = [
@@ -13,17 +13,17 @@ const destinations = [
   {
     title: "Ica",
     location: "Perú",
-    image: rnp,
+    image: ica,
   },
   {
     title: "Nazca",
     location: "Perú",
-    image: huacachina,
+    image: ib,
   },
   {
     title: "Cañete",
     location: "Perú",
-    image: ib,
+    image: cañete,
   },
   {
     title: "Cuzco",
