@@ -10,7 +10,7 @@ interface ToursListProps {
 
 export const ToursList: React.FC<ToursListProps> = ({ tours }) => {
   return (
-    <section className="bg-gray-50 p-6 pb-8 lg:pb-6">
+    <section className="bg-gray-50 p-4 lg:p-6 pb-8 lg:pb-6">
       <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow mb-4">
         <h2 className="text-md font-semibold">Tours</h2>
       </div>

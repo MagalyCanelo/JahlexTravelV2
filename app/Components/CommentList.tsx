@@ -44,7 +44,7 @@ const CommentSlider: React.FC<CommentSliderProps> = ({}) => {
   });
 
   return (
-    <div className="w-full px-6 py-4 bg-gray-50">
+    <div className="w-full px-4 lg:px-6 py-4 bg-gray-50">
       {/* Título */}
       <div className="text-left mb-4">
         <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow">

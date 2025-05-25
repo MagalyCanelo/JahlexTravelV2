@@ -14,7 +14,7 @@ export default function WhyChooseUs() {
   return (
     <section className="pt-4 pb-11 bg-gray-50 grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 lg:pr-6 lg:pl-8 place-items-center">
       {/* Imágenes */}
-      <div className="relative w-full max-w-xl h-[22rem] lg:h-[400px] xl:h-[440px] flex justify-center items-center mb-8 lg:pb-0 ">
+      <div className="relative w-full max-w-xl h-[22rem] lg:h-[400px] xl:h-[440px] flex justify-center items-center mb-6 lg:pb-0 ">
         {/* Imagen delantera */}
         <div className="absolute left-0 top-0 z-10 transform rotate-[-3deg] transition-transform duration-300 hover:scale-105">
           <Image
@@ -22,18 +22,18 @@ export default function WhyChooseUs() {
             width={1080}
             height={1080}
             alt="Paisaje"
-            className="w-60 lg:w-80 h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
+            className="w-50 lg:w-80 h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
           />
         </div>
 
         {/* Imagen trasera */}
-        <div className="absolute left-48 md:left-55 top-18 z-0 transform rotate-[2deg] transition-transform duration-300 hover:scale-105">
+        <div className="absolute left-40 md:left-55 top-18 z-0 transform rotate-[2deg] transition-transform duration-300 hover:scale-105">
           <Image
             src={ib}
             width={1080}
             height={1080}
             alt="Paisaje"
-            className="w-60 lg:w-80 h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
+            className="w-50 lg:w-80 h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
           />
         </div>
       </div>

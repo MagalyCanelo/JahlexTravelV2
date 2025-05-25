@@ -8,7 +8,7 @@ import rnp from "@/public/rnp.jpg";
 
 const DestinationsMasonry: React.FC = () => {
   return (
-    <div className="bg-gray-50 p-6">
+    <div className="bg-gray-50 p-4 lg:p-6">
       <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow my-4">
         <h2 className="text-md font-semibold">Galería</h2>
       </div>
