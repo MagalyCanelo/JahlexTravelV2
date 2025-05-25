@@ -12,19 +12,11 @@ import Image from "next/image";
 
 const Header = (props: { className?: string; onClick?: () => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const pathname = usePathname();
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 200);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <header
