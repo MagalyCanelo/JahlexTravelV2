@@ -23,16 +23,16 @@ export default function TopBar(): ReactElement {
             className="flex items-center gap-1.5 hover:text-gray-300 transition-colors border-r pr-4"
           >
             <FaPhoneAlt size={12} />
-            <span>+51 147 852 369</span>
+            <span>(+51) 947 435 368</span>
           </a>
 
           {/* Correo */}
           <a
-            href="mailto:correo@gmail.com"
+            href="mailto:jahlextravel@gmail.com"
             className="flex items-center gap-1.5 hover:text-gray-300 transition-colors"
           >
             <FaEnvelope size={12} />
-            <span>correo@gmail.com</span>
+            <span>jahlextravel@gmail.com</span>
           </a>
         </div>
 
@@ -57,7 +57,7 @@ export default function TopBar(): ReactElement {
           {/* Redes sociales */}
           <div className="flex items-center gap-3">
             <SocialLink
-              href="https://facebook.com"
+              href="https://web.facebook.com/profile.php?id=61576859812087"
               icon={<FaFacebookF size={13} />}
               label="Facebook"
             />
@@ -67,12 +67,12 @@ export default function TopBar(): ReactElement {
               label="Instagram"
             />
             <SocialLink
-              href="https://tiktok.com"
+              href="https://www.tiktok.com/@jahlextraveladventure"
               icon={<FaTiktok size={13} />}
               label="TikTok"
             />
             <SocialLink
-              href="https://wa.me/51999999999"
+              href="https://wa.me/51947435368"
               icon={<FaWhatsapp size={15} />}
               label="WhatsApp"
             />

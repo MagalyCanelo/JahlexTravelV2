@@ -8,7 +8,7 @@ const NewsletterSignup: React.FC = () => {
   // Redirige a WhatsApp con el mensaje
   const handleWhatsAppRedirect = () => {
     const mensaje = `Hola, me gustaría recibir más información sobre el tour: ${tour}.`;
-    const numero = "51975341049";
+    const numero = "51947435368";
 
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
