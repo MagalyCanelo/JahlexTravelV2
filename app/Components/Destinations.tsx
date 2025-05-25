@@ -34,12 +34,12 @@ const destinations = [
 
 const Destinations = () => {
   return (
-    <div className="p-4 bg-gray-50">
+    <div className="p-4 lg:p-6 bg-gray-50">
       <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow mt-2 mb-4">
         <h2 className="text-md font-semibold">Destinos</h2>
       </div>
 
-      <div className="lg:grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mx-5 lg:mx-0">
+      <div className="lg:grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4 mx-1 lg:mx-0">
         <div className="col-span-1 relative rounded-lg overflow-hidden group shadow-sm hover:shadow-md transition aspect-[5/4] lg:aspect-[3/4] mb-4 lg:mb-0">
           <Image
             src={destinations[0].image}
