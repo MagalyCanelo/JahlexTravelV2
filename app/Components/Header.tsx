@@ -21,10 +21,10 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
   return (
     <header
       className={`w-full ${
-        pathname === "/tours"
-          ? "!bg-stone-50 sticky top-0 shadow text-black"
-          : "fixed md:absolute top-0 md:bg-transparent bg-gray-50"
-      } z-50 ${props.className} transition-all duration-100 ease-in-out`}
+        pathname !== "/"
+          ? "!bg-stone-50 relative top-0 shadow text-black":"absolute md:!bg-transparent top-0 text-white"
+
+      } z-50 ${props.className} transition-all duration-100 ease-in-out `}
     >
       <TopBar />
       <div className="w-full flex lg:flex-row flex-col-reverse items-center justify-between p-4 lg:p-4 lg:pb-2">
@@ -91,7 +91,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           </Link>
         </nav>
 
-        <div className="flex flex-row justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
+        <div className="flex flex-row text-sm lg:text-lg md:text-md justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
           {/*  <FaLanguage  /> */}
           <IoMenu
             onClick={toggleMenu}
