@@ -58,27 +58,27 @@ export default function TopBar(): ReactElement {
           <div className="flex items-center gap-3">
             <SocialLink
               href="https://web.facebook.com/profile.php?id=61576859812087"
-              icon={<FaFacebookF size={13} />}
+              icon={<FaFacebookF size={14} />}
               label="Facebook"
             />
             <SocialLink
               href="https://instagram.com"
-              icon={<FaInstagram size={15} />}
+              icon={<FaInstagram size={16} />}
               label="Instagram"
             />
             <SocialLink
               href="https://www.tiktok.com/@jahlextraveladventure"
-              icon={<FaTiktok size={13} />}
+              icon={<FaTiktok size={14} />}
               label="TikTok"
             />
             <SocialLink
               href="https://wa.me/51947435368"
-              icon={<FaWhatsapp size={15} />}
+              icon={<FaWhatsapp size={16} />}
               label="WhatsApp"
             />
             <SocialLink
               href="https://tripadvisor.com"
-              icon={<FaTripadvisor size={16} />}
+              icon={<FaTripadvisor size={17} />}
               label="Tripadvisor"
             />
           </div>
