@@ -23,7 +23,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
       className={`w-full ${
         pathname === "/tours"
           ? "!bg-stone-50 sticky top-0 shadow text-black"
-          : "lg:absolute top-0 lg:bg-transparent bg-gray-50"
+          : "fixed md:absolute top-0 md:bg-transparent bg-gray-50"
       } z-50 ${props.className} transition-all duration-100 ease-in-out`}
     >
       <TopBar />
