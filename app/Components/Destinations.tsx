@@ -34,8 +34,8 @@ const destinations = [
 
 const Destinations = () => {
   return (
-    <div className="p-6 bg-gray-50">
-      <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow my-4">
+    <div className="p-4 bg-gray-50">
+      <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow mt-2 mb-4">
         <h2 className="text-md font-semibold">Destinos</h2>
       </div>
 

@@ -43,7 +43,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/"
             className={
               pathname === "/"
-                ? "oliva-c bg-stone-50 rounded-full px-4 transition-all"
+                ? "oliva-c bg-stone-50/80 rounded-full px-4 transition-all"
                 : " oliva-c-hover"
             }
           >
@@ -54,7 +54,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             className={
               pathname === "/aboutus"
                 ? "oliva-c bg-stone-50 rounded-full px-4 transition-all"
-                : " oliva-c-hover"
+                : " oliva-c-hover "
             }
           >
             Sobre Nosotros
