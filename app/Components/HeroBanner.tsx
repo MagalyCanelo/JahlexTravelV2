@@ -7,7 +7,7 @@ function HeroBanner() {
     <section className="hero h-screen bg-gray-50  text-center lg:flex lg:flex-row lg:items-center lg:justify-between">
       <ImageSlider />
       <div className="flex-col text-center lg:text-left lg:pr-6 lg:w-1/2 z-10 pl-8 mt-20">
-        <h1 className="text-[45px] md:text-5xl xl:text-7xl font-bold mb-4 oliva-c drop-shadow-md font-fredoka leading-14 xl:leading-20">
+        <h1 className="text-[45px] md:text-5xl xl:text-6xl font-bold mb-4 oliva-c drop-shadow-md font-fredoka leading-14 xl:leading-20">
           Perú Te Espera:
           <br /> ¡Únete a Nosotros!
         </h1>

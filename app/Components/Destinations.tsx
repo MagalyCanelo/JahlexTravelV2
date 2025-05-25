@@ -47,7 +47,7 @@ const Destinations = () => {
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
           <div className="absolute inset-0 transition " />
-          <div className="absolute bottom-2 left-2 z-10 bg-[rgba(101,131,11,0.8)] px-2 py-1 rounded-md flex flex-col space-y-0.5 text-white">
+          <div className="absolute bottom-2 left-2 z-10 bg-[rgba(75,131,0,0.8)] px-2 py-1 rounded-md flex flex-col space-y-0.5 text-white">
             <h3 className="text-sm font-semibold">{destinations[0].title}</h3>
             <p className="text-xs">{destinations[0].location}</p>
           </div>
@@ -65,7 +65,7 @@ const Destinations = () => {
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
               />
               <div className="absolute inset-0 transition" />
-              <div className="absolute bottom-2 left-2 z-10 bg-[rgba(101,131,11,0.8)] px-2 py-1 rounded-md flex flex-col space-y-0.1">
+              <div className="absolute bottom-2 left-2 z-10 bg-[rgba(75,131,0,0.8)] px-2 py-1 rounded-md flex flex-col space-y-0.1">
                 <h3 className="text-sm text-white font-semibold text-c drop-shadow-sm">
                   {dest.title}
                 </h3>
