@@ -24,14 +24,14 @@ const ImageSlider: React.FC = () => {
   const { src, title, location } = images[current];
 
   return (
-    <div className="relative w-full max-w-[500px] h-[450px] lg:max-w-[660px] lg:h-[560px] xl:max-w-[800px] xl:h-[700px] mx-auto overflow-hidden rounded-[25px] shadow-lg">
+    <div className="absolute left-0 right-0 w-full h-full mx-auto overflow-hidden bg-stone-700">
       <Image
         priority
         src={src}
         alt={title}
         width={1080}
         height={1080}
-        className="w-full h-full object-cover transition-opacity duration-3000 ease-in-out opacity-100"
+        className="w-full h-full object-cover transition-opacity duration-3000 ease-in-out opacity-70 -z-10"
       />
 
       {/* Info box */}
