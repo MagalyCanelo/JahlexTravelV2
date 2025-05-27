@@ -9,6 +9,7 @@ import roja_per from "@/public/roja_per.jpg";
 import tubular from "@/public/tubular.jpg";
 import trekking from "@/public/trekking.jpg";
 import bicicleta from "@/public/bicicleta.jpg";
+import cañete from "@/public/cañete.jpg";
 
 const DestinationsMasonry: React.FC = () => {
   return (
