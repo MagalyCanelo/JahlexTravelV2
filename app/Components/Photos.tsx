@@ -108,7 +108,7 @@ const DestinationsMasonry: React.FC = () => {
         {/* Item 9 */}
         <div className="group col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-4 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
-            src={ib}
+            src={cañete}
             alt="IB Full"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             width={1080}
