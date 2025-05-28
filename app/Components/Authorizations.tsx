@@ -4,7 +4,9 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import React from "react";
 
-import cusco from "@/public/cusco.jpg";
+import municipalidad from "@/public/municipalidad.png";
+import dir_cetur from "@/public/dir_cetur.png";
+import agencia_registrada from "@/public/agencia_registrada.png";
 import huacachina from "@/public/huacachina.jpg";
 import ib from "@/public/islas_ballestas.jpg";
 import rnp from "@/public/rnp.jpg";
@@ -12,10 +14,10 @@ import Image from "next/image";
 
 // Logos
 const logos = [
-  { src: ib, alt: "Municipalidad de Paracas" },
-  { src: rnp, alt: "SUNAT" },
-  { src: huacachina, alt: "MINCETUR" },
-  { src: cusco, alt: "CULTURA" },
+  { src: municipalidad, alt: "Municipalidad de Paracas" },
+  { src: dir_cetur, alt: "DIR CETUR" },
+  { src: agencia_registrada, alt: "Agencia Registrada" },
+  { src: municipalidad, alt: "CULTURA" },
 ];
 
 const Authorizations: React.FC = () => {
@@ -56,7 +58,7 @@ const Authorizations: React.FC = () => {
         <div ref={sliderRef} className="keen-slider w-full">
           {logos.map((logo, idx) => (
             <div key={idx} className="keen-slider__slide flex justify-center">
-              <div className="bg-white rounded-2xl px-6 py-4 shadow-sm flex items-center justify-center h-30 xl:h-35 w-full">
+              <div className="bg-white rounded-2xl px-4 py-2 shadow-sm flex items-center justify-center h-25 xl:h-35 w-full">
                 <Image
                   quality={50}
                   src={logo.src}
