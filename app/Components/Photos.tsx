@@ -17,7 +17,25 @@ const DestinationsMasonry: React.FC = () => {
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:h-auto lg:grid-cols-7 lg:grid-rows-6 lg:h-[85vh] auto-rows-fr">
         {/* Item 1 */}
-        <div className="group col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-4 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-1 sm:col-span-2 md:col-span-1 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+          <Image
+            src={huacachina}
+            alt="Huacachina"
+            className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
+            width={1080}
+            height={1080}
+          />
+        </div>
+        <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+          <Image
+            src={huacachina}
+            alt="Huacachina"
+            className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
+            width={1080}
+            height={1080}
+          />
+        </div>
+        <div className="group col-span-1 sm:col-span-2 md:col-span-1 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={huacachina}
             alt="Huacachina"
@@ -105,7 +123,16 @@ const DestinationsMasonry: React.FC = () => {
         </div>
 
         {/* Item 9 */}
-        <div className="group col-span-1 sm:col-span-2 md:col-span-4 lg:col-span-4 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-1 sm:col-span-2 md:col-span-1 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+          <Image
+            src={cañete}
+            alt="IB Full"
+            className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
+            width={1080}
+            height={1080}
+          />
+        </div>
+        <div className="group col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-3S lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={cañete}
             alt="IB Full"
