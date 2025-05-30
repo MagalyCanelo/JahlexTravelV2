@@ -1,12 +1,14 @@
 import Image from "next/image";
 import React from "react";
 
-import cusco from "@/public/cusco.jpg";
 import huacachina from "@/public/huacachina.jpg";
 import ib from "@/public/islas_ballestas.jpg";
-import rnp from "@/public/rnp.jpg";
 import moto_scooter from "@/public/moto_scooter.jpg";
 import lunahuana from "@/public/lunahuana.jpg";
+import roja_per from "@/public/roja_per.jpg";
+import tubular from "@/public/tubular.jpg";
+import trekking from "@/public/trekking.jpg";
+import bicicleta from "@/public/bicicleta.jpg";
 import cañete from "@/public/cañete.jpg";
 
 const DestinationsMasonry: React.FC = () => {
@@ -59,8 +61,8 @@ const DestinationsMasonry: React.FC = () => {
         {/* Item 3 */}
         <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
-            src={ib}
-            alt="IB"
+            src={trekking}
+            alt="Trekking en RNP"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             width={1080}
             height={1080}
@@ -70,9 +72,9 @@ const DestinationsMasonry: React.FC = () => {
         {/* Item 4 */}
         <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
-            src={cusco}
-            alt="Cusco"
-            className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
+            src={bicicleta}
+            alt="Bicicleta en RNP"
+            className="w-full h-full object-cover [object-position:center_100%]  transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             width={1080}
             height={1080}
           />
@@ -81,9 +83,9 @@ const DestinationsMasonry: React.FC = () => {
         {/* Item 5 */}
         <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
-            src={rnp}
-            alt="RNP 2"
-            className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
+            src={tubular}
+            alt="Tubulares"
+            className="w-full h-full object-cover [object-position:center_90%] transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             width={1080}
             height={1080}
           />
@@ -104,7 +106,7 @@ const DestinationsMasonry: React.FC = () => {
         <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={lunahuana}
-            alt="Lunahuana"
+            alt="Lunahuana en kayak"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             width={1080}
             height={1080}
@@ -114,8 +116,8 @@ const DestinationsMasonry: React.FC = () => {
         {/* Item 8 */}
         <div className="group col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
-            src={moto_scooter}
-            alt="moto_scooter"
+            src={roja_per}
+            alt="Personas en Roja"
             className="w-full h-full object-cover transform transition-transform duration-300 ease-in-out group-hover:scale-105"
             width={1080}
             height={1080}
