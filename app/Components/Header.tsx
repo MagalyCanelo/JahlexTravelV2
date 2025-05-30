@@ -22,8 +22,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
     <header
       className={`w-full ${
         pathname !== "/"
-          ? "!bg-stone-50 relative top-0 shadow text-black":"absolute md:!bg-transparent top-0 text-white"
-
+          ? "!bg-stone-50 relative top-0 shadow text-black"
+          : "absolute !bg-stone-50 top-0 shadow text-black"
       } z-50 ${props.className} transition-all duration-100 ease-in-out `}
     >
       <TopBar />
@@ -43,7 +43,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/"
             className={
               pathname === "/"
-                ? "oliva-c bg-stone-50/80 rounded-full px-4 transition-all"
+                ? " border-b-2 border-stone-500 px-4 transition-all"
                 : " oliva-c-hover"
             }
           >
@@ -53,8 +53,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/aboutus"
             className={
               pathname === "/aboutus"
-                ? "oliva-c bg-stone-50 rounded-full px-4 transition-all"
-                : " oliva-c-hover "
+                ? " border-b-2 border-stone-500  px-4 transition-all"
+                : " oliva-c-hover"
             }
           >
             Sobre Nosotros
@@ -63,7 +63,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/tours"
             className={
               pathname === "/tours"
-                ? "oliva-c bg-stone-50 rounded-full px-4 transition-all"
+                ? " border-b-2 border-stone-500  px-4 transition-all"
                 : " oliva-c-hover"
             }
           >
@@ -73,7 +73,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/contacto"
             className={
               pathname === "/contacto"
-                ? "oliva-c bg-stone-50 rounded-full px-4 transition-all"
+                ? " border-b-2 border-stone-500  px-4 transition-all"
                 : " oliva-c-hover"
             }
           >
@@ -83,7 +83,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href={"/administrador"}
             className={
               pathname === "/administrador"
-                ? "oliva-c bg-stone-50 rounded-full px-4 transition-all"
+                ? " border-b-2 border-stone-500 px-4 transition-all"
                 : " oliva-c-hover"
             }
           >
