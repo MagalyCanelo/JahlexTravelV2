@@ -22,8 +22,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
     <header
       className={`w-full ${
         pathname !== "/"
-          ? "!bg-stone-50 relative top-0 shadow "
-          : "absolute top-0"
+          ? "!bg-stone-50 relative top-0 shadow text-black"
+          : "absolute top-0 text-white"
       } z-50 ${props.className} transition-all duration-100 ease-in-out `}
     >
       <TopBar />
@@ -38,7 +38,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           />
         </Link>
 
-        <nav className="lg:flex hidden space-x-8 items-center text-white lg:text-md xl:text-lg font-semibold">
+        <nav className="lg:flex hidden space-x-8 items-center lg:text-md xl:text-lg font-semibold">
           <Link
             href="/"
             className={
@@ -53,7 +53,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/aboutus"
             className={
               pathname === "/aboutus"
-                ? " border-b-2 border-white transition-all"
+                ? "oliva-c border-b-2 border-oliva-o transition-all"
                 : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
@@ -63,7 +63,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/tours"
             className={
               pathname === "/tours"
-                ? " border-b-2 border-white px-4 transition-all"
+                ? "text-black oliva-c border-b-2 border-oliva-o px-4 transition-all"
                 : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
@@ -73,7 +73,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/contacto"
             className={
               pathname === "/contacto"
-                ? " border-b-2 border-white  px-4 transition-all"
+                ? "text-black oliva-c border-b-2 border-oliva-o  px-4 transition-all"
                 : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
@@ -83,7 +83,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href={"/administrador"}
             className={
               pathname === "/administrador"
-                ? " border-b-2 border-white px-4 transition-all"
+                ? "text-black oliva-c border-b-2 border-oliva-o px-4 transition-all"
                 : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
