@@ -7,17 +7,22 @@ import React from "react";
 import municipalidad from "@/public/municipalidad.png";
 import dir_cetur from "@/public/dir_cetur.png";
 import agencia_registrada from "@/public/agencia_registrada.png";
-import huacachina from "@/public/huacachina.jpg";
-import ib from "@/public/islas_ballestas.jpg";
-import rnp from "@/public/rnp.jpg";
+import sunat from "@/public/sunat.png";
+import prom_peru from "@/public/prom_peru.png";
+import ministerio_comercio from "@/public/ministerio_comercio.png";
 import Image from "next/image";
 
 // Logos
 const logos = [
   { src: municipalidad, alt: "Municipalidad de Paracas" },
-  { src: dir_cetur, alt: "DIR CETUR" },
   { src: agencia_registrada, alt: "Agencia Registrada" },
-  { src: municipalidad, alt: "CULTURA" },
+  { src: dir_cetur, alt: "DIR CETUR" },
+  { src: sunat, alt: "SUNAT" },
+  {
+    src: ministerio_comercio,
+    alt: "Ministerio de Comercio Exterior y Turismo",
+  },
+  { src: prom_peru, alt: "PROM PERÚ" },
 ];
 
 const Authorizations: React.FC = () => {
@@ -57,7 +62,10 @@ const Authorizations: React.FC = () => {
         {/* Slider */}
         <div ref={sliderRef} className="keen-slider w-full ">
           {logos.map((logo, idx) => (
-            <div key={idx} className="keen-slider__slide flex justify-center pb-4">
+            <div
+              key={idx}
+              className="keen-slider__slide flex justify-center pb-4"
+            >
               <div className="bg-white rounded-2xl px-6 py-4 shadow-sm flex items-center justify-center h-30 xl:h-35 w-full">
                 <Image
                   quality={50}

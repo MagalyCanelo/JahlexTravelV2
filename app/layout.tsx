@@ -1,17 +1,24 @@
 import type { Metadata } from "next";
-import { Fredoka, Montserrat } from "next/font/google";
+import { Fredoka, Montserrat, Passion_One } from "next/font/google";
 import "./globals.css";
 
 const montserratSans = Montserrat({
   subsets: ["latin"],
-  variable: "--font-montserrat",
+  variable: "--font-montserrat", // Variable correcta para Montserrat
   display: "swap",
 });
 
 const fredokaSans = Fredoka({
   subsets: ["latin"],
-  variable: "--font-fredoka",
+  variable: "--font-fredoka", // Variable correcta para Fredoka
   display: "swap",
+});
+
+const passion_oneSans = Passion_One({
+  subsets: ["latin"],
+  variable: "--font-passion-one", // Variable correcta para Passion One
+  display: "swap",
+  weight: "700",
 });
 
 export const metadata: Metadata = {
@@ -26,7 +33,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${montserratSans} ${fredokaSans} antialiased`}>
+      <body
+        className={`${montserratSans.variable} ${fredokaSans.variable} ${passion_oneSans.variable} antialiased`}
+      >
         {children}
       </body>
     </html>

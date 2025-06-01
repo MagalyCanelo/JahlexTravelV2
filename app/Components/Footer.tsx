@@ -4,18 +4,18 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-[#FDFFF7] border-t-8 border-[#65830B] text-gray-800 py-8 px-5 md:px-15">
+      <footer className="bg-[#FDFFF7] border-t-8 border-[#588f10] text-gray-800 py-8 px-5 md:px-15">
         <div className="grid grid-cols-1 md:grid-cols-4 lg:gap-20 gap-8">
           {/* Logo y redes */}
-          <div className="flex flex-col justify-center h-full max-md:border-b-2 max-md:pb-8 max-md:border-[#65830B] md:border-0 md:pb-0">
+          <div className="flex flex-col justify-center h-full max-md:border-b-2 max-md:pb-8 max-md:border-[#588f10] md:border-0 md:pb-0">
             <div className="flex items-center mb-4 justify-center">
               <div className="flex flex-col items-center">
                 <Image
                   src="/logo.png"
                   alt="Jahlex Logo"
                   className="w-65"
-                  height={100}
-                  width={100}
+                  height={1080}
+                  width={1080}
                 />
                 <p className="text-gray-600 text-center mt-2 text-sm">
                   <strong>RUC:</strong> 1234567890

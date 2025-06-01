@@ -5,6 +5,8 @@
   --foreground: #171717;
   --font-montserrat: 'Montserrat', sans-serif;
   --font-fredoka: 'Fredoka', sans-serif;
+  --font-passion-one: 'Passion One', sans-serif;
+
 }
 
 @theme inline {
@@ -29,6 +31,12 @@ body {
   --oliva-o: #588f10;
   --oliva-c: #64a310;
 }
+
+.hero-banner-title {
+  font-family: 'Passion One', sans-serif;
+}
+
+
 
 .oliva-o {
 color: var(--oliva-o);

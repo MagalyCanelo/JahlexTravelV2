@@ -7,7 +7,7 @@ import React, { useState } from "react";
 const TourDetails = () => {
   const [date, setDate] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [language, setLanguage] = useState("es"); // ✅ idioma separado
+  const [language, setLanguage] = useState("");
   const [error, setError] = useState("");
   const { selectedTour } = useToursStore();
   const [hour, setHour] = useState(selectedTour?.schedule[0]);

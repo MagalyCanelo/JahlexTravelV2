@@ -40,7 +40,7 @@ export default function WhyChooseUs() {
 
       {/* Contenido */}
       <div className="w-full max-w-2xl xl:max-w-3xl flex flex-col">
-        <h2 className="text-[40px] xl:text-5xl font-semibold text-gray-800 mb-4 font-fredoka">
+        <h2 className="text-[40px] xl:text-5xl font-extrabold text-gray-800 mb-4">
           ¿Por qué <span className="oliva-o">elegirnos</span>?
         </h2>
 

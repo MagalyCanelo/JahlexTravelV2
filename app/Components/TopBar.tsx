@@ -62,7 +62,7 @@ export default function TopBar(): ReactElement {
               label="Facebook"
             />
             <SocialLink
-              href="https://instagram.com"
+              href="https://www.instagram.com/jahlextravelperu?igsh=c2oydXd2aThmZzNr"
               icon={<FaInstagram size={16} />}
               label="Instagram"
             />

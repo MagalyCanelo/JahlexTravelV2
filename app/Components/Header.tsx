@@ -38,13 +38,13 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           />
         </Link>
 
-        <nav className="lg:flex hidden space-x-12 items-center lg:text-md xl:text-lg font-semibold">
+        <nav className="lg:flex hidden space-x-8 items-center text-white lg:text-md xl:text-lg font-semibold">
           <Link
             href="/"
             className={
               pathname === "/"
-                ? " border-b-2 border-stone-50 px-4  transition-all"
-                : "oliva-c-hover"
+                ? "border-b-2 border-white px-2 transition-all"
+                : "oliva-c-hover "
             }
           >
             Inicio
@@ -53,8 +53,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/aboutus"
             className={
               pathname === "/aboutus"
-                ? " border-b-2 border-stone-50  px-4 transition-all"
-                : "oliva-c-hover"
+                ? " border-b-2 border-white transition-all"
+                : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
             Sobre Nosotros
@@ -63,8 +63,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/tours"
             className={
               pathname === "/tours"
-                ? " border-b-2 border-stone-50 px-4 transition-all"
-                : "oliva-c-hover"
+                ? " border-b-2 border-white px-4 transition-all"
+                : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
             Tours
@@ -73,8 +73,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/contacto"
             className={
               pathname === "/contacto"
-                ? " border-b-2 border-stone-50  px-4 transition-all"
-                : "oliva-c-hover"
+                ? " border-b-2 border-white  px-4 transition-all"
+                : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
             Contacto
@@ -83,8 +83,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href={"/administrador"}
             className={
               pathname === "/administrador"
-                ? " border-b-2 border-stone-50  px-4 transition-all"
-                : "oliva-c-hover"
+                ? " border-b-2 border-white px-4 transition-all"
+                : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
             Administrador{" "}

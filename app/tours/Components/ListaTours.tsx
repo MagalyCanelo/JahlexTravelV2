@@ -13,7 +13,7 @@ function ListaTours(props: { listaTours: BaseTour[] }) {
     <div className="bg-gray-50 pt-2">
       <div className="flex lg:flex-row flex-col items-center gap-9 w-full max-w-[61rem] mx-auto bg-white p-6 rounded-lg shadow-sm border border-gray-200">
         {/* Filtro de búsqueda */}
-        <div className="flex flex-col lg:flex-row relative w-full sm:w-72 mb-2">
+        <div className="flex flex-col relative w-full sm:w-72 mb-2">
           <div className="flex flex-row items-center gap-2 text-oliva-o font-semibold text-lg text-gray-700 mb-2">
             <LuSearch />
             <span>Buscador</span>
