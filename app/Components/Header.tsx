@@ -16,7 +16,6 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const pathname = usePathname();
-  useEffect(() => {}, []);
 
   return (
     <header
@@ -54,9 +53,9 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/aboutus"
             className={
               pathname === "/aboutus"
-              ? "oliva-c px-4 transition-all"
+              ? "oliva-c  transition-all"
               : pathname !== "/"
-              ? "text-black oliva-c-hover px-4 transition-all"
+              ? "text-black oliva-c-hover  transition-all"
               : "hover:border-b-2 hover:border-white "
             }
           >
@@ -66,9 +65,9 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/tours"
             className={
               pathname === "/tours"
-              ? "oliva-c px-4 transition-all"
+              ? "oliva-c  transition-all"
               : pathname !== "/"
-              ? "text-black oliva-c-hover px-4 transition-all"
+              ? "text-black oliva-c-hover  transition-all"
               : "hover:border-b-2 hover:border-white "
             }
           >
@@ -78,9 +77,9 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/contacto"
             className={
               pathname === "/contacto"
-              ? "oliva-c px-4 transition-all"
+              ? "oliva-c  transition-all"
               : pathname !== "/"
-              ? "text-black oliva-c-hover px-4 transition-all"
+              ? "text-black oliva-c-hover  transition-all"
               : "hover:border-b-2 hover:border-white "
             }
             >
@@ -90,9 +89,9 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href={"/administrador"}
             className={
               pathname === "/administrador"
-              ? "oliva-c px-4 transition-all duration-150"
+              ? "oliva-c  transition-all duration-150"
               : pathname !== "/"
-              ? "text-black oliva-c-hover px-4 transition-all duration-150"
+              ? "text-black oliva-c-hover  transition-all duration-150"
               : "hover:border-b-2 hover:border-white px-2 "
             }
             >
