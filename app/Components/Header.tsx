@@ -54,8 +54,10 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/aboutus"
             className={
               pathname === "/aboutus"
-                ? "oliva-c  transition-all"
-                : "hover:border-b-2 hover:border-white px-2 transition-all"
+              ? "oliva-c px-4 transition-all"
+              : pathname !== "/"
+              ? "text-black oliva-c-hover px-4 transition-all"
+              : "hover:border-b-2 hover:border-white "
             }
           >
             Sobre Nosotros
@@ -64,32 +66,38 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/tours"
             className={
               pathname === "/tours"
-                ? "text-black oliva-c  px-4 transition-all"
-                : "hover:border-b-2 hover:border-white px-2 transition-all"
+              ? "oliva-c px-4 transition-all"
+              : pathname !== "/"
+              ? "text-black oliva-c-hover px-4 transition-all"
+              : "hover:border-b-2 hover:border-white "
             }
           >
             Tours
           </Link>
-          <Link
+            <Link
             href="/contacto"
             className={
               pathname === "/contacto"
-                ? "text-black oliva-c   px-4 transition-all"
-                : "hover:border-b-2 hover:border-white px-2 transition-all"
+              ? "oliva-c px-4 transition-all"
+              : pathname !== "/"
+              ? "text-black oliva-c-hover px-4 transition-all"
+              : "hover:border-b-2 hover:border-white "
             }
-          >
+            >
             Contacto
-          </Link>
-          <Link
+            </Link>
+            <Link
             href={"/administrador"}
             className={
               pathname === "/administrador"
-                ? "text-black oliva-c  px-4 transition-all"
-                : "hover:border-b-2 hover:border-white px-2 transition-all"
+              ? "oliva-c px-4 transition-all duration-150"
+              : pathname !== "/"
+              ? "text-black oliva-c-hover px-4 transition-all duration-150"
+              : "hover:border-b-2 hover:border-white px-2 "
             }
-          >
+            >
             Administrador{" "}
-          </Link>
+            </Link>
         </nav>
 
         <div className="flex flex-row text-sm lg:text-lg md:text-md justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
