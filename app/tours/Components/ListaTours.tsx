@@ -44,7 +44,7 @@ function ListaTours(props: { listaTours: BaseTour[] }) {
         </div>
 
         {/* Otros filtros u opciones */}
-        <div className="flex items-center gap-6 pb-2">
+        <div className="flex items-center gap-6 pb-2 text-black">
           <DestinoFilter />
         </div>
       </div>
