@@ -27,6 +27,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
       } z-50 ${props.className} transition-all duration-100 ease-in-out `}
     >
       <TopBar />
+      
       <div className="w-full flex lg:flex-row flex-col-reverse items-center justify-between p-4 lg:p-4 lg:pb-2">
         <Link href="/" className="flex items-center space-x-2 pt-3 lg:pt-0">
           <Image
