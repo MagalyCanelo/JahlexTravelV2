@@ -53,7 +53,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/aboutus"
             className={
               pathname === "/aboutus"
-                ? "oliva-c border-b-2 border-oliva-o transition-all"
+                ? "oliva-c  transition-all"
                 : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
@@ -63,7 +63,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/tours"
             className={
               pathname === "/tours"
-                ? "text-black oliva-c border-b-2 border-oliva-o px-4 transition-all"
+                ? "text-black oliva-c  px-4 transition-all"
                 : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
@@ -73,7 +73,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/contacto"
             className={
               pathname === "/contacto"
-                ? "text-black oliva-c border-b-2 border-oliva-o  px-4 transition-all"
+                ? "text-black oliva-c   px-4 transition-all"
                 : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
@@ -83,7 +83,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href={"/administrador"}
             className={
               pathname === "/administrador"
-                ? "text-black oliva-c border-b-2 border-oliva-o px-4 transition-all"
+                ? "text-black oliva-c  px-4 transition-all"
                 : "hover:border-b-2 hover:border-white px-2 transition-all"
             }
           >
