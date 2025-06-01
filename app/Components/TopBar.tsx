@@ -77,7 +77,7 @@ export default function TopBar(): ReactElement {
               label="WhatsApp"
             />
             <SocialLink
-              href="https://tripadvisor.com"
+              href="https://www.tripadvisor.com.pe/Attraction_Review-g445063-d33219851-Reviews-Jahlex_Travel_Adventure-Paracas_Ica_Region.html"
               icon={<FaTripadvisor size={17} />}
               label="Tripadvisor"
             />
@@ -95,7 +95,7 @@ interface SocialLinkProps {
   label: string;
 }
 
-function SocialLink({ href, icon, label }: SocialLinkProps): ReactElement {
+export function SocialLink({ href, icon, label }: SocialLinkProps): ReactElement {
   return (
     <a
       href={href}

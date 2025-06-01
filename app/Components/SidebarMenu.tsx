@@ -1,4 +1,9 @@
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 const SidebarMenu = (props: { isOpen: boolean; onClose: () => void }) => {
+    const pathname = usePathname();
   return (
     <div
       className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform ${
@@ -15,18 +20,34 @@ const SidebarMenu = (props: { isOpen: boolean; onClose: () => void }) => {
       </div>
       <ul className="flex flex-col p-6 space-y-4 text-lg font-semibold text-black">
         <li>
-          <a href="#" className="oliva-o">
+          <Link href="/" className={
+            pathname === "/"
+              ? "oliva-c"
+              : "oliva-c-hover transition-colors"
+          }>
             Inicio
-          </a>
+          </Link>
         </li>
         <li>
-          <a href="#">Sobre Nosotros</a>
+          <Link href="/aboutus" className={
+            pathname === "/aboutus"
+              ? "oliva-c"
+              : "oliva-c-hover transition-colors"
+          }>Sobre Nosotros</Link>
         </li>
         <li>
-          <a href="#">Tours</a>
+          <Link href="/tours" className={
+            pathname === "/tours"
+              ? "oliva-c"
+              : "oliva-c-hover transition-colors"
+          }>Tours</Link>
         </li>
         <li>
-          <a href="#">Contacto</a>
+          <Link href="/contacto" className={
+            pathname === "/contacto"
+              ? "oliva-c"
+              : "oliva-c-hover transition-colors"
+          }>Contacto</Link>
         </li>
       </ul>
     </div>
