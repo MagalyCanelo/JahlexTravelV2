@@ -1,5 +1,6 @@
 import { FaFacebookF, FaTiktok, FaTripadvisor } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -41,24 +42,24 @@ const Footer = () => {
             <h3 className="font-semibold oliva mb-2">Enlaces</h3>
             <ul className="space-y-1 text-gray-600">
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Inicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/aboutus" className="oliva-o-hover font-medium">
                   Sobre Nosotros
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/tours" className="oliva-o-hover font-medium">
                   Tours
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/contacto" className="oliva-o-hover font-medium">
                   Contacto
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -68,29 +69,29 @@ const Footer = () => {
             <h3 className="font-semibold oliva mb-2">Destinos</h3>
             <ul className="space-y-1 text-gray-600">
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Paracas
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Ica
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Nazca
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Cañete
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Cuzco
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
