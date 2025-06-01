@@ -1,6 +1,7 @@
-import islas from "@/public/islas_ballestas.jpg";
-import roja from "@/public/roja.jpg";
-import la_mina from "@/public/la_mina.jpg";
+import paracas from "@/public/paracas.jpg";
+/* import roja from "@/public/roja.jpg";
+import la_mina from "@/public/la_mina.jpg"; */
+import colibri from "@/public/colibri.jpg";
 import huacachina from "@/public/huacachina.jpg";
 import cusco from "@/public/cusco.jpg";
 import { create } from "zustand";
@@ -22,19 +23,19 @@ interface ImageStore {
 export const useImageStore = create<ImageStore>((set) => ({
   images: [
     {
-      src: islas,
+      src: paracas,
       title: "Islas Ballestas",
-      location: "Paracas - Perú",
-    },
-    {
-      src: la_mina,
-      title: "Playa La Mina",
       location: "Paracas - Perú",
     },
     {
       src: huacachina,
       title: "Huacachina",
       location: "Ica - Perú",
+    },
+    {
+      src: colibri,
+      title: "Líneas de Nazca",
+      location: "Nazca - Perú",
     },
     {
       src: cusco,

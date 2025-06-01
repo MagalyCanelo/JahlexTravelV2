@@ -47,7 +47,7 @@ const ImageSlider: React.FC = () => {
           alt={title}
           width={1080}
           height={1080}
-          className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-65 -z-10"
+          className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-75 -z-10"
         />
       </div>
 
