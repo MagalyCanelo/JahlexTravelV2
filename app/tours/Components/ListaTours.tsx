@@ -10,7 +10,7 @@ function ListaTours(props: { listaTours: BaseTour[] }) {
   const [search, setSearch] = useState("");
 
   return (
-    <div className="bg-gray-50 pt-2">
+    <div className="bg-stone-50 pt-2">
       <div className="flex lg:flex-row flex-col items-center gap-9 w-full max-w-[61rem] mx-auto bg-white p-6 rounded-lg shadow-sm border border-gray-200">
         {/* Filtro de búsqueda */}
         <div className="flex flex-col relative w-full sm:w-72 mb-2">
