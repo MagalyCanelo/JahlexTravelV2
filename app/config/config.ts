@@ -6,12 +6,12 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCPZzrQtB8rzrpcMM5KdDMQ006lqwaOx0g",
-  authDomain: "jahlextravel-8eeae.firebaseapp.com",
-  projectId: "jahlextravel-8eeae",
-  storageBucket: "jahlextravel-8eeae.firebasestorage.app",
-  messagingSenderId: "397366431481",
-  appId: "1:397366431481:web:d6a9f3bfe1f17584c8dc28"
+  apiKey: "AIzaSyAu_lENbJ2NLwdtp8kGg-WbnVJ78PuGMAQ",
+  authDomain: "jahlextravelweb.firebaseapp.com",
+  projectId: "jahlextravelweb",
+  storageBucket: "jahlextravelweb.firebasestorage.app",
+  messagingSenderId: "617119002948",
+  appId: "1:617119002948:web:cf9af3eb8187ba9c016711"
 };
 
 // Initialize Firebase
