@@ -11,7 +11,7 @@ function ListaTours(props: { listaTours: BaseTour[] }) {
 
   return (
     <div className="bg-stone-50 pt-2">
-      <div className="px-4 lg:px-0">
+      <div className="px-6 lg:px-0">
         <div className="flex lg:flex-row flex-col items-center gap-9 w-full max-w-[61rem] mx-auto bg-white p-6 rounded-lg shadow-sm border border-stone-200">
           {/* Filtro de búsqueda */}
           <div className="flex flex-col relative w-full sm:w-72 mb-2">
