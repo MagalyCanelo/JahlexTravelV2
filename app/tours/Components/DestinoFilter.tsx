@@ -3,7 +3,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { LuFilter, LuFilterX } from "react-icons/lu";
 
 const locations = ["Paracas", "Ica", "Cañete", "Nazca", "Cusco"];
-const tourTypes = ["Full Day", "Solo Tour", "Con Alojamiento"];
+const tourTypes = ["Solo un Tour", "Full Day", "Tour Privado", "Tour Grupal"];
 
 const DestinoFilter = () => {
   const [selectedLocation, setSelectedLocation] = useState<string>("");
@@ -14,15 +14,24 @@ const DestinoFilter = () => {
   const [showTourOptions, setShowTourOptions] = useState(false);
   const [showPriceOptions, setShowPriceOptions] = useState(false);
 
+  // Referencias a los filtros
+  const locationRef = useRef<HTMLDivElement>(null);
+  const tourRef = useRef<HTMLDivElement>(null);
   const priceRef = useRef<HTMLDivElement>(null);
 
-  // Detectar click fuera del dropdown de precio
+  // Detectar clic fuera de los dropdowns
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
+        locationRef.current &&
+        !locationRef.current.contains(event.target as Node) &&
+        tourRef.current &&
+        !tourRef.current.contains(event.target as Node) &&
         priceRef.current &&
         !priceRef.current.contains(event.target as Node)
       ) {
+        setShowLocationOptions(false);
+        setShowTourOptions(false);
         setShowPriceOptions(false);
       }
     }
@@ -40,6 +49,24 @@ const DestinoFilter = () => {
     setShowLocationOptions(false);
     setShowTourOptions(false);
     setShowPriceOptions(false);
+  };
+
+  const handleLocationClick = () => {
+    setShowLocationOptions(!showLocationOptions);
+    setShowTourOptions(false);
+    setShowPriceOptions(false);
+  };
+
+  const handleTourClick = () => {
+    setShowTourOptions(!showTourOptions);
+    setShowLocationOptions(false);
+    setShowPriceOptions(false);
+  };
+
+  const handlePriceClick = () => {
+    setShowPriceOptions(!showPriceOptions);
+    setShowLocationOptions(false);
+    setShowTourOptions(false);
   };
 
   return (
@@ -62,30 +89,34 @@ const DestinoFilter = () => {
       {/* Filtros */}
       <div className="flex flex-wrap gap-4 text-gray-800">
         {/* Destino */}
-        <Dropdown
-          label="Destino"
-          selected={selectedLocation}
-          options={locations}
-          onSelect={(value) => {
-            setSelectedLocation(value);
-            setShowLocationOptions(false);
-          }}
-          show={showLocationOptions}
-          setShow={setShowLocationOptions}
-        />
+        <div ref={locationRef}>
+          <Dropdown
+            label="Destino"
+            selected={selectedLocation}
+            options={locations}
+            onSelect={(value) => {
+              setSelectedLocation(value);
+              setShowLocationOptions(false); // Cerrar el dropdown de ubicación
+            }}
+            show={showLocationOptions}
+            setShow={handleLocationClick}
+          />
+        </div>
 
         {/* Tipo de tour */}
-        <Dropdown
-          label="Tipo de tour"
-          selected={selectedTourType}
-          options={tourTypes}
-          onSelect={(value) => {
-            setSelectedTourType(value);
-            setShowTourOptions(false);
-          }}
-          show={showTourOptions}
-          setShow={setShowTourOptions}
-        />
+        <div ref={tourRef}>
+          <Dropdown
+            label="Tipo de tour"
+            selected={selectedTourType}
+            options={tourTypes}
+            onSelect={(value) => {
+              setSelectedTourType(value);
+              setShowTourOptions(false); // Cerrar el dropdown de tipo de tour
+            }}
+            show={showTourOptions}
+            setShow={handleTourClick}
+          />
+        </div>
 
         {/* Precio */}
         <div ref={priceRef} className="relative w-[150px]">
@@ -93,11 +124,7 @@ const DestinoFilter = () => {
             Precio máximo
           </label>
           <button
-            onClick={() => {
-              setShowPriceOptions(!showPriceOptions);
-              setShowLocationOptions(false);
-              setShowTourOptions(false);
-            }}
+            onClick={handlePriceClick}
             className="w-full flex items-center justify-between bg-white border border-gray-300 rounded px-3 py-2 text-sm text-gray-800 hover:border-oliva-o"
           >
             <span>S/ {price}</span>

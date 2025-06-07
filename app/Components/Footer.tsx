@@ -113,28 +113,37 @@ const Footer = () => {
           <div className="pl-2 flex flex-col justify-center h-full lg:pb-2">
             <h3 className="font-semibold mb-2">Contacto</h3>
             <div className="text-gray-600 space-y-2">
-              <a href="https://maps.app.goo.gl/2JLeS4fC7jA5urn96" target="_blank" rel="noopener noreferrer" >
-                <strong>Dirección:</strong> AA.HH. Alberto Tataje Muñoz, Paracas
-                11550
+              <a
+                href="https://maps.app.goo.gl/2JLeS4fC7jA5urn96"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block mb-1.5"
+              >
+                <p>
+                  <span className="font-medium">Dirección:</span> AA.HH. Alberto
+                  Tataje Muñoz - Paracas
+                </p>
               </a>
-              <br />
-              <br />
-              <a href="mailto:jahlextravel@gmail.com">
-                <strong>Correo:</strong> jahlextravel@gmail.com
+              <a href="mailto:jahlextravel@gmail.com" className="block mb-1.5">
+                <p>
+                  <span className="font-medium">Correo:</span>{" "}
+                  jahlextravel@gmail.com
+                </p>
               </a>
-              <br />
-              <br />
-              <a href="tel:+51987654321">
-                <strong>Celular:</strong> (+51) 987 654 321
+              <a href="tel:+51987654321" className="block">
+                <p>
+                  <span className="font-medium">Celular:</span> (+51) 987 654
+                  321
+                </p>
               </a>
             </div>
           </div>
         </div>
       </footer>
-      <section className="bg-oliva-o py-1.5 text-[10px] md:text-sm text-center xl:sm xl:py-2 text-white xl:text-sm">
+      <section className="bg-oliva-o py-1.5 text-sm text-center xl:sm xl:py-2 text-white xl:text-sm">
         <p>
-          © 2025 Jahlex Travel Adventure. All Rights Reserved.{" "}
-          <span className="text-[10px] md:text-sm">
+          © 2025 Jahlex Travel Adventure. All Rights Reserved.
+          <span className="block sm:inline mt-1 sm:mt-0">
             Diseñado por Magaly Canelo
           </span>
         </p>
