@@ -25,7 +25,7 @@ const ContactForm: React.FC = () => {
 
   return (
     <div className="bg-white shadow-sm rounded-xl p-6 pt-5 space-y-6">
-      <h2 className="text-2xl font-semibold mb-3 text-gray-800">
+      <h2 className="text-2xl font-semibold mb-2 lg:mb-3 text-gray-800">
         Envíanos un mensaje
       </h2>
       <p className="text-md text-gray-800 mb-3">
@@ -37,7 +37,7 @@ const ContactForm: React.FC = () => {
           e.preventDefault(); // Prevenimos que se recargue la página
           handleWhatsAppRedirect(); // Enviamos el mensaje al WhatsApp
         }}
-        className="space-y-5"
+        className="space-y-4 lg:space-y-5"
       >
         <div>
           <label className="block text-[15px] font-medium text-gray-700 pb-1 xl:text-[17px] xl:mb-1">
