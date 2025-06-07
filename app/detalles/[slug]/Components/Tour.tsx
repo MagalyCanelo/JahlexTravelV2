@@ -44,7 +44,7 @@ function Tour() {
       </div>
 
       <div className="bg-stone-50 px-4 pb-8">
-        <div className="bg-stone-50 flex flex-col lg:flex-row gap-6 px-6 py-5">
+        <div className="bg-stone-50 flex flex-col lg:flex-row gap-6 px-2 py-5">
           <div className="w-full lg:w-3/5">
             <TourTabsSection />
           </div>
