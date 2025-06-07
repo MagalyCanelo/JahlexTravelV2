@@ -9,6 +9,9 @@ import ActionButton from "./ActionButton";
 import SidebarMenu from "./SidebarMenu";
 import TopBar from "./TopBar";
 import Image from "next/image";
+import { useUserStore } from "../store/Usuario";
+import { FaHeart, FaUser } from "react-icons/fa";
+import { FaBagShopping } from "react-icons/fa6";
 
 const Header = (props: { className?: string; onClick?: () => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -17,6 +20,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
 
   const pathname = usePathname();
   const router = useRouter();
+  const user = useUserStore();
 
   return (
     <header
@@ -56,8 +60,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
               pathname === "/aboutus"
                 ? "oliva-c  transition-all"
                 : pathname !== "/"
-                ? "text-black oliva-c-hover  transition-all"
-                : "hover:border-b-2 hover:border-white "
+                  ? "text-black oliva-c-hover  transition-all"
+                  : "hover:border-b-2 hover:border-white "
             }
           >
             Sobre Nosotros
@@ -68,8 +72,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
               pathname === "/tours"
                 ? "oliva-c  transition-all"
                 : pathname !== "/"
-                ? "text-black oliva-c-hover  transition-all"
-                : "hover:border-b-2 hover:border-white "
+                  ? "text-black oliva-c-hover  transition-all"
+                  : "hover:border-b-2 hover:border-white "
             }
           >
             Tours
@@ -80,24 +84,15 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
               pathname === "/contacto"
                 ? "oliva-c  transition-all"
                 : pathname !== "/"
-                ? "text-black oliva-c-hover  transition-all"
-                : "hover:border-b-2 hover:border-white "
+                  ? "text-black oliva-c-hover  transition-all"
+                  : "hover:border-b-2 hover:border-white "
             }
           >
             Contacto
           </Link>
-          <Link
-            href={"/administrador"}
-            className={
-              pathname === "/administrador"
-                ? "oliva-c  transition-all duration-150"
-                : pathname !== "/"
-                ? "text-black oliva-c-hover  transition-all duration-150"
-                : "hover:border-b-2 hover:border-white px-2 "
-            }
-          >
-            Administrador{" "}
-          </Link>
+          {
+            user.user.isAuthenticated 
+          }
         </nav>
 
         <div className="flex flex-row text-sm lg:text-lg md:text-md justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
@@ -107,22 +102,30 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             className="oliva-c text-3xl lg:hidden cursor-pointer"
           />
           <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />{" "}
-          <div className="flex flex-row gap-4">
-            <ActionButton
-              onClick={() => {
-                router.push("/login");
-              }}
-              tipo="secondary"
-              title="Iniciar Sesión"
-            />
-            <ActionButton
-              onClick={() => {
-                router.push("/register");
-              }}
-              tipo="primary"
-              title="Regístrate"
-            />
-          </div>
+          {!user.user.isAuthenticated ? (
+            <div className="flex flex-row gap-4">
+              <ActionButton
+                onClick={() => {
+                  router.push("/login");
+                }}
+                tipo="secondary"
+                title="Iniciar Sesión"
+              />
+              <ActionButton
+                onClick={() => {
+                  router.push("/register");
+                }}
+                tipo="primary"
+                title="Regístrate"
+              />
+            </div>
+          ) : (
+            <>
+              <FaUser />
+              <FaHeart />
+              <FaBagShopping />
+            </>
+          )}
         </div>
       </div>
     </header>
