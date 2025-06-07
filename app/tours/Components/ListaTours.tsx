@@ -2,12 +2,20 @@
 
 import { TourCard } from "@/app/Components/TourCard";
 import { BaseTour } from "@/app/interface/Tour";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import DestinoFilter from "./DestinoFilter";
+import { getTours } from "@/service/FirebaseService";
 
-function ListaTours(props: { listaTours: BaseTour[] }) {
+function ListaTours() {
   const [search, setSearch] = useState("");
+  const [listaTours, setListaTours] = useState<BaseTour[]>([]);
+
+  useEffect(()=>{
+    getTours().then((tours) => {
+      return setListaTours(tours as BaseTour[]);
+    });
+  },[])
 
   return (
     <div className="bg-stone-50 pt-2">
@@ -53,7 +61,7 @@ function ListaTours(props: { listaTours: BaseTour[] }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-content-center gap-4 px-8 py-7 h-full">
         {(() => {
-          const filteredTours = props.listaTours.filter((tour) =>
+          const filteredTours = listaTours.filter((tour) =>
             tour.title.toLowerCase().includes(search.toLowerCase())
           );
           if (filteredTours.length === 0) {

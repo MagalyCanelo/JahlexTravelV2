@@ -5,11 +5,10 @@ import { BaseTour } from "../interface/Tour";
 import ListaTours from "./Components/ListaTours";
 
 function page() {
-  const tours: BaseTour[] = infoTours;
   return (
     <>
       <Header />
-      <ListaTours listaTours={tours} />
+      <ListaTours />
       <Footer />
     </>
   );

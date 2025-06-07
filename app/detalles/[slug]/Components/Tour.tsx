@@ -8,8 +8,13 @@ import TourImage from "./TourImage";
 import TourTabsSection from "./TourTabsSection";
 import WhyUsCard from "./WhyUsCard";
 import { KeenSliderInstance } from "keen-slider";
+import { FaStar } from "react-icons/fa";
+import Coment from "./Coment";
+import { useEffect, useState } from "react";
+import { getTourComments } from "@/service/FirebaseService";
+import { TourReview } from "@/app/interface/Tour";
 
-function Tour() {
+function Tour(props: { tourid: string }) {
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: true,
     mode: "snap",
@@ -31,6 +36,12 @@ function Tour() {
     },
   });
 
+  const [comments, setComments] = useState<TourReview[]>([]);
+
+  /*   useEffect(() => {
+    getTourComments(props.tourid).then((v) => setComments(v || []));
+  }, [props.tourid]); */
+
   return (
     <>
       <div className="bg-stone-50 flex flex-col lg:flex-row gap-6 px-6 py-3 pb-8">
@@ -43,8 +54,8 @@ function Tour() {
         </div>
       </div>
 
-      <div className="bg-stone-50 px-4 pb-8">
-        <div className="bg-stone-50 flex flex-col lg:flex-row gap-6 px-2 py-5">
+      <section className="bg-stone-50 px-4 pb-8">
+        <section className="bg-stone-50 flex flex-col lg:flex-row gap-6 px-2 py-5">
           <div className="w-full lg:w-3/5">
             <TourTabsSection />
           </div>
@@ -52,18 +63,63 @@ function Tour() {
             <HelpCard tourTitle="Tour Islas Ballestas" />
             <WhyUsCard />
           </div>
-        </div>
+        </section>
+        <section className="grid grid-cols-2 text-black gap-4 px-48">
+          <div className=" flex flex-row gap-4 items-center justify-center p-4 broder-2 shadow rounded-lg">
+            <h2 className="text-4xl font-bold">
+              {isNaN(
+                comments.reduce((acc, cur) => acc + cur.qualification, 0) /
+                  comments.length
+              )
+                ? 0.0
+                : (
+                    comments.reduce((acc, cur) => acc + cur.qualification, 0) /
+                    comments.length
+                  ).toFixed(2)}
+            </h2>
+
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-row gap-1">
+                {[...Array(5)].map((_, i) => (
+                  <FaStar
+                    key={i}
+                    className={
+                      i <
+                      comments.reduce(
+                        (acc, cur) => acc + cur.qualification,
+                        0
+                      ) /
+                        comments.length
+                        ? "text-yellow-400"
+                        : "text-gray-300"
+                    }
+                  />
+                ))}
+              </div>
+              <p>{comments.length} opiniones</p>
+            </div>
+          </div>
+          <div className="flex flex-col gap-4 items-center justify-center">
+            {comments.length < 1 ? (
+              <p className="text-black text-2xl ">No hay comentarios aún</p>
+            ) : (
+              comments.map((v) => {
+                return <Coment {...v} />;
+              })
+            )}
+          </div>
+        </section>
         <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow my-4">
           <h2 className="text-md font-semibold">Más destinos</h2>
         </div>
-        <div ref={sliderRef} className="keen-slider w-full bg-stone-50">
+        <section ref={sliderRef} className="keen-slider w-full bg-stone-50">
           {infoTours.map((logo, idx) => (
             <div key={idx} className="keen-slider__slide flex justify-center">
               <TourCard tour={logo} isStatic={true} />
             </div>
           ))}
-        </div>
-      </div>
+        </section>
+      </section>
     </>
   );
 }
