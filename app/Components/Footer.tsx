@@ -1,4 +1,10 @@
-import { FaFacebookF, FaTiktok, FaTripadvisor } from "react-icons/fa";
+import {
+  FaFacebookF,
+  FaInstagram,
+  FaTiktok,
+  FaTripadvisor,
+  FaWhatsapp,
+} from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import { SocialLink } from "./TopBar";
@@ -25,7 +31,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="flex justify-center gap-4 text-green-800 text-lg">
+            <div className="flex justify-center gap-3 text-green-800 text-lg">
               <div className="bg-oliva-c bg-oliva-o-hover rounded-full p-3 text-white">
                 <SocialLink
                   href="https://www.facebook.com/profile.php?id=61576859812087"
@@ -35,9 +41,9 @@ const Footer = () => {
               </div>
               <div className="bg-oliva-c bg-oliva-o-hover rounded-full p-3 text-white">
                 <SocialLink
-                  href="https://www.tripadvisor.com.pe/Attraction_Review-g445063-d33219851-Reviews-Jahlex_Travel_Adventure-Paracas_Ica_Region.html"
-                  icon={<FaTripadvisor size={18} />}
-                  label="Tripadvisor"
+                  href="https://www.instagram.com/jahlextravelperu?igsh=c2oydXd2aThmZzNr"
+                  icon={<FaInstagram size={19} />}
+                  label="Instagram"
                 />
               </div>
               <div className="bg-oliva-c bg-oliva-o-hover rounded-full p-3 text-white">
@@ -45,6 +51,20 @@ const Footer = () => {
                   href="https://www.tiktok.com/@jahlextraveladventure"
                   icon={<FaTiktok size={18} />}
                   label="TikTok"
+                />
+              </div>
+              <div className="bg-oliva-c bg-oliva-o-hover rounded-full p-3 text-white">
+                <SocialLink
+                  href="https://wa.me/51947435368"
+                  icon={<FaWhatsapp size={19} />}
+                  label="WhatsApp"
+                />
+              </div>
+              <div className="bg-oliva-c bg-oliva-o-hover rounded-full p-3 text-white">
+                <SocialLink
+                  href="https://www.tripadvisor.com.pe/Attraction_Review-g445063-d33219851-Reviews-Jahlex_Travel_Adventure-Paracas_Ica_Region.html"
+                  icon={<FaTripadvisor size={19} />}
+                  label="Tripadvisor"
                 />
               </div>
             </div>
