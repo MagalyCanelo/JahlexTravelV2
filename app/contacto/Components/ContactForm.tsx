@@ -61,7 +61,7 @@ const ContactForm: React.FC = () => {
             placeholder="Escribe tu mensaje aquí"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            className="w-full text-gray-600 p-3 border border-gray-300 rounded-lg h-36 resize-none focus:outline-none focus:ring-2 focus:ring-[#588f10] xl:text-lg"
+            className="w-full text-gray-600 p-3 border border-gray-300 rounded-lg h-35 resize-none focus:outline-none focus:ring-2 focus:ring-[#588f10] xl:text-lg"
           ></textarea>
         </div>
 
