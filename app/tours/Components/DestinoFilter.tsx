@@ -14,15 +14,24 @@ const DestinoFilter = () => {
   const [showTourOptions, setShowTourOptions] = useState(false);
   const [showPriceOptions, setShowPriceOptions] = useState(false);
 
+  // Referencias a los filtros
+  const locationRef = useRef<HTMLDivElement>(null);
+  const tourRef = useRef<HTMLDivElement>(null);
   const priceRef = useRef<HTMLDivElement>(null);
 
-  // Detectar click fuera del dropdown de precio
+  // Detectar clic fuera de los dropdowns
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
+        locationRef.current &&
+        !locationRef.current.contains(event.target as Node) &&
+        tourRef.current &&
+        !tourRef.current.contains(event.target as Node) &&
         priceRef.current &&
         !priceRef.current.contains(event.target as Node)
       ) {
+        setShowLocationOptions(false);
+        setShowTourOptions(false);
         setShowPriceOptions(false);
       }
     }
@@ -80,30 +89,34 @@ const DestinoFilter = () => {
       {/* Filtros */}
       <div className="flex flex-wrap gap-4 text-gray-800">
         {/* Destino */}
-        <Dropdown
-          label="Destino"
-          selected={selectedLocation}
-          options={locations}
-          onSelect={(value) => {
-            setSelectedLocation(value);
-            setShowLocationOptions(false); // Cerrar el dropdown de ubicación
-          }}
-          show={showLocationOptions}
-          setShow={handleLocationClick}
-        />
+        <div ref={locationRef}>
+          <Dropdown
+            label="Destino"
+            selected={selectedLocation}
+            options={locations}
+            onSelect={(value) => {
+              setSelectedLocation(value);
+              setShowLocationOptions(false); // Cerrar el dropdown de ubicación
+            }}
+            show={showLocationOptions}
+            setShow={handleLocationClick}
+          />
+        </div>
 
         {/* Tipo de tour */}
-        <Dropdown
-          label="Tipo de tour"
-          selected={selectedTourType}
-          options={tourTypes}
-          onSelect={(value) => {
-            setSelectedTourType(value);
-            setShowTourOptions(false); // Cerrar el dropdown de tipo de tour
-          }}
-          show={showTourOptions}
-          setShow={handleTourClick}
-        />
+        <div ref={tourRef}>
+          <Dropdown
+            label="Tipo de tour"
+            selected={selectedTourType}
+            options={tourTypes}
+            onSelect={(value) => {
+              setSelectedTourType(value);
+              setShowTourOptions(false); // Cerrar el dropdown de tipo de tour
+            }}
+            show={showTourOptions}
+            setShow={handleTourClick}
+          />
+        </div>
 
         {/* Precio */}
         <div ref={priceRef} className="relative w-[150px]">
