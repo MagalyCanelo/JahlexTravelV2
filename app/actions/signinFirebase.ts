@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../config/config";
 import { encriptPassword } from "@/service/SecurityServices";
-import { sendEmail } from "@/service/Mail";
+
 
 export async function signInWithFirebase(email: string, password: string) {
   encriptPassword(password).then(async (encryptedPassword) => {
