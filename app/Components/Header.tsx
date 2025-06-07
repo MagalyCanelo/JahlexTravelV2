@@ -58,10 +58,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/aboutus"
             className={
               pathname === "/aboutus"
-                ? "oliva-c  transition-all"
-                : pathname !== "/"
-                  ? "text-black oliva-c-hover  transition-all"
-                  : "hover:border-b-2 hover:border-white "
+                ? "text-black oliva-c-hover transition-all"
+                : "hover:border-b-2 hover:border-white "
             }
           >
             Sobre Nosotros
@@ -70,10 +68,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/tours"
             className={
               pathname === "/tours"
-                ? "oliva-c  transition-all"
-                : pathname !== "/"
-                  ? "text-black oliva-c-hover  transition-all"
-                  : "hover:border-b-2 hover:border-white "
+                ? "text-black oliva-c-hover transition-all"
+                : "hover:border-b-2 hover:border-white "
             }
           >
             Tours
