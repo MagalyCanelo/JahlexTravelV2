@@ -1,0 +1,58 @@
+"use client";
+import React, { InputHTMLAttributes, useEffect, useState } from "react";
+
+interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label?: string;
+  error?: string;
+  containerClassName?: string;
+}
+
+const EmailInput: React.FC<EmailInputProps> = ({
+  label = "Correo",
+  error,
+  containerClassName = "",
+  ...props
+}) => {
+  const [isFocused, setIsFocused] = useState(false);
+  const isValidEmail = (email: string) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+
+  return (
+    <div className={`flex flex-col relative text-black ${containerClassName}`}>
+      <label
+        htmlFor="email"
+        className={`absolute text-sm transition-all duration-200 ${
+          isFocused || props.value?.toString() !== ""
+            ? "oliva-c font-bold -top-3 bg-white px-2 left-3 "
+            : "text-gray-700 top-3 left-3"
+        }`}
+      >
+        {label}
+      </label>
+
+      <input
+        id="email"
+        name="email"
+        type="email"
+        className={`px-4 py-2 border-2 rounded-md focus:outline-none  ${
+          error ? "border-red-500 " : "border-oliva-c"
+        } transition-all duration-200`}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => {
+          setIsFocused(false);
+          isValidEmail(props.value?.toString() || "")
+            ? ""
+            : "Invalid email format";
+        }}
+        {...props}
+      />
+
+      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+    </div>
+  );
+};
+
+export default EmailInput;

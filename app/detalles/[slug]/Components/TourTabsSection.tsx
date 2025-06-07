@@ -17,7 +17,7 @@ const TourTabsSection = () => {
   };
 
   return (
-    <div className="bg-gray-50 flex flex-col lg:flex-row gap-6">
+    <div className="bg-stone-50 flex flex-col lg:flex-row gap-6">
       {/* Tabs a la izquierda */}
       <div className="w-full">
         <div className="mb-4 flex justify-center items-center space-x-4">

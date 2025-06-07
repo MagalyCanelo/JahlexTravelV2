@@ -58,7 +58,7 @@ const CommentCard: React.FC<CommentCardProps> = ({
           <h3 className="text-sm font-bold text-gray-900">
             {name.first} {name.last}
           </h3>
-          <p className="text-sm text-gray-500">{ubicacion}</p>
+          <p className="text-sm text-stone-500">{ubicacion}</p>
         </div>
       </div>
     </div>

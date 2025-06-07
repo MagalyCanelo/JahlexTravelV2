@@ -2,12 +2,14 @@
 
 function ActionButton(props: {
   onClick?: () => void;
+  type?: "button" | "submit" | "reset";
   tipo: "primary" | "secondary";
   title: string;
 }) {
   return (
     <button
       onClick={props.onClick}
+      type={props.type ? props.type : "button"}
       className={
         props.tipo === "primary"
           ? "bg-lime-600 text-white px-4 py-[6px] rounded-full bg-oliva-o-hover transition"

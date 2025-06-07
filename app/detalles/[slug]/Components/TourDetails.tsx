@@ -52,7 +52,7 @@ const TourDetails = () => {
         <p className="text-gray-700 font-semibold text-lg xl:text-xl">
           PEN {selectedTour?.priceOffer}
         </p>
-        <p className="text-gray-500 line-through ml-2 xl:text-lg">
+        <p className="text-stone-500 line-through ml-2 xl:text-lg">
           PEN {selectedTour?.priceRegular}
         </p>
       </div>

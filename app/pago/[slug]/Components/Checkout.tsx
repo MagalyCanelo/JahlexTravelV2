@@ -4,7 +4,7 @@ import ShoppingDetails from "./ShoppingDetails";
 
 function CheckoutPage() {
   return (
-    <div className="px-6 pt-2 pb-6 bg-gray-50">
+    <div className="px-6 pt-2 pb-6 bg-stone-50">
       {/* Notificación superior */}
       <CartNotice tourName="Caño Cristales River Trip" />
 
