@@ -42,6 +42,24 @@ const DestinoFilter = () => {
     setShowPriceOptions(false);
   };
 
+  const handleLocationClick = () => {
+    setShowLocationOptions(!showLocationOptions);
+    setShowTourOptions(false);
+    setShowPriceOptions(false);
+  };
+
+  const handleTourClick = () => {
+    setShowTourOptions(!showTourOptions);
+    setShowLocationOptions(false);
+    setShowPriceOptions(false);
+  };
+
+  const handlePriceClick = () => {
+    setShowPriceOptions(!showPriceOptions);
+    setShowLocationOptions(false);
+    setShowTourOptions(false);
+  };
+
   return (
     <div>
       {/* Header */}
@@ -68,10 +86,10 @@ const DestinoFilter = () => {
           options={locations}
           onSelect={(value) => {
             setSelectedLocation(value);
-            setShowLocationOptions(false);
+            setShowLocationOptions(false); // Cerrar el dropdown de ubicación
           }}
           show={showLocationOptions}
-          setShow={setShowLocationOptions}
+          setShow={handleLocationClick}
         />
 
         {/* Tipo de tour */}
@@ -81,10 +99,10 @@ const DestinoFilter = () => {
           options={tourTypes}
           onSelect={(value) => {
             setSelectedTourType(value);
-            setShowTourOptions(false);
+            setShowTourOptions(false); // Cerrar el dropdown de tipo de tour
           }}
           show={showTourOptions}
-          setShow={setShowTourOptions}
+          setShow={handleTourClick}
         />
 
         {/* Precio */}
@@ -93,11 +111,7 @@ const DestinoFilter = () => {
             Precio máximo
           </label>
           <button
-            onClick={() => {
-              setShowPriceOptions(!showPriceOptions);
-              setShowLocationOptions(false);
-              setShowTourOptions(false);
-            }}
+            onClick={handlePriceClick}
             className="w-full flex items-center justify-between bg-white border border-gray-300 rounded px-3 py-2 text-sm text-gray-800 hover:border-oliva-o"
           >
             <span>S/ {price}</span>

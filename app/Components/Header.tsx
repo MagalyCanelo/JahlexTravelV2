@@ -56,7 +56,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
               pathname === "/aboutus"
                 ? "oliva-c  transition-all"
                 : pathname !== "/"
-                ? "text-black oliva-c-hover  transition-all"
+                ? "text-black oliva-c-hover transition-all"
                 : "hover:border-b-2 hover:border-white "
             }
           >
@@ -68,7 +68,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
               pathname === "/tours"
                 ? "oliva-c  transition-all"
                 : pathname !== "/"
-                ? "text-black oliva-c-hover  transition-all"
+                ? "text-black oliva-c-hover transition-all"
                 : "hover:border-b-2 hover:border-white "
             }
           >

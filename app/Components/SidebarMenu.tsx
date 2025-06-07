@@ -19,7 +19,7 @@ const SidebarMenu = (props: { isOpen: boolean; onClose: () => void }) => {
           ×
         </button>
       </div>
-      <ul className="flex flex-col p-6 space-y-4 text-lg font-semibold text-black">
+      <ul className="flex flex-col items-start p-6 space-y-4 text-lg font-semibold text-black">
         <li>
           <Link
             href="/"
