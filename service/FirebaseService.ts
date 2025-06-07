@@ -163,3 +163,35 @@ export async function getTours() {
     return null;
   }
 }
+
+export async function getUserPurchases(userId: string) {
+  const ref = collection(db, `Users/${userId}/purchases`);
+  try {
+    const querySnapshot = await getDocs(ref);
+    if (querySnapshot.empty) {
+      return [];
+    }
+    const purchases: any[] = [];
+    querySnapshot.forEach((doc) => {
+      purchases.push(doc.data());
+    });
+    return purchases;
+  } catch (error) {
+    console.error("Error getting user purchases:", error);
+    return [];
+  }
+}
+
+export async function getOneTour(tourId: string) {
+  const ref = doc(db, `tours/${tourId}`);
+  try {
+    const docSnap = await getDoc(ref);
+    if (docSnap.exists()) {
+      return docSnap.data() as BaseTour;
+    }
+    return null;
+  } catch (error) {
+    console.error("Error getting tour:", error);
+    return null;
+  }
+}

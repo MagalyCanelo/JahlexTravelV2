@@ -9,7 +9,7 @@ function page() {
   return (
     <>
       <Header />
-      <Tour tourid={path.slug?.toString()!}/>
+      <Tour tourid={decodeURIComponent(path.slug?.toString() || '')}/>
       <Footer />
     </>
   );

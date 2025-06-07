@@ -18,7 +18,7 @@ export const TourCard: React.FC<TourCardProps> = ({ tour, isStatic }) => {
   const handleReservarClick = () => {
     // Navegamos a la página de detalle del tour
     useTour.setSelectedTour(tour);
-    router.push(`/detalles/${tour.id}`);
+    router.push(`/detalles/${tour.title}`);
   };
 
   return (
