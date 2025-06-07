@@ -20,7 +20,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
     <div className={`flex flex-col relative text-black ${containerClassName}`}>
       <label
         htmlFor="password"
-        className={`absolute text-sm transition-all duration-200 ${
+        className={`absolute text-base transition-all duration-200 ${
           isFocused || props.value?.toString() !== ""
             ? "oliva-c font-bold -top-3 !bg-white z-10 px-2 left-3 "
             : "text-gray-700 top-3 left-3"
@@ -34,7 +34,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
           id="password"
           name="password"
           type={showPassword ? "text" : "password"}
-          className={`w-full px-4 py-2 border-2 rounded-md focus:outline-none ${
+          className={`w-full px-4 py-3 border-2 rounded-md focus:outline-none ${
             error ? "border-red-500" : "border-oliva-c"
           } transition-all duration-200`}
           onFocus={() => setIsFocused(true)}

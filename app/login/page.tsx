@@ -27,12 +27,14 @@ function page() {
         className="bg-pink-400 col-span-1 h-full"
       />
       <section className="bg-white col-span-1 h-full flex flex-col items-center justify-center">
-        <Image src={logo} alt="Logo Jahlex" className="w-52 mx-auto my-4" />
+        <Image src={logo} alt="Logo Jahlex" className="w-60 mx-auto my-6" />
         <div className="flex flex-col items-center justify-center gap-4 mb-4">
-          <h1 className="text-5xl font-bold font-fredoka oliva-c text-white">
-            Bienvenido
+          <h1 className="text-[56px] font-bold hero-banner-title oliva-c text-white leading-14 xl:leading-20 tracking-wide">
+            BIENVENIDO
           </h1>
-          <p className="text-stone-500">Inicia sesión</p>
+          <p className="text-stone-600 font-semibold pb-3 text-lg">
+            Inicia Sesión
+          </p>
         </div>
         <form
           action=""
@@ -59,24 +61,27 @@ function page() {
           }}
           className="flex flex-col w-full  gap-0 px-32"
         >
-          <div className="flex flex-col gap-4 px-8">
+          <div className="flex flex-col gap-8 px-2">
             <EmailInput name="email" />
             <PasswordInput name="password" />
           </div>
 
-          <div className="flex flex-col w-full justify-center mt-4 mb-8 px-8 gap-4">
+          <div className="flex flex-col w-full justify-center mt-4 mb-8 px-2 gap-6">
             <Link
               href="/passrecovery"
-              className="text-stone-500 font-semibold hover:underline w-full text-right "
+              className="text-stone-500 font-semibold w-full text-right text-sm"
             >
               Olvidé mi contraseña
             </Link>
-            <ActionButton
-              type="submit"
-              onClick={() => {}}
-              tipo="primary"
-              title="Iniciar Sesión"
-            />
+            <div className="font-semibold w-full">
+              <ActionButton
+                type="submit"
+                onClick={() => {}}
+                tipo="primary"
+                title="Iniciar Sesión"
+                className="w-full" // Esto asegura que el botón ocupe todo el ancho
+              />
+            </div>
           </div>
           <div className="border-t-2 border-stone-300 relative w-full">
             <span>a</span>
@@ -119,13 +124,13 @@ function page() {
                   // ...
                 });
             }}
-            className="border border-stone-200 text-black w-fit p-4 rounded-lg shadow-md flex items-center gap-2 mx-auto my-2 hover:bg-stone-100 transition"
+            className="border border-stone-200 text-black w-fit p-4 rounded-lg shadow-md flex items-center gap-2 mx-auto my-2 hover:bg-[#f2ffe3] transition mb-4"
           >
             <FcGoogle size={32} />
           </button>
           <Link
             href="/register"
-            className="text-stone-500 font-semibold hover:underline w-full text-center mt-2"
+            className="text-stone-500 font-semibold w-full text-center mt-2 mb-5"
           >
             ¿No tienes cuenta?{" "}
             <span className="font-bold text-black">Regístrate ahora</span>

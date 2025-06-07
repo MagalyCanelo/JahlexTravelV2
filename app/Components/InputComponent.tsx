@@ -19,12 +19,11 @@ const EmailInput: React.FC<EmailInputProps> = ({
     return emailRegex.test(email);
   };
 
-
   return (
     <div className={`flex flex-col relative text-black ${containerClassName}`}>
       <label
         htmlFor="email"
-        className={`absolute text-sm transition-all duration-200 ${
+        className={`absolute text-base transition-all duration-200 ${
           isFocused || props.value?.toString() !== ""
             ? "oliva-c font-bold -top-3 bg-white px-2 left-3 "
             : "text-gray-700 top-3 left-3"
@@ -37,7 +36,7 @@ const EmailInput: React.FC<EmailInputProps> = ({
         id="email"
         name="email"
         type="email"
-        className={`px-4 py-2 border-2 rounded-md focus:outline-none  ${
+        className={`px-4 py-3 border-2 rounded-md focus:outline-none  ${
           error ? "border-red-500 " : "border-oliva-c"
         } transition-all duration-200`}
         onFocus={() => setIsFocused(true)}
