@@ -3,7 +3,7 @@ import { FaChevronDown } from "react-icons/fa";
 import { LuFilter, LuFilterX } from "react-icons/lu";
 
 const locations = ["Paracas", "Ica", "Cañete", "Nazca", "Cusco"];
-const tourTypes = ["Full Day", "Solo Tour", "Con Alojamiento"];
+const tourTypes = ["Solo un Tour", "Full Day", "Tour Privado", "Tour Grupal"];
 
 const DestinoFilter = () => {
   const [selectedLocation, setSelectedLocation] = useState<string>("");

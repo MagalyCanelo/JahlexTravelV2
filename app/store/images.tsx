@@ -34,12 +34,12 @@ export const useImageStore = create<ImageStore>((set) => ({
     },
     {
       src: colibri,
-      title: "Líneas de Nazca",
-      location: "Nazca - Perú",
+      title: "Líneas de Nasca",
+      location: "Nasca - Perú",
     },
     {
       src: cusco,
-      title: "Cusco",
+      title: "Machu Picchu",
       location: "Cusco - Perú",
     },
   ],

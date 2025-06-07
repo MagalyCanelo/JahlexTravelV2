@@ -3,7 +3,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const SidebarMenu = (props: { isOpen: boolean; onClose: () => void }) => {
-    const pathname = usePathname();
+  const pathname = usePathname();
+
   return (
     <div
       className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform ${
@@ -20,34 +21,50 @@ const SidebarMenu = (props: { isOpen: boolean; onClose: () => void }) => {
       </div>
       <ul className="flex flex-col p-6 space-y-4 text-lg font-semibold text-black">
         <li>
-          <Link href="/" className={
-            pathname === "/"
-              ? "oliva-c"
-              : "oliva-c-hover transition-colors"
-          }>
+          <Link
+            href="/"
+            className={
+              pathname === "/" ? "oliva-c" : "oliva-c-hover transition-colors"
+            }
+          >
             Inicio
           </Link>
         </li>
         <li>
-          <Link href="/aboutus" className={
-            pathname === "/aboutus"
-              ? "oliva-c"
-              : "oliva-c-hover transition-colors"
-          }>Sobre Nosotros</Link>
+          <Link
+            href="/aboutus"
+            className={
+              pathname === "/aboutus"
+                ? "oliva-c"
+                : "oliva-c-hover transition-colors"
+            }
+          >
+            Sobre Nosotros
+          </Link>
         </li>
         <li>
-          <Link href="/tours" className={
-            pathname === "/tours"
-              ? "oliva-c"
-              : "oliva-c-hover transition-colors"
-          }>Tours</Link>
+          <Link
+            href="/tours"
+            className={
+              pathname === "/tours"
+                ? "oliva-c"
+                : "oliva-c-hover transition-colors"
+            }
+          >
+            Tours
+          </Link>
         </li>
         <li>
-          <Link href="/contacto" className={
-            pathname === "/contacto"
-              ? "oliva-c"
-              : "oliva-c-hover transition-colors"
-          }>Contacto</Link>
+          <Link
+            href="/contacto"
+            className={
+              pathname === "/contacto"
+                ? "oliva-c"
+                : "oliva-c-hover transition-colors"
+            }
+          >
+            Contacto
+          </Link>
         </li>
       </ul>
     </div>
