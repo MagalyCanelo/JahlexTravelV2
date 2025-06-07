@@ -3,13 +3,9 @@ import {
   BaseTour,
   BaseTourExtended,
   ShoppingCarTour,
+  TourReview,
 } from "@/app/interface/Tour";
-import {
-  arrayUnion,
-  doc,
-  getDoc,
-  setDoc
-} from "firebase/firestore";
+import { arrayUnion, collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
 
 export async function addTourToUserShoppingCar(
   tour: BaseTour,
@@ -104,12 +100,98 @@ export async function createUserDoc(email: string, role: string) {
     const docData = {
       email,
       role,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
     await setDoc(ref, docData);
     return true;
   } catch (error) {
     console.error("Error creating user document:", error);
     return false;
+  }
+}
+
+export async function getTourComments(tourId: string) {
+  const ref = doc(db, `Tours/${tourId}/comments`);
+  try {
+    const docSnap = await getDoc(ref);
+    if (docSnap.exists()) {
+      return docSnap.data() as TourReview[];
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting tour comments:", error);
+    return null;
+  }
+}
+
+export async function addTourComment(
+  tourId: string,
+  comment: string,
+  username: string,
+  userImage: string,
+  qualification: number
+) {
+  const ref = doc(db, `Tours/${tourId}/comments/${username}`);
+  try {
+    const docData = {
+      createdAt: new Date().toISOString(),
+      image: userImage,
+      username: username,
+      opinion: comment,
+      qualification: qualification,
+    };
+    await setDoc(ref, docData);
+    return true;
+  } catch (error) {
+    console.error("Error adding tour comment:", error);
+    return false;
+  }
+}
+
+export async function getTours() {
+  const ref = collection(db, "tours");
+  try {
+    const querySnapshot = await getDocs(ref);
+    const tours: BaseTour[] = [];
+    querySnapshot.forEach((doc) => {
+      tours.push(doc.data() as BaseTour);
+    });
+    return tours;
+  } catch (error) {
+    console.error("Error getting tours:", error);
+    return null;
+  }
+}
+
+export async function getUserPurchases(userId: string) {
+  const ref = collection(db, `Users/${userId}/purchases`);
+  try {
+    const querySnapshot = await getDocs(ref);
+    if (querySnapshot.empty) {
+      return [];
+    }
+    const purchases: any[] = [];
+    querySnapshot.forEach((doc) => {
+      purchases.push(doc.data());
+    });
+    return purchases;
+  } catch (error) {
+    console.error("Error getting user purchases:", error);
+    return [];
+  }
+}
+
+export async function getOneTour(tourId: string) {
+  const ref = doc(db, `tours/${tourId}`);
+  try {
+    const docSnap = await getDoc(ref);
+    if (docSnap.exists()) {
+      return docSnap.data() as BaseTour;
+    }
+    return null;
+  } catch (error) {
+    console.error("Error getting tour:", error);
+    return null;
   }
 }

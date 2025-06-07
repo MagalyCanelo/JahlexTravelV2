@@ -1,4 +1,5 @@
 "use client";
+import { BaseTour } from "@/app/interface/Tour";
 import img1 from "@/public/huacachina.jpg";
 import img2 from "@/public/islas_ballestas.jpg";
 import { default as img3, default as rnp } from "@/public/rnp.jpg";
@@ -6,17 +7,17 @@ import Image from "next/image";
 import { useState } from "react";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-const images = [rnp, img1, img2, img3];
-
-const TourImage = () => {
-  const [selectedImage, setSelectedImage] = useState(rnp);
+const TourImage = ({ images }: BaseTour) => {
+  const [selectedImage, setSelectedImage] = useState<string>(images[0]);
 
   return (
     <div className="flex flex-col gap-4">
       <div className="relative rounded-xl overflow-hidden shadow-lg">
         <Image
-          src={selectedImage}
+          src={selectedImage ? selectedImage : ""}
           alt="Imagen del tour"
+          width={2080}
+          height={2080}
           className="w-full h-[544px] xl:h-[655px] object-cover"
           priority
         />
@@ -36,13 +37,13 @@ const TourImage = () => {
             key={index}
             onClick={() => setSelectedImage(img)}
             className={`w-20 h-20 xl:w-22 xl:h-22 rounded overflow-hidden border-2 ${
-              selectedImage.src === img.src
-                ? "border-[#87AC17]"
-                : "border-gray-300"
+              selectedImage === img ? "border-[#87AC17]" : "border-gray-300"
             }`}
           >
             <Image
               src={img}
+              width={100}
+              height={100}
               alt={`Miniatura ${index}`}
               className="w-full h-full object-cover"
             />

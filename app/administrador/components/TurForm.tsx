@@ -60,30 +60,47 @@ function TurForm(props: { func: "agregar" | "editar" }) {
     console.log("Tour agregado:", formData);
     if (props.func === "agregar") {
       const newTourRef = doc(db, "tours", formData.title);
-      setDoc(newTourRef, formData)
+      // Validate data types before saving
+      const validatedData = {
+        ...formData,
+        id: Number(formData.id),
+        priceRegular: Number(formData.priceRegular),
+        priceOffer: Number(formData.priceOffer),
+        rating: Number(formData.rating),
+        minAge: Number(formData.minAge),
+        // Ensure arrays are arrays
+        schedule: Array.isArray(formData.schedule) ? formData.schedule : [],
+        availableDates: Array.isArray(formData.availableDates) ? formData.availableDates : [],
+        images: Array.isArray(formData.images) ? formData.images : [],
+        itinerary: Array.isArray(formData.itinerary) ? formData.itinerary : [],
+        includes: Array.isArray(formData.includes) ? formData.includes : [],
+        notIncluded: Array.isArray(formData.notIncluded) ? formData.notIncluded : [],
+        recommendations: Array.isArray(formData.recommendations) ? formData.recommendations : []
+      };
+
+      setDoc(newTourRef, validatedData)
         .then(() => {
           alert("Tour agregado exitosamente");
-          //limpiar el formulario
           setFormData({
-            id: 0,
-            title: "",
-            priceRegular: 0,
-            priceOffer: 0,
-            duration: "",
-            activityLevel: ActivityLevel.BAJO,
-            groupSize: GroupSize.MEDIANO,
-            schedule: [],
-            availableDates: [],
-            images: [],
-            description: "",
-            itinerary: [],
-            includes: [],
-            notIncluded: [],
-            recommendations: [],
-            category: TourCategory.MARITIMO,
-            location: "",
-            rating: 0,
-            minAge: 0,
+        id: 0,
+        title: "",
+        priceRegular: 0,
+        priceOffer: 0,
+        duration: "",
+        activityLevel: ActivityLevel.BAJO,
+        groupSize: GroupSize.MEDIANO,
+        schedule: [],
+        availableDates: [],
+        images: [],
+        description: "",
+        itinerary: [],
+        includes: [],
+        notIncluded: [],
+        recommendations: [],
+        category: TourCategory.MARITIMO,
+        location: "",
+        rating: 0,
+        minAge: 0,
           });
         })
         .catch((error) => {

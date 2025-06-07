@@ -50,3 +50,11 @@ export interface BaseTourExtended extends BaseTour {
   hour: string;
   price: number;
 }
+
+export interface TourReview {
+  createdAt: string;
+  image: string;
+  username: string;
+  opinion: string;
+  qualification: number;
+}
