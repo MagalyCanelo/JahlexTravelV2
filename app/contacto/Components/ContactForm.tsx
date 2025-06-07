@@ -12,7 +12,7 @@ const ContactForm: React.FC = () => {
     const mensajeParte2 = `${message}`; // El mensaje del usuario
 
     // Número de WhatsApp
-    const numero = "51975341049";
+    const numero = "51947435368";
 
     // Creamos la URL de WhatsApp
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(

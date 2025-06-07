@@ -11,7 +11,7 @@ const HelpCard: React.FC<HelpCardProps> = ({ tourTitle }) => {
 
   const handleWhatsAppRedirect = () => {
     const mensaje = `Hola, mi nombre es ${name}. Estoy interesado/a en "${tourTitle}" y tengo la siguiente duda: ${question}`;
-    const numero = "51975341049"; // Número de WhatsApp
+    const numero = "51947435368";
 
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.open(url, "_blank");
