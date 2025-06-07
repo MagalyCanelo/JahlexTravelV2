@@ -45,27 +45,27 @@ const HelpCard: React.FC<HelpCardProps> = ({ tourTitle }) => {
             className="space-y-4"
           >
             <div>
-              <label className="block text-sm font-medium text-gray-700 xl:text-[16px] xl:mb-1">
+              <label className="block text-sm font-medium text-gray-700 pb-1 xl:text-[16px] xl:mb-1">
                 Nombre
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                className="w-full text-gray-600 p-2 border border-gray-300 rounded-lg"
+                className="w-full text-gray-600 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#588f10]"
                 placeholder="Ingresa tu nombre"
                 required
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 xl:text-[16px] xl:mb-1">
+              <label className="block text-sm font-medium text-gray-700 pb-1 xl:text-[16px] xl:mb-1">
                 ¿Cuál es tu duda?
               </label>
               <textarea
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
-                className="w-full text-gray-600 p-2 border border-gray-300 rounded-lg"
+                className="w-full text-gray-600 p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#588f10]"
                 placeholder="Describe tu duda"
                 required
               ></textarea>
@@ -73,7 +73,7 @@ const HelpCard: React.FC<HelpCardProps> = ({ tourTitle }) => {
 
             <button
               type="submit"
-              className="w-full bg-oliva-c text-white py-2 rounded-lg font-semibold xl:text-[17px]"
+              className="w-full bg-oliva-c bg-oliva-o-hover text-white py-2 rounded-lg font-semibold xl:text-[17px]"
             >
               Enviar al WhatsApp
             </button>

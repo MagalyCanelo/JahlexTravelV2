@@ -4,7 +4,7 @@ import ContactForm from "./ContactForm";
 
 const ContactSection: React.FC = () => {
   return (
-    <section className="flex flex-col lg:flex-row px-4 py-2 lg:py-4 lg:px-6 gap-10 max-w-screen-xl mx-auto bg-stone-50 min-h-screen">
+    <section className="flex flex-col lg:flex-row px-4 py-2 lg:py-4 lg:px-6 gap-6 max-w-screen-xl mx-auto bg-stone-50">
       {/* ContactInfo ocupa 1/3 en pantallas grandes */}
       <div className="lg:w-1/3 w-full">
         <ContactInfo />

@@ -26,7 +26,7 @@ const Footer = () => {
                   width={1080}
                 />
                 <p className="text-gray-600 text-center mt-2 text-sm">
-                  <strong>RUC:</strong> 1234567890
+                  <strong>RUC:</strong> 10470715788
                 </p>
               </div>
             </div>
@@ -150,10 +150,10 @@ const Footer = () => {
                   jahlextravel@gmail.com
                 </p>
               </a>
-              <a href="tel:+51987654321" className="block">
+              <a href="tel:+51947435368" className="block">
                 <p>
-                  <span className="font-medium">Celular:</span> (+51) 987 654
-                  321
+                  <span className="font-medium">Celular:</span> (+51) 947 435
+                  368
                 </p>
               </a>
             </div>
