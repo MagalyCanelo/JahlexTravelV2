@@ -28,7 +28,7 @@ const InfoFields = () => {
         {/* Código de país + celular en una sola fila ocupando el ancho completo */}
         <div className="flex gap-2 md:col-span-2">
           <div className="relative w-24">
-            <span className="absolute left-2 top-1/2 -translate-y-1/2 text-gray-500 text-md">
+            <span className="absolute left-2 top-1/2 -translate-y-1/2 text-stone-500 text-md">
               +
             </span>
             <input

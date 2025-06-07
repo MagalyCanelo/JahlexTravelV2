@@ -2,7 +2,7 @@
 
 import logo from "@/public/logo.png";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import ActionButton from "./ActionButton";
@@ -16,18 +16,18 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
   const pathname = usePathname();
-  useEffect(() => {}, []);
+  const router = useRouter();
 
   return (
     <header
       className={`w-full ${
         pathname !== "/"
-          ? "!bg-stone-50 relative top-0 shadow text-black"
+          ? "!bg-stone-50 relative top-0  text-black"
           : "absolute top-0 text-white"
       } z-50 ${props.className} transition-all duration-100 ease-in-out `}
     >
       <TopBar />
-      
+
       <div className="w-full flex lg:flex-row flex-col-reverse items-center justify-between p-4 lg:p-4 lg:pb-2">
         <Link href="/" className="flex items-center space-x-2 pt-3 lg:pt-0">
           <Image
@@ -55,7 +55,9 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             className={
               pathname === "/aboutus"
                 ? "oliva-c  transition-all"
-                : "hover:border-b-2 hover:border-white px-2 transition-all"
+                : pathname !== "/"
+                ? "text-black oliva-c-hover  transition-all"
+                : "hover:border-b-2 hover:border-white "
             }
           >
             Sobre Nosotros
@@ -64,8 +66,10 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/tours"
             className={
               pathname === "/tours"
-                ? "text-black oliva-c  px-4 transition-all"
-                : "hover:border-b-2 hover:border-white px-2 transition-all"
+                ? "oliva-c  transition-all"
+                : pathname !== "/"
+                ? "text-black oliva-c-hover  transition-all"
+                : "hover:border-b-2 hover:border-white "
             }
           >
             Tours
@@ -74,8 +78,10 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href="/contacto"
             className={
               pathname === "/contacto"
-                ? "text-black oliva-c   px-4 transition-all"
-                : "hover:border-b-2 hover:border-white px-2 transition-all"
+                ? "oliva-c  transition-all"
+                : pathname !== "/"
+                ? "text-black oliva-c-hover  transition-all"
+                : "hover:border-b-2 hover:border-white "
             }
           >
             Contacto
@@ -84,8 +90,10 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             href={"/administrador"}
             className={
               pathname === "/administrador"
-                ? "text-black oliva-c  px-4 transition-all"
-                : "hover:border-b-2 hover:border-white px-2 transition-all"
+                ? "oliva-c  transition-all duration-150"
+                : pathname !== "/"
+                ? "text-black oliva-c-hover  transition-all duration-150"
+                : "hover:border-b-2 hover:border-white px-2 "
             }
           >
             Administrador{" "}
@@ -101,12 +109,16 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />{" "}
           <div className="flex flex-row gap-4">
             <ActionButton
-              onClick={() => {}}
+              onClick={() => {
+                router.push("/login");
+              }}
               tipo="secondary"
               title="Iniciar Sesión"
             />
             <ActionButton
-              onClick={() => {}}
+              onClick={() => {
+                router.push("/register");
+              }}
               tipo="primary"
               title="Regístrate"
             />

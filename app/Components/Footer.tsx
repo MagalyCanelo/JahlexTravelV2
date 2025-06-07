@@ -1,5 +1,7 @@
 import { FaFacebookF, FaTiktok, FaTripadvisor } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
+import { SocialLink } from "./TopBar";
 
 const Footer = () => {
   return (
@@ -25,13 +27,25 @@ const Footer = () => {
 
             <div className="flex justify-center gap-4 text-green-800 text-lg">
               <div className="bg-oliva-c bg-oliva-o-hover rounded-full p-3 text-white">
-                <FaFacebookF />
+                <SocialLink
+                  href="https://www.facebook.com/profile.php?id=61576859812087"
+                  icon={<FaFacebookF size={18} />}
+                  label="Facebook"
+                />
               </div>
               <div className="bg-oliva-c bg-oliva-o-hover rounded-full p-3 text-white">
-                <FaTripadvisor />
+                <SocialLink
+                  href="https://www.tripadvisor.com.pe/Attraction_Review-g445063-d33219851-Reviews-Jahlex_Travel_Adventure-Paracas_Ica_Region.html"
+                  icon={<FaTripadvisor size={18} />}
+                  label="Tripadvisor"
+                />
               </div>
               <div className="bg-oliva-c bg-oliva-o-hover rounded-full p-3 text-white">
-                <FaTiktok />
+                <SocialLink
+                  href="https://www.tiktok.com/@jahlextraveladventure"
+                  icon={<FaTiktok size={18} />}
+                  label="TikTok"
+                />
               </div>
             </div>
           </div>
@@ -41,24 +55,24 @@ const Footer = () => {
             <h3 className="font-semibold oliva mb-2">Enlaces</h3>
             <ul className="space-y-1 text-gray-600">
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Inicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/aboutus" className="oliva-o-hover font-medium">
                   Sobre Nosotros
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/tours" className="oliva-o-hover font-medium">
                   Tours
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/contacto" className="oliva-o-hover font-medium">
                   Contacto
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -68,29 +82,29 @@ const Footer = () => {
             <h3 className="font-semibold oliva mb-2">Destinos</h3>
             <ul className="space-y-1 text-gray-600">
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Paracas
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Ica
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Nazca
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Cañete
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="oliva-o-hover font-medium">
+                <Link href="/" className="oliva-o-hover font-medium">
                   Tours en Cuzco
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -99,15 +113,20 @@ const Footer = () => {
           <div className="pl-2 flex flex-col justify-center h-full lg:pb-2">
             <h3 className="font-semibold mb-2">Contacto</h3>
             <div className="text-gray-600 space-y-2">
-              <p>
-                <strong>Dirección:</strong> Lorem
-              </p>
-              <p>
-                <strong>Correo:</strong> xyz@gmail.com
-              </p>
-              <p>
+              <a href="https://maps.app.goo.gl/2JLeS4fC7jA5urn96" target="_blank" rel="noopener noreferrer" >
+                <strong>Dirección:</strong> AA.HH. Alberto Tataje Muñoz, Paracas
+                11550
+              </a>
+              <br />
+              <br />
+              <a href="mailto:jahlextravel@gmail.com">
+                <strong>Correo:</strong> jahlextravel@gmail.com
+              </a>
+              <br />
+              <br />
+              <a href="tel:+51987654321">
                 <strong>Celular:</strong> (+51) 987 654 321
-              </p>
+              </a>
             </div>
           </div>
         </div>

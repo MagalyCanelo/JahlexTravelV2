@@ -15,7 +15,7 @@ const NewsletterSignup: React.FC = () => {
   };
 
   return (
-    <section className="pt-9 pb-15 px-4 bg-gray-50 text-center">
+    <section className="pt-9 pb-15 px-4 bg-stone-50 text-center">
       <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
         ¿Tienes dudas o necesitas más detalles?
       </h2>

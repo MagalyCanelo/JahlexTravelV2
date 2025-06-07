@@ -5,7 +5,7 @@ import Header from "./Header";
 
 function HeroBanner() {
   return (
-    <section className="hero h-screen relative bg-gray-50 text-center lg:flex lg:flex-row lg:items-center lg:justify-between">
+    <section className="hero h-screen relative bg-stone-50 text-center lg:flex lg:flex-row lg:items-center lg:justify-between">
       <Header className="text-white " />
       <ImageSlider />
       <div

@@ -12,7 +12,7 @@ import {
 
 export default function WhyChooseUs() {
   return (
-    <section className="pt-4 pb-11 bg-gray-50 grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 lg:pr-6 lg:pl-8 place-items-center">
+    <section className="pt-4 pb-11 bg-stone-50 grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 lg:pr-6 lg:pl-8 place-items-center">
       {/* Imágenes */}
       <div className="relative w-full max-w-xl h-[22rem] lg:h-[400px] xl:h-[440px] flex justify-center items-center mb-6 lg:pb-0 ">
         {/* Imagen delantera */}

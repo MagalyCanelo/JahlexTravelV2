@@ -18,13 +18,13 @@ import cuatrimoto from "@/public/cuatrimoto.jpg";
 
 const DestinationsMasonry: React.FC = () => {
   return (
-    <div className="bg-gray-50 p-4 lg:p-6">
+    <div className="bg-stone-50 p-4 lg:p-6">
       <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow my-4">
         <h2 className="text-md font-semibold">Galería</h2>
       </div>
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 md:h-auto lg:grid-cols-7 lg:grid-rows-6 lg:h-[85vh] auto-rows-fr">
+      <div className="grid grid-cols-2 grid-rows-[16] gap-4 md:grid-cols-4 md:h-96 lg:grid-cols-7 lg:grid-rows-6 lg:h-[85vh]">
         {/* Item 1 */}
-        <div className="group col-span-1 sm:col-span-2 md:col-span-1 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-2 row-span-2 sm:col-span-2 md:col-span-1 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={bicicleta}
             alt="Bicicleta en RNP"
@@ -33,7 +33,7 @@ const DestinationsMasonry: React.FC = () => {
             height={1080}
           />
         </div>
-        <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-1 row-span-1  sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={pasajeros_avioneta}
             alt="Pasajeros en avioneta en Nazca"
@@ -42,7 +42,7 @@ const DestinationsMasonry: React.FC = () => {
             height={1080}
           />
         </div>
-        <div className="group col-span-1 sm:col-span-2 md:col-span-1 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-1 row-span-1 sm:col-span-2 md:col-span-1 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={trekking}
             alt="Trekking en RNP"
@@ -53,7 +53,7 @@ const DestinationsMasonry: React.FC = () => {
         </div>
 
         {/* Item 2 */}
-        <div className="group col-span-1 sm:col-span-1 md:col-span-2 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-2 row-span-1 sm:col-span-1 md:col-span-2 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={moto_scooter}
             alt="Moto Scooter"
@@ -64,7 +64,7 @@ const DestinationsMasonry: React.FC = () => {
         </div>
 
         {/* Item 3 */}
-        <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-1  md:col-span-2 lg:col-span-2 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={minibuggy}
             alt="Trekking en RNP"
@@ -75,7 +75,7 @@ const DestinationsMasonry: React.FC = () => {
         </div>
 
         {/* Item 4 */}
-        <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={pasajeros_lancha}
             alt="Pasajeros en lancha en IB"
@@ -86,7 +86,7 @@ const DestinationsMasonry: React.FC = () => {
         </div>
 
         {/* Item 5 */}
-        <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={tubular}
             alt="Tubulares"
@@ -108,7 +108,7 @@ const DestinationsMasonry: React.FC = () => {
         </div>
 
         {/* Item 7 */}
-        <div className="group col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-1 md:col-span-2 lg:col-span-2 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={lunahuana}
             alt="Lunahuana en kayak"
@@ -119,7 +119,7 @@ const DestinationsMasonry: React.FC = () => {
         </div>
 
         {/* Item 8 */}
-        <div className="group col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-1 row-span-1  md:col-span-1 lg:col-span-1 lg:row-span-3 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={roja_per}
             alt="Personas en Roja"
@@ -130,7 +130,7 @@ const DestinationsMasonry: React.FC = () => {
         </div>
 
         {/* Item 9 */}
-        <div className="group col-span-1 sm:col-span-2 md:col-span-1 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-1 row-span-1 md:col-span-1 lg:col-span-1 lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={cuatrimoto}
             alt="Cuatrimoto en RNP"
@@ -140,7 +140,7 @@ const DestinationsMasonry: React.FC = () => {
             height={1080}
           />
         </div>
-        <div className="group col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-3S lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
+        <div className="group col-span-2 sm:col-span-2 md:col-span-3 lg:col-span-3S lg:row-span-2 bg-white shadow-lg rounded-lg overflow-hidden">
           <Image
             src={brujas}
             alt="IB Full"

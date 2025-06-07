@@ -9,7 +9,7 @@ const PaymentMethod = () => {
         <Image src={izipay.src} width={125} height={105} alt="Logo de IziPay" />
       </button>
       <label className="flex items-center mt-4 text-xs lg:text-[12.5px] xl:text-md gap-1">
-        <input type="checkbox" required className="w-3 h-3 accent-gray-500" />
+        <input type="checkbox" required className="w-3 h-3 accent-stone-500" />
         <span>
           Declaro que he leído y aceptado los{" "}
           <a
