@@ -90,3 +90,26 @@ export async function getUserShoppingCar(userId: string) {
     return null;
   }
 }
+
+export async function createUserDoc(email: string, role: string) {
+  const ref = doc(db, `Users/${email}`);
+  try {
+    // Check if user already exists
+    const docSnap = await getDoc(ref);
+    if (docSnap.exists()) {
+      console.log("User already exists");
+      return false;
+    }
+
+    const docData = {
+      email,
+      role,
+      createdAt: new Date().toISOString()
+    };
+    await setDoc(ref, docData);
+    return true;
+  } catch (error) {
+    console.error("Error creating user document:", error);
+    return false;
+  }
+}
