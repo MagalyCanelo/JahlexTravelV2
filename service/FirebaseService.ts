@@ -118,7 +118,7 @@ export async function createUserDoc(email: string, role: string) {
 }
 
 export async function getTourComments(tourId: string) {
-  const ref = doc(db, `Tours/${tourId}/comments`);
+  const ref = doc(db, `tours/${tourId}/comments`);
   try {
     const docSnap = await getDoc(ref);
     if (docSnap.exists()) {

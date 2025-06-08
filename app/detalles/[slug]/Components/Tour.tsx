@@ -132,8 +132,8 @@ function Tour(props: { tourid: string }) {
                   addTourComment(
                     {
                       createdAt: new Date().toISOString(),
-                      image: user.user.image ?? "/default-avatar.png",
-                      username: user.user.name ?? "Anonymous",
+                      image: user.user.image!,
+                      username: user.user.name!,
                       opinion: formData.get("opinion")?.toString() ?? "",
                       qualification: qualification,
                     },
@@ -144,7 +144,7 @@ function Tour(props: { tourid: string }) {
               >
                 <div className="flex flex-row gap-4 ">
                   <Image
-                    src={user.user.image ?? "/default-avatar.png"}
+                    src={user.user.image!}
                     alt="User avatar"
                     width={40}
                     height={40}

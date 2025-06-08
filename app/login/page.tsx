@@ -14,6 +14,7 @@ import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../config/config";
 import { createUserDoc } from "@/service/FirebaseService";
+import userplh from "@/public/userplh.png";
 
 function page() {
   const { setUser } = useUserStore();
@@ -50,7 +51,8 @@ function page() {
                 setUser({
                   id: user.uid || "",
                   email: user.email || "",
-                  name: user.displayName || "",
+                  image:user.photoURL|| "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
+                  name: user.displayName || user.email?.split('@')[0],
                   isAuthenticated: true,
                 });
                 createUserDoc(user.email!, "client").then(
@@ -105,7 +107,9 @@ function page() {
                     isAuthenticated: user.emailVerified,
                     email: user.email ?? undefined,
                     id: user.uid,
-                    image:user.photoURL,
+                    image: user.photoURL
+                      ? user.photoURL
+                      : "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
                     name: user.displayName ?? undefined,
                   });
                   createUserDoc(user.email!, "client").then(
