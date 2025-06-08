@@ -105,6 +105,7 @@ function page() {
                     isAuthenticated: user.emailVerified,
                     email: user.email ?? undefined,
                     id: user.uid,
+                    image:user.photoURL,
                     name: user.displayName ?? undefined,
                   });
                   createUserDoc(user.email!, "client").then(
