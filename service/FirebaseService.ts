@@ -5,7 +5,14 @@ import {
   ShoppingCarTour,
   TourReview,
 } from "@/app/interface/Tour";
-import { arrayUnion, collection, doc, getDoc, getDocs, setDoc } from "firebase/firestore";
+import {
+  arrayUnion,
+  collection,
+  doc,
+  getDoc,
+  getDocs,
+  setDoc,
+} from "firebase/firestore";
 
 export async function addTourToUserShoppingCar(
   tour: BaseTour,
@@ -169,7 +176,8 @@ export async function getUserPurchases(userId: string) {
   try {
     const querySnapshot = await getDocs(ref);
     if (querySnapshot.empty) {
-      return [];
+      console.log("No purchases found for user");
+      return null;
     }
     const purchases: any[] = [];
     querySnapshot.forEach((doc) => {
@@ -178,7 +186,7 @@ export async function getUserPurchases(userId: string) {
     return purchases;
   } catch (error) {
     console.error("Error getting user purchases:", error);
-    return [];
+    return null;
   }
 }
 
@@ -193,5 +201,20 @@ export async function getOneTour(tourId: string) {
   } catch (error) {
     console.error("Error getting tour:", error);
     return null;
+  }
+}
+
+export async function createPurchase(userId: string, purchaseData: any) {
+  const ref = doc(db, `Users/${userId}/purchases/${new Date().getTime()}`);
+  try {
+    await setDoc(ref, {
+      ...purchaseData,
+      createdAt: new Date().toISOString(),
+      status: "completed",
+    });
+    return true;
+  } catch (error) {
+    console.error("Error creating purchase:", error);
+    return false;
   }
 }

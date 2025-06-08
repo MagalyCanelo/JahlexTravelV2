@@ -19,6 +19,7 @@ import {
 import { BaseTour, TourReview } from "@/app/interface/Tour";
 import ActionButton from "@/app/Components/ActionButton";
 import { useUserStore } from "@/app/store/Usuario";
+import Image from "next/image";
 
 function Tour(props: { tourid: string }) {
   const user = useUserStore();
@@ -46,6 +47,7 @@ function Tour(props: { tourid: string }) {
   const [comments, setComments] = useState<TourReview[]>([]);
   const [canComment, setCanComment] = useState(false);
   const [dataTour, setDataTour] = useState<BaseTour>();
+  const [qualification, setQualification] = useState(0);
 
   /*   useEffect(() => {
     getTourComments(props.tourid).then((v) => setComments(v || []));
@@ -54,10 +56,11 @@ function Tour(props: { tourid: string }) {
   useEffect(() => {
     Promise.all([
       getOneTour(props.tourid),
-      getUserPurchases(user.user.id!),
+      getUserPurchases(user.user.email!),
     ]).then(([tourData, purchases]) => {
       setDataTour(tourData!);
-      setCanComment(purchases.length >= 1);
+      console.log(purchases)
+      setCanComment((purchases?.length ?? 0) >= 1);
     });
   }, []);
 
@@ -65,7 +68,7 @@ function Tour(props: { tourid: string }) {
     <>
       <div className="bg-stone-50 flex flex-col lg:flex-row gap-6 px-6 py-3 pb-8">
         <div className="w-full lg:w-3/5">
-          {dataTour && <TourImage {...dataTour}/>}
+          {dataTour && <TourImage {...dataTour} />}
         </div>
 
         <div className="w-full lg:w-2/5">
@@ -83,8 +86,8 @@ function Tour(props: { tourid: string }) {
             <WhyUsCard />
           </div>
         </section>
-        <section className="grid grid-cols-2 text-black gap-4 px-48">
-          <div className=" flex flex-row gap-4 items-center justify-center p-4 broder-2 shadow rounded-lg">
+        <section className="grid grid-cols-2 text-black gap-4 px-16">
+          <div className=" flex flex-row gap-4 bg-white items-center justify-center p-4 broder-2 shadow rounded-lg">
             <h2 className="text-4xl font-bold">
               {isNaN(
                 comments.reduce((acc, cur) => acc + cur.qualification, 0) /
@@ -119,19 +122,45 @@ function Tour(props: { tourid: string }) {
             </div>
           </div>
           <div className="flex flex-col gap-4 items-center justify-center">
-            <form
-              action={async (formData: FormData) => {}}
-              className="bg-white text-black flex flex-col gap-4 w-full"
-            >
-              <textarea
-                name=""
-                id=""
-                className="p-2 rounded-lg"
-                rows={5}
-                placeholder="Una excelente experiencia . . . "
-              ></textarea>
-              <ActionButton title="Enviar comentarios" tipo="primary" />
-            </form>
+            {canComment && (
+              <form
+                action={async (formData: FormData) => {}}
+                className="bg-white text-black flex flex-col gap-4 w-full p-4 shadow-md rounded-lg"
+              >
+                <div className="flex flex-row gap-4 ">
+                  <Image
+                    src={user.user.image ?? "/default-avatar.png"}
+                    alt="User avatar"
+                    width={40}
+                    height={40}
+                    className="rounded-full h-fit"
+                  />
+                  <div className="w-full flex flex-col gap-2 ">
+                    <div className="flex flex-row gap-1">
+                      {[...Array(5)].map((_, i) => (
+                        <FaStar
+                          key={i}
+                          size={18}
+                          className={`cursor-pointer ${i < 0 ? "text-yellow-400" : "text-gray-300"}`}
+                          fill={i < qualification ? "#facc15" : "#d1d5db"}
+                          onClick={() => {
+                            setQualification(i + 1);
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <textarea
+                      name=""
+                      id=""
+                      className="p-2 rounded-lg w-full outline-none border-stone-500 border"
+                      rows={5}
+                      placeholder="Una excelente experiencia . . . "
+                    ></textarea>
+                    <ActionButton title="Enviar comentarios" tipo="primary" />
+                  </div>
+                </div>
+              </form>
+            )}
             {comments.length < 1 ? (
               <p className="text-black text-2xl ">No hay comentarios aún</p>
             ) : (
