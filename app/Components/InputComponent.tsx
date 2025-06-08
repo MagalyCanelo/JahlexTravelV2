@@ -1,5 +1,6 @@
 "use client";
 import React, { InputHTMLAttributes, useEffect, useState } from "react";
+import { IoMailOutline } from "react-icons/io5";
 
 interface EmailInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -32,22 +33,27 @@ const EmailInput: React.FC<EmailInputProps> = ({
         {label}
       </label>
 
-      <input
-        id="email"
-        name="email"
-        type="email"
+      <div
         className={`px-4 py-3 border-2 rounded-md focus:outline-none  ${
           error ? "border-red-500 " : "border-oliva-c"
-        } transition-all duration-200`}
-        onFocus={() => setIsFocused(true)}
-        onBlur={() => {
-          setIsFocused(false);
-          isValidEmail(props.value?.toString() || "")
-            ? ""
-            : "Invalid email format";
-        }}
-        {...props}
-      />
+        } transition-all duration-200 flex flex-row items-center gap-2`}
+      >
+        <IoMailOutline />
+        <input
+          id="email"
+          name="email"
+          type="email"
+          className="outline-none"
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => {
+            setIsFocused(false);
+            isValidEmail(props.value?.toString() || "")
+              ? ""
+              : "Invalid email format";
+          }}
+          {...props}
+        />
+      </div>
 
       {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
     </div>
