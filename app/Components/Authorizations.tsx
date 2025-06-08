@@ -49,10 +49,7 @@ const Authorizations: React.FC = () => {
 
   return (
     <div className="bg-stone-50 flex flex-col gap-2 w-full items-center">
-      {/* Contenedor con padding horizontal uniforme */}
       <div className="w-full px-4 lg:px-6">
-        {/* Etiqueta */}
-        {/* Título */}
         <div className="text-left mb-4">
           <div className="bg-oliva-c text-white rounded-full px-4 py-1 inline-block shadow">
             <h2 className="text-md font-semibold">Autorizaciones</h2>
