@@ -18,7 +18,7 @@ import { useUserStore } from "../store/Usuario";
 function page() {
   const [onError, setOnError] = React.useState<string | null>(null);
   const router = useRouter();
-  const {setUser}=useUserStore();
+  const { setUser } = useUserStore();
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-dvh">
@@ -47,7 +47,9 @@ function page() {
             }
             signInWithFirebase(data.email as string, data.password as string)
               .then((user) => {
-                createUserDoc(data.email as string, "client");
+                createUserDoc(data.email as string, "client").then((v) =>
+                  router.push("/login")
+                );
               })
               .catch((error) => {
                 console.error("Error signing in:", error);
@@ -70,7 +72,7 @@ function page() {
             </p>
           </div>
 
-          <div className="flex flex-col w-full justify-center mt-4 mb-8 px-8 gap-2">
+          <div className="flex flex-col w-full justify-center mt-1 mb-8 px-8 gap-2">
             <Link
               href="/passrecovery"
               className="text-stone-500 font-semibold hover:underline w-full text-right "
@@ -81,7 +83,7 @@ function page() {
               type="submit"
               onClick={() => {}}
               tipo="primary"
-              title="Iniciar Sesión"
+              title="Registrate"
             />
           </div>
           <div className="border-t-2 border-stone-300 relative w-full">
