@@ -12,7 +12,7 @@ const ErrorPage: React.FC = () => {
       <Image
         src={e404.src}
         alt="Logo de la empresa"
-        className="lg:w-120 w-60 xl:w-130"
+        className="lg:w-120 w-85 xl:w-130"
         height={1080}
         width={1080}
       />
