@@ -132,21 +132,11 @@ export async function getTourComments(tourId: string) {
   }
 }
 
-export async function addTourComment(
-  tourId: string,
-  comment: string,
-  username: string,
-  userImage: string,
-  qualification: number
-) {
-  const ref = doc(db, `Tours/${tourId}/comments/${username}`);
+export async function addTourComment(comment: TourReview, tour: string) {
+  const ref = doc(db, `tours/${tour}/comments/${comment.username}`);
   try {
     const docData = {
-      createdAt: new Date().toISOString(),
-      image: userImage,
-      username: username,
-      opinion: comment,
-      qualification: qualification,
+      ...comment,
     };
     await setDoc(ref, docData);
     return true;
@@ -216,5 +206,20 @@ export async function createPurchase(userId: string, purchaseData: any) {
   } catch (error) {
     console.error("Error creating purchase:", error);
     return false;
+  }
+}
+
+export async function getAllTourComments(tourId: string) {
+  const ref = collection(db, `tours/${tourId}/comments`);
+  try {
+    const querySnapshot = await getDocs(ref);
+    const comments: TourReview[] = [];
+    querySnapshot.forEach((doc) => {
+      comments.push(doc.data() as TourReview);
+    });
+    return comments;
+  } catch (error) {
+    console.error("Error getting tour comments:", error);
+    return [];
   }
 }

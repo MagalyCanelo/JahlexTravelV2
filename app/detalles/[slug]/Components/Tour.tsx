@@ -12,6 +12,8 @@ import { FaStar } from "react-icons/fa";
 import Coment from "./Coment";
 import { useEffect, useState } from "react";
 import {
+  addTourComment,
+  getAllTourComments,
   getOneTour,
   getTourComments,
   getUserPurchases,
@@ -57,10 +59,12 @@ function Tour(props: { tourid: string }) {
     Promise.all([
       getOneTour(props.tourid),
       getUserPurchases(user.user.email!),
-    ]).then(([tourData, purchases]) => {
+      getAllTourComments(props.tourid),
+    ]).then(([tourData, purchases, comments]) => {
       setDataTour(tourData!);
-      console.log(purchases)
+      console.log(purchases);
       setCanComment((purchases?.length ?? 0) >= 1);
+      setComments(comments);
     });
   }, []);
 
@@ -86,18 +90,17 @@ function Tour(props: { tourid: string }) {
             <WhyUsCard />
           </div>
         </section>
-        <section className="grid grid-cols-2 text-black gap-4 px-16">
-          <div className=" flex flex-row gap-4 bg-white items-center justify-center p-4 broder-2 shadow rounded-lg">
+        <section className="grid grid-cols-1 lg:grid-cols-2 text-black gap-4 px-16">
+          <div className=" flex flex-row gap-4 lg:w-3/6 h-fit mx-auto bg-white items-center justify-start p-8 broder-2 shadow rounded-lg">
             <h2 className="text-4xl font-bold">
-              {isNaN(
+              {(isNaN(
                 comments.reduce((acc, cur) => acc + cur.qualification, 0) /
                   comments.length
               )
-                ? 0.0
-                : (
-                    comments.reduce((acc, cur) => acc + cur.qualification, 0) /
-                    comments.length
-                  ).toFixed(2)}
+                ? 0
+                : comments.reduce((acc, cur) => acc + cur.qualification, 0) /
+                  comments.length
+              ).toFixed(1)}
             </h2>
 
             <div className="flex flex-col gap-2">
@@ -105,6 +108,7 @@ function Tour(props: { tourid: string }) {
                 {[...Array(5)].map((_, i) => (
                   <FaStar
                     key={i}
+                    size={24}
                     className={
                       i <
                       comments.reduce(
@@ -124,8 +128,19 @@ function Tour(props: { tourid: string }) {
           <div className="flex flex-col gap-4 items-center justify-center">
             {canComment && (
               <form
-                action={async (formData: FormData) => {}}
-                className="bg-white text-black flex flex-col gap-4 w-full p-4 shadow-md rounded-lg"
+                action={async (formData: FormData) => {
+                  addTourComment(
+                    {
+                      createdAt: new Date().toISOString(),
+                      image: user.user.image ?? "/default-avatar.png",
+                      username: user.user.name ?? "Anonymous",
+                      opinion: formData.get("opinion")?.toString() ?? "",
+                      qualification: qualification,
+                    },
+                    props.tourid
+                  ).then((v) => alert("Completado"));
+                }}
+                className="bg-white text-black mb-8 flex flex-col gap-4 w-full p-8 shadow-md rounded-lg"
               >
                 <div className="flex flex-row gap-4 ">
                   <Image
@@ -140,23 +155,27 @@ function Tour(props: { tourid: string }) {
                       {[...Array(5)].map((_, i) => (
                         <FaStar
                           key={i}
-                          size={18}
-                          className={`cursor-pointer ${i < 0 ? "text-yellow-400" : "text-gray-300"}`}
+                          size={24}
+                          onClick={() => setQualification(i + 1)}
+                          className={`cursor-pointer transition-colors duration-300 ${i < 0 ? "text-yellow-400" : "text-gray-300"}`}
                           fill={i < qualification ? "#facc15" : "#d1d5db"}
-                          onClick={() => {
-                            setQualification(i + 1);
-                          }}
                         />
                       ))}
                     </div>
                     <textarea
-                      name=""
-                      id=""
+                      name="opinion"
+                      id="opinion"
                       className="p-2 rounded-lg w-full outline-none border-stone-500 border"
                       rows={5}
                       placeholder="Una excelente experiencia . . . "
                     ></textarea>
-                    <ActionButton title="Enviar comentarios" tipo="primary" />
+                    <div className="flex flex-row w-full items-center justify-end">
+                      <ActionButton
+                        type="submit"
+                        title="Enviar comentarios"
+                        tipo="primary"
+                      />
+                    </div>
                   </div>
                 </div>
               </form>
@@ -165,7 +184,7 @@ function Tour(props: { tourid: string }) {
               <p className="text-black text-2xl ">No hay comentarios aún</p>
             ) : (
               comments.map((v) => {
-                return <Coment {...v} />;
+                return <Coment {...v} key={v.username} />;
               })
             )}
           </div>
