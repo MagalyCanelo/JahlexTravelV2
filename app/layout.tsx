@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fredoka, Montserrat, Passion_One } from "next/font/google";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 const montserratSans = Montserrat({
   subsets: ["latin"],
@@ -32,12 +33,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${montserratSans.variable} ${fredokaSans.variable} ${passion_oneSans.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body
+          className={`${montserratSans.variable} ${fredokaSans.variable} ${passion_oneSans.variable} antialiased`}
+        >
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
