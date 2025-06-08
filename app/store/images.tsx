@@ -4,6 +4,7 @@ import la_mina from "@/public/la_mina.jpg"; */
 import colibri from "@/public/colibri.jpg";
 import huacachina from "@/public/huacachina.jpg";
 import cusco from "@/public/cusco.jpg";
+import lancha from "@/public/lancha.jpg";
 import { create } from "zustand";
 import type { StaticImageData } from "next/image";
 
@@ -24,6 +25,11 @@ export const useImageStore = create<ImageStore>((set) => ({
   images: [
     {
       src: paracas,
+      title: "Islas Ballestas",
+      location: "Paracas - Perú",
+    },
+    {
+      src: lancha,
       title: "Islas Ballestas",
       location: "Paracas - Perú",
     },
