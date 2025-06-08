@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@clerk/nextjs": "^6.21.0",
     "firebase": "^11.7.1",
     "keen-slider": "^6.8.6",
     "next": "15.3.1",

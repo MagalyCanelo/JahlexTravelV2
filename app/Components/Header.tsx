@@ -12,15 +12,26 @@ import Image from "next/image";
 import { useUserStore } from "../store/Usuario";
 import { FaHeart, FaUser } from "react-icons/fa";
 import { FaBagShopping } from "react-icons/fa6";
+import { useUser } from "@clerk/nextjs";
 
 const Header = (props: { className?: string; onClick?: () => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
-
+  const clerkUser = useUser();
   const pathname = usePathname();
   const router = useRouter();
   const user = useUserStore();
+
+  useEffect(() => {
+    user.setUser({
+      isAuthenticated: true,
+      email: clerkUser.user?.emailAddresses?.[0]?.emailAddress ?? "",
+      id: clerkUser.user?.id,
+      image: clerkUser.user?.imageUrl,
+      name: clerkUser.user?.username ??"",
+    });
+  }, []);
 
   return (
     <header
@@ -60,8 +71,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
               pathname === "/aboutus"
                 ? "oliva-c  transition-all"
                 : pathname !== "/"
-                ? "text-black oliva-c-hover  transition-all"
-                : "hover:border-b-2 hover:border-white "
+                  ? "text-black oliva-c-hover  transition-all"
+                  : "hover:border-b-2 hover:border-white "
             }
           >
             Sobre Nosotros
@@ -72,8 +83,8 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
               pathname === "/tours"
                 ? "oliva-c  transition-all"
                 : pathname !== "/"
-                ? "text-black oliva-c-hover  transition-all"
-                : "hover:border-b-2 hover:border-white "
+                  ? "text-black oliva-c-hover  transition-all"
+                  : "hover:border-b-2 hover:border-white "
             }
           >
             Tours
@@ -90,9 +101,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           >
             Contacto
           </Link>
-          {
-            user.user.isAuthenticated 
-          }
+          {user.user.isAuthenticated}
         </nav>
 
         <div className="flex flex-row text-sm lg:text-lg md:text-md justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
