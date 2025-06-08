@@ -111,7 +111,11 @@ const TourDetails = (props?: BaseTour) => {
           className={`w-full border ${
             error && !date ? "border-red-500" : "border-gray-300"
           } text-gray-600 rounded-md p-2 xl:h-12`}
-          min={new Date().toISOString().split("T")[0]}
+          min={
+            new Date(new Date().setDate(new Date().getDate() + 1))
+              .toISOString()
+              .split("T")[0]
+          } // Cambiado a mañana
           required
         />
         {error && !date && (

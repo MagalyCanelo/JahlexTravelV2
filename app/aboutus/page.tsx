@@ -1,12 +1,17 @@
-import React from 'react'
-import Header from '../Components/Header'
+import Authorizations from "../Components/Authorizations";
+import Footer from "../Components/Footer";
+import Header from "../Components/Header";
+import WhoWeAre from "./Components/WhoWeAre";
 
 function page() {
   return (
-    <div>
-        <Header className="bg-oliva-c" />
-    </div>
-  )
+    <>
+      <Header />
+      <WhoWeAre />
+      <Authorizations />
+      <Footer />
+    </>
+  );
 }
 
-export default page
+export default page;

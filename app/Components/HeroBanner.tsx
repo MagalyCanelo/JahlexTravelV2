@@ -1,4 +1,3 @@
-import { BsFillPlayCircleFill } from "react-icons/bs";
 import ActionButton from "./ActionButton";
 import ImageSlider from "./ImageSlider";
 import Header from "./Header";
