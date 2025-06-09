@@ -1,8 +1,7 @@
-import cusco from "@/public/cusco.jpg";
-import ib from "@/public/islas_ballestas.jpg";
+import cusco from "@/public/Destinos/cusco.jpg";
 import paracas from "@/public/paracas2.jpg";
-import ica from "@/public/huacachina.jpg";
-import cañete from "@/public/cañete.jpg";
+import ica from "@/public/huacachina2.jpg";
+import cañete from "@/public/Destinos/cañete.jpg";
 import nazca from "@/public/nazca2.jpg";
 import Image from "next/image";
 

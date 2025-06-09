@@ -1,4 +1,4 @@
-import cusco from "@/public/cusco.jpg";
+import cusco from "@/public/Destinos/cusco.jpg";
 import islas_ballestas from "@/public/islas_ballestas.jpg";
 import rnp from "@/public/rnp.jpg";
 import {

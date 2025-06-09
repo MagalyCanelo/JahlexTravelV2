@@ -4,12 +4,12 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 import React from "react";
 
-import municipalidad from "@/public/municipalidad.png";
-import dir_cetur from "@/public/dir_cetur.png";
-import agencia_registrada from "@/public/agencia_registrada.png";
-import sunat from "@/public/sunat.png";
-import prom_peru from "@/public/prom_peru.png";
-import ministerio_comercio from "@/public/ministerio_comercio.png";
+import municipalidad from "@/public/Autorizaciones/municipalidad.png";
+import dir_cetur from "@/public/Autorizaciones/dir_cetur.png";
+import agencia_registrada from "@/public/Autorizaciones/agencia_registrada.png";
+import sunat from "@/public/Autorizaciones/sunat.png";
+import prom_peru from "@/public/Autorizaciones/prom_peru.png";
+import ministerio_comercio from "@/public/Autorizaciones/ministerio_comercio.png";
 import Image from "next/image";
 
 // Logos

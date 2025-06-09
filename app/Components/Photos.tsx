@@ -1,20 +1,18 @@
 import Image from "next/image";
 import React from "react";
 
-import ib from "@/public/islas_ballestas.jpg";
-import moto_scooter from "@/public/moto_scooter.jpg";
-import lunahuana from "@/public/lunahuana.jpg";
-import roja_per from "@/public/roja_per.jpg";
-import tubular from "@/public/tubular.jpg";
-import trekking from "@/public/trekking.jpg";
-import bicicleta from "@/public/bicicleta.jpg";
-import cañete from "@/public/cañete.jpg";
-import pasajeros_avioneta from "@/public/pasajeros_avioneta.jpg";
-import pasajeros_lancha from "@/public/pasajeros_lancha.jpg";
-import minibuggy from "@/public/minibuggy.jpg";
-import brujas from "@/public/brujas.jpg";
-import sandboarding from "@/public/sandboarding.jpg";
-import cuatrimoto from "@/public/cuatrimoto.jpg";
+import moto_scooter from "@/public/Galeria/moto_scooter.jpg";
+import lunahuana from "@/public/Galeria/lunahuana.jpg";
+import roja_per from "@/public/Galeria/roja_per.jpg";
+import tubular from "@/public/Galeria/tubular.jpg";
+import trekking from "@/public/Galeria/trekking.jpg";
+import bicicleta from "@/public/Galeria/bicicleta.jpg";
+import pasajeros_avioneta from "@/public/Galeria/pasajeros_avioneta.jpg";
+import pasajeros_lancha from "@/public/Galeria/pasajeros_lancha.jpg";
+import minibuggy from "@/public/Galeria/minibuggy.jpg";
+import brujas from "@/public/Galeria/brujas.jpg";
+import sandboarding from "@/public/Galeria/sandboarding.jpg";
+import cuatrimoto from "@/public/Galeria/cuatrimoto.jpg";
 
 const DestinationsMasonry: React.FC = () => {
   return (
