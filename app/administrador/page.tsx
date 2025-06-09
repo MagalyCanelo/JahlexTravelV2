@@ -1,4 +1,4 @@
-import ListaTours from "./components/ListaTours";
+import ListaTours from "./Components/ListaTours";
 
 function page() {
   return (

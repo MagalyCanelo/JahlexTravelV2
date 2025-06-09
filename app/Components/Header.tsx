@@ -15,7 +15,7 @@ import { FiUser, FiHeart, FiShoppingBag } from "react-icons/fi";
 const Header = (props: { className?: string; onClick?: () => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false); // Estado para controlar la visibilidad del menú de usuario
-  const userMenuRef = useRef(null); // Referencia para el recuadro de opciones
+  const userMenuRef = useRef<HTMLDivElement>(null); // Aquí estamos especificando que userMenuRef es un div
   const clerkUser = useUser();
   const pathname = usePathname();
   const router = useRouter();

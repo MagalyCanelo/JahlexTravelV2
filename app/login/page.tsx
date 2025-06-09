@@ -110,7 +110,7 @@ function page() {
             href="/register"
             className="text-stone-500 font-semibold w-full text-center mt-2 mb-5"
           >
-            ¿No tienes cuenta?{" "}
+            ¿No tienes cuenta?
             <span className="font-bold text-black">Regístrate ahora</span>
           </Link>
         </form>

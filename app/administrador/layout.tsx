@@ -1,6 +1,8 @@
+// layouts/RootLayout.tsx
 import type { Metadata } from "next";
 import { Fredoka, Montserrat } from "next/font/google";
 import Link from "next/link";
+import NavLeft from "./Components/NavLeft"; // Importa NavLeft
 import "../globals.css";
 
 const montserratSans = Montserrat({
@@ -27,15 +29,28 @@ export default function RootLayout({
 }>) {
   return (
     <div className={`${montserratSans} ${fredokaSans} antialiased`}>
-      <header className="bg-oliva-o flex flex-row items-center justify-between fixed top-0 w-full p-4 text-white">
-        <h1 className="text-xl font-bold">Panel de Administrador</h1>
-        <div className="flex flex-row gap-4">
-          <Link href={"/administrador/"}>Inicio</Link>
-          <Link href={"/administrador/agregar"}>Agregar sitio turístico</Link>
-          <Link href={"/administrador/editar"}>Editar sitio turístico</Link>
-        </div>
-      </header>
-      {children}
+      <div className="flex">
+        {/* NavLeft */}
+        <NavLeft />
+
+        {/* Contenido principal */}
+        <main className="flex-1 ml-64 p-6">
+          {" "}
+          {/* Añadido ml-64 para dar espacio al NavLeft */}
+          <header className="bg-oliva-o flex flex-row items-center justify-between p-4 text-white">
+            <h1 className="text-xl font-bold">Panel de Administrador</h1>
+            <div className="flex flex-row gap-4">
+              <Link href={"/administrador/"}>Inicio</Link>
+              <Link href={"/administrador/agregar"}>
+                Agregar sitio turístico
+              </Link>
+              <Link href={"/administrador/editar"}>Editar sitio turístico</Link>
+            </div>
+          </header>
+          {/* Aquí se renderiza el contenido dinámico (children) */}
+          {children}
+        </main>
+      </div>
     </div>
   );
 }
