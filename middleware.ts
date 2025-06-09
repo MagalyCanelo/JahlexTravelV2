@@ -9,7 +9,7 @@ export default clerkMiddleware(async (auth, req) => {
 
     if (req.nextUrl.pathname.startsWith("/administrador")) {
       // Check custom role from metadata instead of organization role
-      const userRole = sessionClaims?.metadata.role;
+      const userRole = sessionClaims?.metadata?.role;
 
       if (userRole !== "admin") {
         return NextResponse.redirect(new URL("/404", req.url));
