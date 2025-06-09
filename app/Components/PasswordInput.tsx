@@ -1,5 +1,7 @@
 "use client";
 import React, { InputHTMLAttributes, useState } from "react";
+import { LuEye } from "react-icons/lu";
+import { TbLockPassword } from "react-icons/tb";
 
 interface PasswordInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -29,25 +31,27 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
         {label}
       </label>
 
-      <div className="relative">
+      <div
+        className={`w-full px-4 py-3 border-2 rounded-md focus:outline-none ${
+          error ? "border-red-500" : "border-oliva-c"
+        } transition-all duration-200 flex flex-row items-center gap-2`}
+      >
+        <button
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className=""
+        >
+          {showPassword ? <TbLockPassword /> : <LuEye />}
+        </button>
         <input
           id="password"
           name="password"
+          className="outline-none"
           type={showPassword ? "text" : "password"}
-          className={`w-full px-4 py-3 border-2 rounded-md focus:outline-none ${
-            error ? "border-red-500" : "border-oliva-c"
-          } transition-all duration-200`}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
           {...props}
         />
-        <button
-          type="button"
-          onClick={() => setShowPassword(!showPassword)}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2"
-        >
-          {showPassword ? "🙈" : "👁️"}
-        </button>
       </div>
 
       {error && <p className="mt-1 text-sm text-red-600">{error}</p>}

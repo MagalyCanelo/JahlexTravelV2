@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "@/public/logo.png";
 import EmailInput from "../Components/InputComponent";
 import PasswordInput from "../Components/PasswordInput";
@@ -11,14 +11,22 @@ import images from "@/public/acueductos2.jpg";
 import { logInWithFirebase } from "../actions/signinFirebase";
 import { useUserStore } from "../store/Usuario";
 import { useRouter } from "next/navigation";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getRedirectResult,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signInWithRedirect,
+} from "firebase/auth";
 import { auth } from "../config/config";
 import { createUserDoc } from "@/service/FirebaseService";
+import userplh from "@/public/userplh.png";
+import { SignInButton } from "@clerk/nextjs";
 
 function page() {
   const { setUser } = useUserStore();
 
   const router = useRouter();
+
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-dvh">
       <Image
@@ -50,7 +58,10 @@ function page() {
                 setUser({
                   id: user.uid || "",
                   email: user.email || "",
-                  name: user.displayName || "",
+                  image:
+                    user.photoURL ||
+                    "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
+                  name: user.displayName || user.email?.split("@")[0],
                   isAuthenticated: true,
                 });
                 createUserDoc(user.email!, "client").then(
@@ -59,7 +70,7 @@ function page() {
               }
             });
           }}
-          className="flex flex-col w-full  gap-0 px-32"
+          className="flex flex-col w-full  gap-0 lg:px-32 px-2"
         >
           <div className="flex flex-col gap-8 px-2">
             <EmailInput name="email" />
@@ -84,50 +95,17 @@ function page() {
             </div>
           </div>
           <div className="border-t-2 border-stone-300 relative w-full">
-            <span>a</span>
+            <span> </span>
             <p className="text-center text-stone-500 font-bold absolute -top-3 bg-white px-8 mx-auto left-0 right-0 w-fit">
               O
             </p>
           </div>
-          <button
-            onClick={() => {
-              const provider = new GoogleAuthProvider();
-              signInWithPopup(auth, provider)
-                .then((result) => {
-                  // This gives you a Google Access Token. You can use it to access the Google API.
-                  const credential =
-                    GoogleAuthProvider.credentialFromResult(result);
-                  const token = credential?.accessToken;
-                  // The signed-in user info.
-                  const user = result.user;
-                  // IdP data available using getAdditionalUserInfo(result)
-                  setUser({
-                    isAuthenticated: user.emailVerified,
-                    email: user.email ?? undefined,
-                    id: user.uid,
-                    name: user.displayName ?? undefined,
-                  });
-                  createUserDoc(user.email!, "client").then(
-                    () => user && router.push("/")
-                  );
-                  // ...
-                })
-                .catch((error) => {
-                  // Handle Errors here.
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  // The email of the user's account used.
-                  const email = error.customData.email;
-                  // The AuthCredential type that was used.
-                  const credential =
-                    GoogleAuthProvider.credentialFromError(error);
-                  // ...
-                });
-            }}
-            className="border border-stone-200 text-black w-fit p-4 rounded-lg shadow-md flex items-center gap-2 mx-auto my-2 hover:bg-[#f2ffe3] transition mb-4"
-          >
-            <FcGoogle size={32} />
-          </button>
+
+          <div className="border border-stone-200 shadow rounded-lg w-fit mt-4 mb-2 p-2 mx-auto">
+            <SignInButton forceRedirectUrl={"/"}>
+              <FcGoogle size={32} />
+            </SignInButton>
+          </div>
           <Link
             href="/register"
             className="text-stone-500 font-semibold w-full text-center mt-2 mb-5"

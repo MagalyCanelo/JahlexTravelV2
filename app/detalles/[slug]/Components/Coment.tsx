@@ -5,30 +5,29 @@ import { FaStar } from "react-icons/fa";
 
 function Coment(props: TourReview) {
   return (
-    <section className="border border-stone-100 shadow shadow-stone-500 rounded-lg text-black p-4">
-      <div>
-        {props.image !== "" ? (
-          <span>
-            {props.username
-              .split(" ")
-              .map((word) => word[0])
-              .join("")
-              .toUpperCase()}
-          </span>
-        ) : (
-          <Image src={props.image} alt="User image" />
-        )}
-      </div>
+    <section className="border w-full border-stone-100 shadow shadow-stone-200 rounded-lg text-black p-4 gap-2 flex flex-col">
       <div className="flex flex-row gap-2 text-yellow-500">
-        {Array.from({ length: 5 }).map((v) => {
-          return <FaStar />;
-        })}
+        {Array.from({ length: 5 }).map((_, index) => (
+          <FaStar
+            key={index}
+            size={20}
+            className={
+              index < props.qualification ? "text-yellow-500" : "text-gray-300"
+            }
+          />
+        ))}
       </div>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi
-        consequuntur facilis ut pariatur, modi impedit nam eaque minima iure
-        illo blanditiis iste quo unde incidunt. Ullam eos maxime optio dolore?
-      </p>
+      <p>{props.opinion}</p>
+      <div className="w-full border-t-1 pt-2 border-stone-300 flex flex-row gap-2 items-center">
+        <Image
+          src={props.image}
+          alt="User image"
+          width={1080}
+          height={1080}
+          className="h-8 w-8 rounded-full"
+        />
+        <span>{props.username}</span>
+      </div>
     </section>
   );
 }

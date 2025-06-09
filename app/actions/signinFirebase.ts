@@ -8,7 +8,6 @@ import {
 import { auth } from "../config/config";
 import { encriptPassword } from "@/service/SecurityServices";
 
-
 export async function signInWithFirebase(email: string, password: string) {
   encriptPassword(password).then(async (encryptedPassword) => {
     console.log("Encrypted Password:", encryptedPassword);
@@ -18,7 +17,7 @@ export async function signInWithFirebase(email: string, password: string) {
         email,
         encryptedPassword
       );
-      
+
       if (!userCredential.user.emailVerified) {
         await sendEmailVerification(userCredential.user, {
           url: process.env.NEXT_PUBLIC_URL || "http://localhost:3000",
@@ -44,27 +43,31 @@ export async function signInWithFirebase(email: string, password: string) {
 }
 
 export async function logInWithFirebase(email: string, password: string) {
-  try {
-    const encryptedPassword = await encriptPassword(password);
-    console.log("Encrypted Password:", encryptedPassword);
-    const userCredential = await signInWithEmailAndPassword(
-      auth,
-      email,
-      encryptedPassword
-    );
-    if (userCredential.user) {
-      return {
-        uid: userCredential.user.uid,
-        email: userCredential.user.email,
-        displayName: userCredential.user.displayName,
-        photoURL: userCredential.user.photoURL,
-        token: userCredential.user.getIdToken(),
-        isAuthenticated: userCredential.user.emailVerified,
-      };
+  const encryptedPassword = await encriptPassword(password).then(
+    async (encryptedPassword) => {
+      try {
+        console.log("Encrypted Password:", encryptedPassword);
+        const userCredential = await signInWithEmailAndPassword(
+          auth,
+          email,
+          encryptedPassword
+        );
+        if (userCredential.user) {
+          return {
+            uid: userCredential.user.uid,
+            email: userCredential.user.email,
+            displayName: userCredential.user.displayName,
+            photoURL: userCredential.user.photoURL,
+            token: userCredential.user.getIdToken(),
+            isAuthenticated: userCredential.user.emailVerified,
+          };
+        }
+        return null;
+      } catch (error) {
+        console.error("Error logging in with Firebase:", error);
+        throw error;
+      }
     }
-    return null;
-  } catch (error) {
-    console.error("Error logging in with Firebase:", error);
-    throw error;
-  }
+  );
+  return encryptedPassword;
 }
