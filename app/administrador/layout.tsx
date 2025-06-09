@@ -2,8 +2,13 @@
 import type { Metadata } from "next";
 import { Fredoka, Montserrat } from "next/font/google";
 import Link from "next/link";
+<<<<<<< HEAD
+
+=======
 import NavLeft from "./components/NavLeft";
+>>>>>>> 1b4966f61da6bbd4079e3f329ee8a036da2d07df
 import "../globals.css";
+import NavLeft from "./components/NavLeft";
 
 const montserratSans = Montserrat({
   subsets: ["latin"],

@@ -1,4 +1,8 @@
 import TurForm from "../components/TurForm";
+<<<<<<< HEAD
+
+=======
+>>>>>>> 1b4966f61da6bbd4079e3f329ee8a036da2d07df
 
 function page() {
   return (
