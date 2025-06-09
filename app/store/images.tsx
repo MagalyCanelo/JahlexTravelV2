@@ -2,10 +2,14 @@ import perfil_cristo from "@/public/Hero/perfil_cristo.jpg";
 import colibri from "@/public/Hero/colibri.jpg";
 import cañete from "@/public/Hero/cañete.jpg";
 import huacachina from "@/public/Hero/huacachina.jpg";
+import tubular from "@/public/Hero/tubular.jpg";
 import machu_picchu from "@/public/Hero/machu_picchu.jpg";
 import lancha from "@/public/Hero/lancha.jpg";
 import acueductos from "@/public/Hero/acueductos.jpg";
 import montaña7colores from "@/public/Hero/montaña7colores.jpg";
+
+import canotaje from "@/public/Hero/canotaje.jpg";
+
 import { create } from "zustand";
 import type { StaticImageData } from "next/image";
 
@@ -26,7 +30,7 @@ export const useImageStore = create<ImageStore>((set) => ({
   images: [
     {
       src: lancha,
-      title: "Islas Ballestas",
+      title: "Lancha Moderna",
       location: "Paracas - Perú",
     },
     {
@@ -36,22 +40,32 @@ export const useImageStore = create<ImageStore>((set) => ({
     },
     {
       src: huacachina,
-      title: "Huacachina",
+      title: "Oasis de Huacachina",
+      location: "Ica - Perú",
+    },
+    {
+      src: tubular,
+      title: "Tubulares en Huacachina",
       location: "Ica - Perú",
     },
     {
       src: colibri,
-      title: "Líneas de Nasca",
-      location: "Nasca - Perú",
+      title: "Líneas de Nazca",
+      location: "Nazca - Perú",
     },
     {
       src: acueductos,
-      title: "Acueductos",
-      location: "Cañete - Perú",
+      title: "Acueductos de Cantalloc",
+      location: "Nazca - Perú",
     },
     {
       src: cañete,
-      title: "Cañete",
+      title: "Río Cañete",
+      location: "Cañete - Perú",
+    },
+    {
+      src: canotaje,
+      title: "Canotaje en el Río Cañete",
       location: "Cañete - Perú",
     },
     {
