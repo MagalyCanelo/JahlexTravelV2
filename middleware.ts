@@ -1,33 +1,26 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
-import { NextRequest, NextResponse } from "next/server";
-import { getAuth } from "@clerk/nextjs/server";
+import { NextResponse } from "next/server";
 
-const isAdminRoute = createRouteMatcher([
-  "/administrador",
-  "/administrador/(.*)",
-]);
+const isProtectedRoute = createRouteMatcher(["/administrador(.*)"]);
 
 export default clerkMiddleware(async (auth, req) => {
-  if (isAdminRoute(req)) {
-    const { has } = await auth.protect();
+  if (isProtectedRoute(req)) {
+    const { sessionClaims } = await auth.protect();
 
-    // redirect to /administrador if the user is admin
-    if (
-      req.nextUrl.pathname === "/administrador" ||
-      req.nextUrl.pathname.startsWith("/administrador/")
-    ) {
-      const isAdmin = has({ role: "admin" });
-      if (!isAdmin) return NextResponse.redirect(new URL("/404", req.url));
-      return NextResponse.redirect(new URL("/administrador", req.url));
+    if (req.nextUrl.pathname.startsWith("/administrador")) {
+      // Check custom role from metadata instead of organization role
+      const userRole = sessionClaims?.metadata.role;
+
+      if (userRole !== "admin") {
+        return NextResponse.redirect(new URL("/404", req.url));
+      }
     }
   }
 });
 
 export const config = {
   matcher: [
-    // Skip Next.js internals and all static files, unless found in search params
     "/((?!_next|[^?]*\\.(?:html?|css|js(?!on)|jpe?g|webp|png|gif|svg|ttf|woff2?|ico|csv|docx?|xlsx?|zip|webmanifest)).*)",
-    // Always run for API routes
     "/(api|trpc)(.*)",
   ],
 };

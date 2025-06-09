@@ -9,7 +9,7 @@ import SidebarMenu from "./SidebarMenu";
 import TopBar from "./TopBar";
 import Image from "next/image";
 import { useUserStore } from "../store/Usuario";
-import { useUser } from "@clerk/nextjs";
+import { SignedOut, SignOutButton, useUser } from "@clerk/nextjs";
 import { FiUser, FiHeart, FiShoppingBag } from "react-icons/fi";
 
 const Header = (props: { className?: string; onClick?: () => void }) => {
@@ -47,7 +47,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
 
   useEffect(() => {
     user.setUser({
-      isAuthenticated: true,
+      isAuthenticated: clerkUser.user?.username !== "",
       email: clerkUser.user?.emailAddresses?.[0]?.emailAddress ?? "",
       id: clerkUser.user?.id,
       image: clerkUser.user?.imageUrl,
@@ -172,9 +172,16 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
                       <li className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
                         Mis Reseñas
                       </li>
-                      <li className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
-                        Cerrar Sesión
-                      </li>
+                      <SignOutButton redirectUrl="/">
+                        <button
+                          onClick={() => {
+                            user.clearUser();
+                          }}
+                          className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
+                        >
+                          Cerrar Sesión
+                        </button>
+                      </SignOutButton>
                     </ul>
                   </div>
                 )}
