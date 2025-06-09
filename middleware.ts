@@ -12,7 +12,7 @@ export default clerkMiddleware(async (auth, req) => {
       const userRole = sessionClaims?.metadata?.role;
 
       if (userRole !== "admin") {
-        return NextResponse.redirect(new URL("/404", req.url));
+        return NextResponse.redirect(new URL("/noadmitido", req.url));
       }
     }
   }
