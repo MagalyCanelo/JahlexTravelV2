@@ -1,27 +1,49 @@
 "use client";
-
+import { useState, useEffect, useRef } from "react";
 import logo from "@/public/logo.png";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 import { IoMenu } from "react-icons/io5";
 import ActionButton from "./ActionButton";
 import SidebarMenu from "./SidebarMenu";
 import TopBar from "./TopBar";
 import Image from "next/image";
 import { useUserStore } from "../store/Usuario";
-import { FaHeart, FaUser } from "react-icons/fa";
-import { FaBagShopping } from "react-icons/fa6";
 import { useUser } from "@clerk/nextjs";
+import { FiUser, FiHeart, FiShoppingBag } from "react-icons/fi";
 
 const Header = (props: { className?: string; onClick?: () => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const [userMenuOpen, setUserMenuOpen] = useState(false); // Estado para controlar la visibilidad del menú de usuario
+  const userMenuRef = useRef(null); // Referencia para el recuadro de opciones
   const clerkUser = useUser();
   const pathname = usePathname();
   const router = useRouter();
   const user = useUserStore();
+
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  const handleUserClick = () => {
+    setUserMenuOpen((prev) => !prev); // Alterna la visibilidad del menú de usuario
+  };
+
+  // Cerrar el menú si se hace clic fuera de él
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        userMenuRef.current &&
+        !userMenuRef.current.contains(event.target as Node)
+      ) {
+        setUserMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     user.setUser({
@@ -29,7 +51,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
       email: clerkUser.user?.emailAddresses?.[0]?.emailAddress ?? "",
       id: clerkUser.user?.id,
       image: clerkUser.user?.imageUrl,
-      name: clerkUser.user?.username ??"",
+      name: clerkUser.user?.username ?? "",
     });
   }, []);
 
@@ -37,7 +59,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
     <header
       className={`w-full ${
         pathname !== "/"
-          ? "!bg-stone-50 relative top-0  text-black"
+          ? "!bg-stone-50 relative top-0 text-black"
           : "absolute top-0 text-white"
       } z-50 ${props.className} transition-all duration-100 ease-in-out `}
     >
@@ -60,7 +82,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             className={
               pathname === "/"
                 ? "border-b-2 border-white px-2 transition-all"
-                : "oliva-c-hover "
+                : "oliva-c-hover"
             }
           >
             Inicio
@@ -71,7 +93,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
               pathname === "/aboutus"
                 ? "oliva-c  transition-all"
                 : pathname !== "/"
-                  ? "text-black oliva-c-hover  transition-all"
+                  ? "text-black oliva-c-hover transition-all"
                   : "hover:border-b-2 hover:border-white "
             }
           >
@@ -83,7 +105,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
               pathname === "/tours"
                 ? "oliva-c  transition-all"
                 : pathname !== "/"
-                  ? "text-black oliva-c-hover  transition-all"
+                  ? "text-black oliva-c-hover transition-all"
                   : "hover:border-b-2 hover:border-white "
             }
           >
@@ -101,16 +123,15 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           >
             Contacto
           </Link>
-          {user.user.isAuthenticated}
         </nav>
 
-        <div className="flex flex-row text-sm lg:text-lg md:text-md justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
-          {/*  <FaLanguage  /> */}
+        <div className="flex flex-row text-sm pr-1 lg:text-lg md:text-md justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
           <IoMenu
             onClick={toggleMenu}
             className="oliva-c text-3xl lg:hidden cursor-pointer"
           />
-          <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />{" "}
+          <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+
           {!user.user.isAuthenticated ? (
             <div className="flex flex-row gap-4">
               <ActionButton
@@ -130,9 +151,38 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
             </div>
           ) : (
             <>
-              <FaUser />
-              <FaHeart />
-              <FaBagShopping />
+              {/* Ícono de usuario con opciones */}
+              <div className="relative" ref={userMenuRef}>
+                <FiUser
+                  className="h-6 w-6 cursor-pointer"
+                  onClick={handleUserClick} // Abre o cierra el menú
+                />
+                {userMenuOpen && (
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-36 bg-white border rounded-lg shadow-lg z-10">
+                    {/* "Cachito" en la parte superior */}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 top-[-8px] w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white z-20" />
+
+                    <ul className="text-[13px] font-medium text-gray-600">
+                      <li className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                        Mi Cuenta
+                      </li>
+                      <li className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                        Mis Compras
+                      </li>
+                      <li className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                        Mis Reseñas
+                      </li>
+                      <li className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                        Cerrar Sesión
+                      </li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+              <FiHeart className="h-6 w-6" />
+              <Link href="/carrito/uiddelusuario">
+                <FiShoppingBag className="h-6 w-6 cursor-pointer" />
+              </Link>
             </>
           )}
         </div>

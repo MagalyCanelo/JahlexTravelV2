@@ -1,7 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import React from "react";
-import { LuClock4, LuHeart, LuMapPin } from "react-icons/lu";
+import { LuClock4, LuMapPin } from "react-icons/lu";
+import { FiHeart } from "react-icons/fi";
 import { BaseTour } from "../interface/Tour";
 import { useToursStore } from "../store/ToursStore";
 import ActionButton from "./ActionButton";
@@ -27,7 +28,7 @@ export const TourCard: React.FC<TourCardProps> = ({ tour, isStatic }) => {
         <ImageSlider images={tour.images} isStatic={isStatic} />
 
         <button className="absolute top-2 right-2 bg-white p-1 rounded-full z-10">
-          <LuHeart className="h-5 w-5 oliva-o" />
+          <FiHeart className="h-5 w-5 oliva-o" />
         </button>
 
         <span className="absolute bottom-2 left-2 bg-white oliva-o text-xs px-2 py-1 rounded-full z-10 font-medium">
