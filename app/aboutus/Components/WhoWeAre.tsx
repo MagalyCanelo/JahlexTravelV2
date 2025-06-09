@@ -9,7 +9,7 @@ const QuiénesSomos = () => {
     <div className="flex flex-col lg:flex-row justify-center items-center py-4 px-4 lg:px-6 xl:px-8 xl:pr-10 lg:pr-8 lg:pt-4">
       {/* Imagen a la izquierda */}
       <div className="flex justify-center items-center w-full">
-        <div className="flex-shrink-0 w-[450px] h-[450px] lg:w-[550px] lg:h-[575px]">
+        <div className="flex-shrink-0 w-full max-w-[550px] h-[490px] lg:h-[575px]">
           <Image
             src={islas_ballestas.src}
             alt="Logo de la empresa"
