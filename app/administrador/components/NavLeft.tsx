@@ -1,33 +1,22 @@
-"use client";
-import { useState } from "react";
+// components/NavLeft.tsx
 import { LuMap, LuClipboardList, LuSettings, LuLogOut } from "react-icons/lu";
 import { HiXCircle } from "react-icons/hi";
 import { FaHome } from "react-icons/fa";
 import Image from "next/image";
-import logo from "@/public/logo.png"; // Logo grande
-import icon from "@/public/icono.png"; // Icono pequeño
+import logo from "@/public/logo.png";
 
 export default function NavLeft() {
-  const [isOpen, setIsOpen] = useState(false); // Estado que controla si el sidebar está abierto o cerrado
-
   return (
-    <div
-      className={`w-${isOpen ? "64" : "20"} h-screen bg-white border-r border-gray-200 shadow-sm flex flex-col justify-between group hover:w-64 transition-all duration-300 ease-in-out`}
-    >
+    <div className="w-20 h-screen bg-white border-r border-gray-200 shadow-sm flex flex-col justify-between group hover:w-64 transition-all duration-300 ease-in-out">
       <div>
         <div className="p-6 overflow-hidden flex justify-center items-center">
-          {/* Cambiar entre el logo y el icono */}
-          <div className="w-full flex justify-center">
-            {/* Alternar entre el logo y el icono */}
-            <Image
-              src={isOpen ? logo.src : icon.src} // Si está abierto, muestra el logo; si está cerrado, muestra el icono
-              alt={isOpen ? "Logo de la empresa" : "Icono de la empresa"}
-              className="transition-all duration-300 ease-in-out" // Transición suave
-              height={isOpen ? 100 : 40} // Diferente tamaño para el logo y el icono
-              width={isOpen ? 100 : 40} // Ajustar el tamaño
-              onClick={() => setIsOpen(!isOpen)} // Permite alternar entre abierto y cerrado al hacer clic
-            />
-          </div>
+          <Image
+            src={logo.src}
+            alt="Logo de la empresa"
+            className="lg:w-50 w-60 xl:w-65"
+            height={1080}
+            width={1080}
+          />
         </div>
 
         {/* Menú principal */}
@@ -67,11 +56,11 @@ function NavItem({
   return (
     <button
       className={`relative flex items-center px-3 py-2 rounded-lg text-sm font-medium transition-all gap-4
-        ${active ? "bg-[#f4fde9] text-[#519100]" : "text-gray-600 hover:bg-gray-100"}
+        ${active ? "bg-[[#f2ffe3] oliva-o" : "text-gray-600 hover:bg-gray-100"}
         ${danger ? "text-red-500 hover:bg-red-100" : ""} group`}
     >
       {/* Icono con color personalizado */}
-      <span className="text-gray-700 group-hover:text-[#519100] transition-colors duration-300">
+      <span className="text-gray-700 group-hover:text-[#588f10] transition-colors duration-300">
         {icon}
       </span>
 
