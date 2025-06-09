@@ -12,9 +12,12 @@ export default clerkMiddleware(async (auth, req) => {
     const { has } = await auth.protect();
 
     // redirect to /administrador if the user is admin
-    if (req.nextUrl.pathname === "/administrador" || req.nextUrl.pathname.startsWith("/administrador/")) {
+    if (
+      req.nextUrl.pathname === "/administrador" ||
+      req.nextUrl.pathname.startsWith("/administrador/")
+    ) {
       const isAdmin = has({ role: "admin" });
-      if (!isAdmin) return new NextResponse("Unauthorized", { status: 401 });
+      if (!isAdmin) return NextResponse.redirect(new URL("/404", req.url));
       return NextResponse.redirect(new URL("/administrador", req.url));
     }
   }
