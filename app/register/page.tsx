@@ -7,7 +7,7 @@ import PasswordInput from "../Components/PasswordInput";
 import Link from "next/link";
 import ActionButton from "../Components/ActionButton";
 import { FcGoogle } from "react-icons/fc";
-import images from "@/public/acueductos2.jpg";
+import images from "@/public/Hero/acueductos2.jpg";
 import { signInWithFirebase } from "../actions/signinFirebase";
 import { useRouter } from "next/navigation";
 import { createUserDoc } from "@/service/FirebaseService";
