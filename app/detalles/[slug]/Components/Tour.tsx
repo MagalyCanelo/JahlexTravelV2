@@ -58,7 +58,7 @@ function Tour(props: { tourid: string }) {
   useEffect(() => {
     Promise.all([
       getOneTour(props.tourid),
-      getUserPurchases(user.user.email!),
+      getUserPurchases(user.user.id!),
       getAllTourComments(props.tourid),
     ]).then(([tourData, purchases, comments]) => {
       setDataTour(tourData!);
@@ -137,7 +137,8 @@ function Tour(props: { tourid: string }) {
                       opinion: formData.get("opinion")?.toString() ?? "",
                       qualification: qualification,
                     },
-                    props.tourid
+                    props.tourid,
+                    user.user.id!
                   ).then((v) => alert("Completado"));
                 }}
                 className="bg-white text-black mb-8 flex flex-col gap-4 w-full p-8 shadow-md rounded-lg"

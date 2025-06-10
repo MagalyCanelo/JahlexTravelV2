@@ -1,15 +1,18 @@
 "use client";
 import { ShoppingCarTour } from "@/app/interface/Tour";
+import { useUserStore } from "@/app/store/Usuario";
 import rnp from "@/public/rnp.jpg";
 import { getUserShoppingCar } from "@/service/FirebaseService";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function ShoppingDetails() {
+  const { user } = useUserStore();
+
   const [userShoppingCar, setUserShoppingCar] =
     useState<ShoppingCarTour | null>(null);
   useEffect(() => {
-    getUserShoppingCar("123456").then((v) => {
+    getUserShoppingCar(user.id!).then((v) => {
       console.log(v);
       setUserShoppingCar(v);
     });

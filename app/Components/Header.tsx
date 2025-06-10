@@ -47,11 +47,11 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
 
   useEffect(() => {
     user.setUser({
-      isAuthenticated: clerkUser.user?.username !== "",
-      email: clerkUser.user?.emailAddresses?.[0]?.emailAddress ?? "",
-      id: clerkUser.user?.id,
-      image: clerkUser.user?.imageUrl,
-      name: clerkUser.user?.username ?? "",
+      isAuthenticated: clerkUser.user!.username !== "",
+      email: clerkUser.user!.emailAddresses![0]!.emailAddress ?? "",
+      id: clerkUser.user!.id,
+      image: clerkUser.user!.imageUrl,
+      name: clerkUser.user!.username ?? "",
     });
   }, []);
 
@@ -162,16 +162,16 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
                     {/* "Cachito" en la parte superior */}
                     <div className="absolute left-1/2 transform -translate-x-1/2 top-[-8px] w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white z-20" />
 
-                    <ul className="text-[13px] font-medium text-gray-600">
-                      <li className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                    <ul className="text-[13px] font-medium flex flex-col text-gray-600">
+                      <Link href={`/micuenta/${user.user!.id}`} className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
                         Mi Cuenta
-                      </li>
-                      <li className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                      </Link>
+                      <Link href={`/compras/${user.user!.id}`} className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
                         Mis Compras
-                      </li>
-                      <li className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                      </Link>
+                      <Link href={`/resenas/${user.user!.id}`} className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
                         Mis Reseñas
-                      </li>
+                      </Link>
                       <SignOutButton redirectUrl="/">
                         <button
                           onClick={() => {
@@ -187,7 +187,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
                 )}
               </div>
               <FiHeart className="h-6 w-6" />
-              <Link href="/carrito/uiddelusuario">
+              <Link href={`/carrito/${user.user.id}`}>
                 <FiShoppingBag className="h-6 w-6 cursor-pointer" />
               </Link>
             </>

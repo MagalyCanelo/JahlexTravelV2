@@ -1,6 +1,7 @@
 "use client";
 import { ShoppingCarTour } from "@/app/interface/Tour";
 import { useShoppingCar, useToursStore } from "@/app/store/ToursStore";
+import { useUserStore } from "@/app/store/Usuario";
 import {
   cleanTourFromUserShoppingCar,
   getUserShoppingCar,
@@ -14,8 +15,10 @@ function ToursTable() {
   const [userShoppingCar, setUserShoppingCar] =
     useState<ShoppingCarTour | null>(null);
 
+  const { user } = useUserStore();
+
   useEffect(() => {
-    getUserShoppingCar("123456").then((v) => {
+    getUserShoppingCar(user.id!).then((v) => {
       setUserShoppingCar(v);
       shoppingCar.setTours(v?.tours ?? []);
     });
