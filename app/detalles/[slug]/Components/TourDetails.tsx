@@ -1,6 +1,7 @@
 "use client";
 import { BaseTour } from "@/app/interface/Tour";
 import { useToursStore } from "@/app/store/ToursStore";
+import { useUserStore } from "@/app/store/Usuario";
 import { addTourToUserShoppingCar } from "@/service/FirebaseService";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -13,6 +14,7 @@ const TourDetails = (props?: BaseTour) => {
   const { selectedTour, setSelectedTour } = useToursStore();
   const [hour, setHour] = useState(selectedTour?.schedule[0]);
   const router = useRouter();
+  const {user} = useUserStore();
 
   const handleReservation = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,10 +33,11 @@ const TourDetails = (props?: BaseTour) => {
     addTourToUserShoppingCar(
       selectedTour,
       quantity,
-      "123456",
+      user.id!,
       selectedTour.priceOffer,
       date,
-      hour
+      hour,
+      
     );
     router.push("/pago/1");
   };

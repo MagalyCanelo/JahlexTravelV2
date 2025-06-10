@@ -5,6 +5,7 @@ import {
   ShoppingCarTour,
   TourReview,
 } from "@/app/interface/Tour";
+import { User } from "@clerk/nextjs/server";
 import {
   arrayUnion,
   collection,
@@ -94,8 +95,8 @@ export async function getUserShoppingCar(userId: string) {
   }
 }
 
-export async function createUserDoc(email: string, role: string) {
-  const ref = doc(db, `Users/${email}`);
+export async function createUserDoc(uid: string, role: string) {
+  const ref = doc(db, `Users/${uid}`);
   try {
     // Check if user already exists
     const docSnap = await getDoc(ref);
@@ -105,7 +106,6 @@ export async function createUserDoc(email: string, role: string) {
     }
 
     const docData = {
-      email,
       role,
       createdAt: new Date().toISOString(),
     };
@@ -132,8 +132,8 @@ export async function getTourComments(tourId: string) {
   }
 }
 
-export async function addTourComment(comment: TourReview, tour: string) {
-  const ref = doc(db, `tours/${tour}/comments/${comment.username}`);
+export async function addTourComment(comment: TourReview, tour: string, uid:string) {
+  const ref = doc(db, `tours/${tour}/comments/${uid}`);
   try {
     const docData = {
       ...comment,
