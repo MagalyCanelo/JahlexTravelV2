@@ -6,61 +6,72 @@ import { useImageStore } from "../store/images";
 
 const ImageSlider: React.FC = () => {
   const [current, setCurrent] = useState(0);
-  const imageStore = useImageStore((state) => state.images);
-  const images = imageStore.map((image) => ({
-    src: image.src,
-    title: image.title,
-    location: image.location,
+  const [prev, setPrev] = useState<number | null>(null);
+  const imageStore = useImageStore((s) => s.images);
+  const images = imageStore.map((img) => ({
+    src: img.src,
+    title: img.title,
+    location: img.location,
   }));
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % images.length);
+    if (images.length < 2) return;
+
+    const iv = setInterval(() => {
+      setPrev(current);
+      setCurrent((c) => (c + 1) % images.length);
     }, 5000);
+    return () => clearInterval(iv);
+  }, [images.length, current]);
 
-    return () => clearInterval(interval);
-  }, [images]);
-
-  const { src, title, location } = images[current];
+  const currImg = images[current];
+  const prevImg = prev !== null ? images[prev] : null;
 
   return (
-    <div className="absolute left-0 right-0 w-full h-full mx-auto overflow-hidden bg-black">
-      <div
-        key={typeof src === "string" ? src : src.src}
-        className="w-full h-full transition-transform duration-[9000ms]"
+    <div className="relative w-full h-full overflow-hidden bg-black">
+      <style>
+        {`
+          @keyframes scaleUp {
+            from { transform: scale(1); }
+            to { transform: scale(1.08); }
+          }
+        `}
+      </style>
+      {prevImg && (
+        <Image
+          key={`prev-${prev}`}
+          src={prevImg.src}
+          alt={prevImg.title}
+          fill
+          priority
+          style={{
+            transform: "scale(1.08)",
+            animation: "scaleUp 9s linear infinite",
+          }}
+          className="absolute inset-0 object-cover transition-opacity duration-1000 animate-fade-out scaleUp"
+        />
+      )}
+      <Image
+        key={`curr-${current}`}
+        src={currImg.src}
+        alt={currImg.title}
+        fill
+        priority
         style={{
           transform: "scale(1.08)",
           animation: "scaleUp 9s linear infinite",
         }}
-      >
-        <style>
-          {`
-          @keyframes scaleUp {
-        from { transform: scale(1); }
-        to { transform: scale(1.08); }
-          }
-          `}
-        </style>
-        <Image
-          priority
-          src={src}
-          alt={title}
-          width={1080}
-          height={1080}
-          className="w-full h-full object-cover transition-opacity duration-1000 ease-in-out opacity-82 -z-10"
-        />
-      </div>
+        className="absolute inset-0 object-cover transition-opacity duration-1000 animate-fade-in scaleUp"
+      />
 
-      {/* Info box */}
-      <div className="absolute bottom-3 left-3 bg-white/80 text-black pl-2 pr-4 py-1 rounded-[20px] max-w-[80%] flex items-center gap-2">
+      <div className="absolute bottom-3 left-3 bg-white/80 text-black pl-2 pr-4 py-1 rounded-2xl max-w-[80%] flex items-center gap-2 z-10">
         <FaMapMarkerAlt className="text-[#ff2d2e] text-2xl" />
-        <div className="text-justify">
-          <span className="text-sm font-semibold">{title}</span>
-          <p className="text-xs">{location}</p>
+        <div>
+          <span className="text-sm font-semibold">{currImg.title}</span>
+          <p className="text-xs">{currImg.location}</p>
         </div>
       </div>
     </div>
   );
 };
-
 export default ImageSlider;
