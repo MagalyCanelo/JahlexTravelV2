@@ -46,14 +46,24 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
   }, []);
 
   useEffect(() => {
-    user.setUser({
-      isAuthenticated: clerkUser.user!.username !== "",
-      email: clerkUser.user!.emailAddresses![0]!.emailAddress ?? "",
-      id: clerkUser.user!.id,
-      image: clerkUser.user!.imageUrl,
-      name: clerkUser.user!.username ?? "",
-    });
-  }, []);
+    if (clerkUser.user) {
+      user.setUser({
+      isAuthenticated: true,
+      email: clerkUser.user.emailAddresses?.[0]?.emailAddress ?? "",
+      id: clerkUser.user.id,
+      image: clerkUser.user.imageUrl,
+      name: clerkUser.user.username ?? "",
+      });
+    } else {
+      user.setUser({
+      isAuthenticated: false,
+      email: "",
+      id: "",
+      image: "",
+      name: "",
+      });
+    }
+  }, [clerkUser.user]);
 
   return (
     <header
