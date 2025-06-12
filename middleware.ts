@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 const isProtectedRoute = createRouteMatcher(["/administrador(.*)","/micuenta(.*)","/compras(.*)","/resenas(.*)"]);
 
-export default clerkMiddleware(async (auth, req) => {
+/* export default clerkMiddleware(async (auth, req) => {
   if (isProtectedRoute(req)) {
     const { sessionClaims } = await auth.protect();
 
@@ -16,7 +16,7 @@ export default clerkMiddleware(async (auth, req) => {
       }
     }
   }
-});
+}); */
 
 export const config = {
   matcher: [
