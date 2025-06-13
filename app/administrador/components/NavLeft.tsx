@@ -98,7 +98,9 @@ function NavItem({
     >
       {/* Icono con color personalizado */}
       <span
-        className={`transition-colors duration-300 ${active ? "text-[#588f10]" : "text-gray-600"} ${danger && active ? "text-white" : ""}`}
+        className={`transition-colors duration-300 ${active ? "text-[#588f10]" : "text-gray-600"} 
+          ${danger ? "group-hover:text-red-500" : ""} // Rojo solo cuando el hover está activado
+        `}
       >
         {icon}
       </span>
