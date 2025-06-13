@@ -8,7 +8,7 @@ import ActionButton from "./ActionButton";
 import SidebarMenu from "./SidebarMenu";
 import TopBar from "./TopBar";
 import Image from "next/image";
-import { useUserStore } from "../store/Usuario";
+import { User, useUserStore } from "../store/Usuario";
 import { SignedOut, SignOutButton, useAuth, useUser } from "@clerk/nextjs";
 import { FiUser, FiHeart, FiShoppingBag } from "react-icons/fi";
 import { signInWithCustomToken } from "firebase/auth";
@@ -52,12 +52,13 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
     integrateFirebase();
     if (clerkUser.user) {
       user.setUser({
-        isAuthenticated: true,
-        email: clerkUser.user.emailAddresses?.[0]?.emailAddress!,
         id: clerkUser.user.id,
+        email: clerkUser.user.emailAddresses[0]?.emailAddress || "Sin datos",
+        name: clerkUser.user.fullName || "Sin datos",
         image: clerkUser.user.imageUrl,
-        name: clerkUser.user.fullName!,
-      });
+        isAuthenticated: true,
+        phone: clerkUser.user.phoneNumbers[0]?.phoneNumber || "Sin datos",
+      } as User);
     } else {
       user.setUser({
         isAuthenticated: false,
@@ -74,7 +75,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
       const token = await clerkAuth.getToken({
         template: "integration_firebase",
       });
-      
+
       if (!token) {
         console.error("No Firebase token available");
         return;

@@ -9,7 +9,7 @@ import ActionButton from "../Components/ActionButton";
 import { FcGoogle } from "react-icons/fc";
 import images from "@/public/Hero/acueductos2.jpg";
 
-import { useUserStore } from "../store/Usuario";
+import { User, useUserStore } from "../store/Usuario";
 import { useRouter } from "next/navigation";
 import { createUserDoc } from "@/service/FirebaseService";
 import { SignInButton, useAuth, useSignIn } from "@clerk/nextjs";
@@ -20,7 +20,6 @@ function page() {
   const { setUser } = useUserStore();
 
   const router = useRouter();
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { signIn, setActive } = useSignIn();
@@ -51,14 +50,14 @@ function page() {
       const userCred = await signInWithCustomToken(auth, firebaseToken);
       const fbUser = userCred.user;
 
-      console.log("Firebase user:", {
-        uid: fbUser.uid,
+      setUser({
+        id: fbUser.uid,
         email: fbUser.email,
-        displayName: fbUser.displayName,
-        photoURL: fbUser.photoURL,
-        token: await fbUser.getIdToken(),
+        name: fbUser.displayName,
+        image: fbUser.photoURL,
         isAuthenticated: fbUser.emailVerified,
-      });
+        phone: fbUser.phoneNumber,
+      } as User);
     } catch (err: any) {
       console.error(err);
       setError(err.message || "Error al iniciar sesión");
