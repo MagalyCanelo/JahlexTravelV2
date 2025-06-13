@@ -37,7 +37,7 @@ const TourDetails = (props?: BaseTour) => {
       selectedTour.priceOffer,
       date,
       hour,
-      
+      language
     );
     router.push("/pago/1");
   };

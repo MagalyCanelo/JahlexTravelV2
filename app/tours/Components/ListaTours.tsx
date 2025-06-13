@@ -6,16 +6,19 @@ import { useEffect, useState } from "react";
 import { LuSearch } from "react-icons/lu";
 import DestinoFilter from "./DestinoFilter";
 import { getTours } from "@/service/FirebaseService";
+import { useToursStore } from "@/app/store/ToursStore";
 
 function ListaTours() {
   const [search, setSearch] = useState("");
   const [listaTours, setListaTours] = useState<BaseTour[]>([]);
+  const { setTours } = useToursStore();
 
-  useEffect(()=>{
+  useEffect(() => {
     getTours().then((tours) => {
+      setTours(tours as BaseTour[]);
       return setListaTours(tours as BaseTour[]);
     });
-  },[])
+  }, []);
 
   return (
     <div className="bg-stone-50 pt-2">

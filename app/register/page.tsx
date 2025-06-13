@@ -11,15 +11,38 @@ import images from "@/public/Hero/acueductos2.jpg";
 import { signInWithFirebase } from "../actions/signinFirebase";
 import { useRouter } from "next/navigation";
 import { createUserDoc } from "@/service/FirebaseService";
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithCustomToken,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth } from "../config/config";
+
+import { useAuth, useSignUp, useUser } from "@clerk/nextjs";
 import { useUserStore } from "../store/Usuario";
 
 function page() {
   const [onError, setOnError] = React.useState<string | null>(null);
   const router = useRouter();
   const { setUser } = useUserStore();
+  const { isLoaded, signUp, setActive } = useSignUp();
 
+  const handleSubmit = async (email: string, password: string) => {
+    if (!isLoaded) return;
+
+    try {
+      await signUp.create({
+        emailAddress: email,
+        password: password,
+      });
+
+      await signUp.prepareEmailAddressVerification({ strategy: "email_code" });
+
+      // Luego muestra pantalla de código, etc.
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-dvh">
       <Image
@@ -37,26 +60,36 @@ function page() {
         </div>
         <form
           action=""
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
+
             const formData = new FormData(e.target as HTMLFormElement);
             const data = Object.fromEntries(formData);
-            if (data.password !== data.confirmpassword) {
+            const email = data.email as string;
+            const password = data.password as string;
+            const confirmPassword = data.confirmpassword as string;
+
+            if (password !== confirmPassword) {
               setOnError("Las contraseñas no coinciden");
               return;
             }
-            signInWithFirebase(data.email as string, data.password as string)
-              .then((user) => {
-                createUserDoc(data.email as string, "client").then((v) =>
-                  router.push("/login")
-                );
-              })
-              .catch((error) => {
-                console.error("Error signing in:", error);
-                setOnError(
-                  "Error al iniciar sesión. Por favor, inténtalo de nuevo."
-                );
-              });
+
+            try {
+              // Primero intentamos registrar al usuario
+              await handleSubmit(email, password);
+
+              // Luego intentamos iniciar sesión (esto a su vez loguea en Firebase)
+              await signInWithFirebase(email, password);
+
+              // Creamos doc en Firebase y redirigimos
+              await createUserDoc(email, "client");
+              //router.push("/login");
+            } catch (error) {
+              console.error("Error en el flujo de registro/login:", error);
+              setOnError(
+                "Error al registrar o iniciar sesión. Verifica tus datos e intenta nuevamente."
+              );
+            }
           }}
           className="flex flex-col w-full  gap-0 px-32"
         >
@@ -79,18 +112,60 @@ function page() {
             >
               Olvidé mi contraseña
             </Link>
-            <ActionButton
-              type="submit"
-              onClick={() => {}}
-              tipo="primary"
-              title="Registrate"
-            />
+            <ActionButton type="submit" tipo="primary" title="Regístrate" />
           </div>
           <div className="border-t-2 border-stone-300 relative w-full">
             <span>a</span>
             <p className="text-center text-stone-500 font-bold absolute -top-3 bg-white px-8 mx-auto left-0 right-0 w-fit">
               O
             </p>
+          </div>
+          <div id="clerk-captcha"></div>
+          <div className="flex flex-col gap-4 items-center">
+            <input
+              name="code"
+              type="text"
+              className="text-black p-2 border rounded"
+              placeholder="Código de verificación"
+              required
+            />
+            <ActionButton
+              type="button"
+              tipo="primary"
+              title="Verificar código"
+              onClick={async () => {
+                const codeInput = document.querySelector(
+                  'input[name="code"]'
+                ) as HTMLInputElement;
+                const code = codeInput.value;
+
+                try {
+                  const completeSignup =
+                    await signUp!.attemptEmailAddressVerification({ code });
+                  if (completeSignup.status === "complete") {
+                    if (setActive) {
+                      await setActive({
+                        session: completeSignup.createdSessionId,
+                      });
+                    }
+                    await createUserDoc(
+                      completeSignup.emailAddress as string,
+                      "client"
+                    );
+                    router.push("/");
+                  } else {
+                    console.log(
+                      "Estado después de verificar:",
+                      JSON.stringify(completeSignup, null, 2)
+                    );
+                    setOnError("Aún no completado. Intenta de nuevo.");
+                  }
+                } catch (err) {
+                  console.error("Error al verificar código", err);
+                  setOnError("Código inválido o expirado.");
+                }
+              }}
+            />
           </div>
           <button
             onClick={() => {
