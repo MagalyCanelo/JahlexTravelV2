@@ -1,9 +1,11 @@
 // components/NavLeft.tsx
+import { useState } from "react";
 import { LuMap, LuClipboardList, LuSettings, LuLogOut } from "react-icons/lu";
 import { HiXCircle } from "react-icons/hi";
 import { FaHome } from "react-icons/fa";
 import Image from "next/image";
-import logo from "@/public/logo.png";
+import logo from "@/public/logo.png"; // Logo grande
+import icono from "@/public/icono.png"; // Icono pequeño
 
 type NavLeftProps = {
   activeMenu: string;
@@ -11,16 +13,29 @@ type NavLeftProps = {
 };
 
 export default function NavLeft({ activeMenu, onSelectMenu }: NavLeftProps) {
+  const [isOpen, setIsOpen] = useState(false); // Estado para controlar si el menú está abierto
+
+  // Abre el menú cuando el mouse entra y lo cierra cuando sale
+  const handleMouseEnter = () => setIsOpen(true);
+  const handleMouseLeave = () => setIsOpen(false);
+
   return (
-    <div className="w-20 h-screen bg-white border-r border-gray-200 shadow-sm flex flex-col justify-between group hover:w-64 transition-all duration-300 ease-in-out">
+    <div
+      className={`h-screen bg-white border-r border-gray-200 shadow-sm flex flex-col justify-between group transition-all duration-300 ease-in-out ${
+        isOpen ? "w-64" : "w-20" // El ancho cambia cuando el menú está abierto o cerrado
+      }`}
+      onMouseEnter={handleMouseEnter} // Abre el menú cuando el ratón pasa por encima
+      onMouseLeave={handleMouseLeave} // Cierra el menú cuando el ratón sale
+    >
       <div>
         <div className="p-6 overflow-hidden flex justify-center items-center">
+          {/* Muestra el icono pequeño cuando el menú está cerrado, y el logo grande cuando está abierto */}
           <Image
-            src={logo.src}
+            src={isOpen ? logo.src : icono.src} // Dependiendo del estado, muestra uno u otro
             alt="Logo de la empresa"
-            className="lg:w-50 w-60 xl:w-65"
-            height={1080}
-            width={1080}
+            className="transition-all duration-300"
+            height={isOpen ? 50 : 40} // Ajuste el tamaño para cuando está abierto o cerrado
+            width={isOpen ? 200 : 40} // Ajuste el tamaño para cuando está abierto o cerrado
           />
         </div>
 
