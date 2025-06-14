@@ -47,6 +47,7 @@ const ImageSlider: React.FC = () => {
           style={{
             transform: "scale(1.08)",
             animation: "scaleUp 9s linear infinite",
+            filter: "brightness(0.7)", // darkens the image
           }}
           className="absolute inset-0 object-cover transition-opacity duration-1000 animate-fade-out scaleUp"
         />
@@ -60,6 +61,7 @@ const ImageSlider: React.FC = () => {
         style={{
           transform: "scale(1.08)",
           animation: "scaleUp 9s linear infinite",
+          filter: "brightness(0.7)", // darkens the image
         }}
         className="absolute inset-0 object-cover transition-opacity duration-1000 animate-fade-in scaleUp"
       />

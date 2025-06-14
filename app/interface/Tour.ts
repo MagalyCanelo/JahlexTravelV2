@@ -49,6 +49,7 @@ export interface BaseTourExtended extends BaseTour {
   quantity: number;
   hour: string;
   price: number;
+  language: string;
 }
 
 export interface TourReview {

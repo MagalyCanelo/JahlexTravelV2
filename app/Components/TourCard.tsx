@@ -52,7 +52,7 @@ export const TourCard: React.FC<TourCardProps> = ({ tour, isStatic }) => {
 
       <div className="flex items-center justify-between">
         <span className="text-lg font-bold text-gray-700">
-          S/. {tour.priceRegular.toFixed(2)}{" "}
+          S/. {tour.priceRegular ? Number(tour.priceRegular).toFixed(2) : null}{" "}
           <span className="text-sm font-normal">/persona</span>
         </span>
         <div className="font-semibold text-sm">

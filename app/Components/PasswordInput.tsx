@@ -46,7 +46,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
         <input
           id="password"
           name="password"
-          className="outline-none"
+          className="outline-none w-full"
           type={showPassword ? "text" : "password"}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}

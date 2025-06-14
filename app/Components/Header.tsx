@@ -8,9 +8,11 @@ import ActionButton from "./ActionButton";
 import SidebarMenu from "./SidebarMenu";
 import TopBar from "./TopBar";
 import Image from "next/image";
-import { useUserStore } from "../store/Usuario";
-import { SignedOut, SignOutButton, useUser } from "@clerk/nextjs";
+import { User, useUserStore } from "../store/Usuario";
+import { SignedOut, SignOutButton, useAuth, useUser } from "@clerk/nextjs";
 import { FiUser, FiHeart, FiShoppingBag } from "react-icons/fi";
+import { signInWithCustomToken } from "firebase/auth";
+import { auth } from "../config/config";
 
 const Header = (props: { className?: string; onClick?: () => void }) => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,6 +22,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
   const pathname = usePathname();
   const router = useRouter();
   const user = useUserStore();
+  const clerkAuth = useAuth();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
@@ -46,24 +49,44 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
   }, []);
 
   useEffect(() => {
+    integrateFirebase();
     if (clerkUser.user) {
       user.setUser({
-      isAuthenticated: true,
-      email: clerkUser.user.emailAddresses?.[0]?.emailAddress ?? "",
-      id: clerkUser.user.id,
-      image: clerkUser.user.imageUrl,
-      name: clerkUser.user.username ?? "",
-      });
+        id: clerkUser.user.id,
+        email: clerkUser.user.emailAddresses[0]?.emailAddress || "Sin datos",
+        name: clerkUser.user.fullName || "Sin datos",
+        image: clerkUser.user.imageUrl,
+        isAuthenticated: true,
+        phone: clerkUser.user.phoneNumbers[0]?.phoneNumber || "Sin datos",
+      } as User);
     } else {
       user.setUser({
-      isAuthenticated: false,
-      email: "",
-      id: "",
-      image: "",
-      name: "",
+        isAuthenticated: false,
+        email: "",
+        id: "",
+        image: "",
+        name: "",
       });
     }
   }, [clerkUser.user]);
+
+  async function integrateFirebase() {
+    try {
+      const token = await clerkAuth.getToken({
+        template: "integration_firebase",
+      });
+
+      if (!token) {
+        console.error("No Firebase token available");
+        return;
+      }
+
+      const userCredentials = await signInWithCustomToken(auth, token);
+      console.log("Firebase auth successful:", userCredentials.user);
+    } catch (error) {
+      console.error("Firebase integration error:", error);
+    }
+  }
 
   return (
     <header
@@ -173,13 +196,22 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
                     <div className="absolute left-1/2 transform -translate-x-1/2 top-[-8px] w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white z-20" />
 
                     <ul className="text-[13px] font-medium flex flex-col text-gray-600">
-                      <Link href={`/micuenta/${user.user!.id}`} className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                      <Link
+                        href={`/micuenta/${user.user!.id}`}
+                        className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
+                      >
                         Mi Cuenta
                       </Link>
-                      <Link href={`/compras/${user.user!.id}`} className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                      <Link
+                        href={`/compras/${user.user!.id}`}
+                        className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
+                      >
                         Mis Compras
                       </Link>
-                      <Link href={`/resenas/${user.user!.id}`} className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center">
+                      <Link
+                        href={`/resenas/${user.user!.id}`}
+                        className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
+                      >
                         Mis Reseñas
                       </Link>
                       <SignOutButton redirectUrl="/">

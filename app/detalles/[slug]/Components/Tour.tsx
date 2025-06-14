@@ -58,7 +58,7 @@ function Tour(props: { tourid: string }) {
   useEffect(() => {
     Promise.all([
       getOneTour(props.tourid),
-      getUserPurchases(user.user.id!),
+      user.user.id ?? getUserPurchases(user.user.id!),
       getAllTourComments(props.tourid),
     ]).then(([tourData, purchases, comments]) => {
       setDataTour(tourData!);

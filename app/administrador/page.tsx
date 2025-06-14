@@ -1,4 +1,4 @@
-import ListaTours from "./GestionTours/lista/page";
+import ListaTours from "./gestiontours/lista/page";
 
 function page() {
   return (

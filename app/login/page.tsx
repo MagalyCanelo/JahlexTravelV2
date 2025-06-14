@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "@/public/logo.png";
 import EmailInput from "../Components/InputComponent";
 import PasswordInput from "../Components/PasswordInput";
@@ -8,24 +8,63 @@ import Link from "next/link";
 import ActionButton from "../Components/ActionButton";
 import { FcGoogle } from "react-icons/fc";
 import images from "@/public/Hero/acueductos2.jpg";
-import { logInWithFirebase } from "../actions/signinFirebase";
-import { useUserStore } from "../store/Usuario";
+
+import { User, useUserStore } from "../store/Usuario";
 import { useRouter } from "next/navigation";
-import {
-  getRedirectResult,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithRedirect,
-} from "firebase/auth";
-import { auth } from "../config/config";
 import { createUserDoc } from "@/service/FirebaseService";
-import userplh from "@/public/userplh.png";
-import { SignInButton } from "@clerk/nextjs";
+import { SignInButton, useAuth, useSignIn } from "@clerk/nextjs";
+import { signInWithCustomToken } from "firebase/auth";
+import { auth } from "../config/config";
 
 function page() {
   const { setUser } = useUserStore();
 
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const { signIn, setActive } = useSignIn();
+  const { getToken } = useAuth();
+  const logInWithFirebaseViaClerk = async (email: string, password: string) => {
+    setLoading(true);
+    setError(null);
+    try {
+      // 1️⃣ Login en Clerk
+      const res = await signIn!.create({ identifier: email, password });
+      if (res.status !== "complete") {
+        throw new Error("Clerk sign-in not completed");
+      }
+
+      // 2️⃣ Activar sesión Clerk
+      if (setActive) {
+        await setActive({ session: res.createdSessionId });
+      }
+
+      // 3️⃣ Obtener token para Firebase
+      const firebaseToken = await getToken({
+        template: "integration_firebase",
+      });
+      if (!firebaseToken)
+        throw new Error("No integration_firebase token available");
+
+      // 4️⃣ Iniciar sesión en Firebase con token
+      const userCred = await signInWithCustomToken(auth, firebaseToken);
+      const fbUser = userCred.user;
+
+      setUser({
+        id: fbUser.uid,
+        email: fbUser.email,
+        name: fbUser.displayName,
+        image: fbUser.photoURL,
+        isAuthenticated: fbUser.emailVerified,
+        phone: fbUser.phoneNumber,
+      } as User);
+    } catch (err: any) {
+      console.error(err);
+      setError(err.message || "Error al iniciar sesión");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-dvh">
@@ -46,29 +85,13 @@ function page() {
         </div>
         <form
           action=""
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
             const formData = new FormData(e.target as HTMLFormElement);
-            const data = Object.fromEntries(formData);
-            logInWithFirebase(
-              data.email as string,
-              data.password as string
-            ).then((user) => {
-              if (user) {
-                setUser({
-                  id: user.uid || "",
-                  email: user.email || "",
-                  image:
-                    user.photoURL ||
-                    "https://t3.ftcdn.net/jpg/05/16/27/58/360_F_516275801_f3Fsp17x6HQK0xQgDQEELoTuERO4SsWV.jpg",
-                  name: user.displayName || user.email?.split("@")[0],
-                  isAuthenticated: true,
-                });
-                createUserDoc(user.email!, "client").then(
-                  () => user && router.push("/")
-                );
-              }
-            });
+            const email = formData.get("email") as string;
+            const password = formData.get("password") as string;
+            await logInWithFirebaseViaClerk(email, password);
+            router.push("/");
           }}
           className="flex flex-col w-full  gap-0 lg:px-32 px-2"
         >

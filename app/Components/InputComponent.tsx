@@ -43,7 +43,7 @@ const EmailInput: React.FC<EmailInputProps> = ({
           id="email"
           name="email"
           type="email"
-          className="outline-none"
+          className="outline-none w-full"
           onFocus={() => setIsFocused(true)}
           onBlur={() => {
             setIsFocused(false);

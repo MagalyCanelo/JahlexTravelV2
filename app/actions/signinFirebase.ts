@@ -3,10 +3,12 @@
 import {
   createUserWithEmailAndPassword,
   sendEmailVerification,
+  signInWithCustomToken,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import { auth } from "../config/config";
 import { encriptPassword } from "@/service/SecurityServices";
+import { useAuth } from "@clerk/nextjs";
 
 export async function signInWithFirebase(email: string, password: string) {
   encriptPassword(password).then(async (encryptedPassword) => {
@@ -40,34 +42,4 @@ export async function signInWithFirebase(email: string, password: string) {
       throw error;
     }
   });
-}
-
-export async function logInWithFirebase(email: string, password: string) {
-  const encryptedPassword = await encriptPassword(password).then(
-    async (encryptedPassword) => {
-      try {
-        console.log("Encrypted Password:", encryptedPassword);
-        const userCredential = await signInWithEmailAndPassword(
-          auth,
-          email,
-          encryptedPassword
-        );
-        if (userCredential.user) {
-          return {
-            uid: userCredential.user.uid,
-            email: userCredential.user.email,
-            displayName: userCredential.user.displayName,
-            photoURL: userCredential.user.photoURL,
-            token: userCredential.user.getIdToken(),
-            isAuthenticated: userCredential.user.emailVerified,
-          };
-        }
-        return null;
-      } catch (error) {
-        console.error("Error logging in with Firebase:", error);
-        throw error;
-      }
-    }
-  );
-  return encryptedPassword;
 }

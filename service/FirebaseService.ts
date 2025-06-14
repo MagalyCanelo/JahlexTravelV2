@@ -9,10 +9,14 @@ import { User } from "@clerk/nextjs/server";
 import {
   arrayUnion,
   collection,
+  collectionGroup,
   doc,
+  documentId,
   getDoc,
   getDocs,
+  query,
   setDoc,
+  where,
 } from "firebase/firestore";
 
 export async function addTourToUserShoppingCar(
@@ -21,7 +25,8 @@ export async function addTourToUserShoppingCar(
   userId: string,
   price: number,
   date: string,
-  hour: string
+  hour: string,
+  language: string
 ) {
   const ref = doc(db, `Carrito/${userId}`);
   try {
@@ -32,6 +37,7 @@ export async function addTourToUserShoppingCar(
         price: price,
         date: date,
         hour: hour,
+        language: language,
         addedAt: new Date().toISOString(),
       }),
     };
@@ -132,7 +138,11 @@ export async function getTourComments(tourId: string) {
   }
 }
 
-export async function addTourComment(comment: TourReview, tour: string, uid:string) {
+export async function addTourComment(
+  comment: TourReview,
+  tour: string,
+  uid: string
+) {
   const ref = doc(db, `tours/${tour}/comments/${uid}`);
   try {
     const docData = {
@@ -220,6 +230,23 @@ export async function getAllTourComments(tourId: string) {
     return comments;
   } catch (error) {
     console.error("Error getting tour comments:", error);
+    return [];
+  }
+}
+
+export async function getUserComments(username: string) {
+  try {
+    const commentsRef = collectionGroup(db, "comments");
+    const q = query(commentsRef, where(documentId(), "==", username));
+    const querySnapshot = await getDocs(q);
+
+    const comments: TourReview[] = [];
+    querySnapshot.forEach((doc) => {
+      comments.push(doc.data() as TourReview);
+    });
+    return comments;
+  } catch (error) {
+    console.error("Error getting user comments:", error);
     return [];
   }
 }

@@ -39,13 +39,13 @@ export default function Layout({ children }: LayoutProps) {
         return (
           <div className="flex flex-row gap-4 justify-center">
             <Link
-              href={"/administrador/GestionTours/lista"}
+              href={"/administrador/gestiontours/lista"}
               className={linkClass}
             >
               Ver Tours
             </Link>
             <Link
-              href={"/administrador/GestionTours/agregar"}
+              href={"/administrador/gestiontours/agregar"}
               className={linkClass}
             >
               Agregar Nuevo Tour
