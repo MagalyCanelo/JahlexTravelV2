@@ -16,10 +16,10 @@ const NewsletterSignup: React.FC = () => {
 
   return (
     <section className="pt-9 pb-15 px-4 bg-stone-50 text-center">
-      <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 ">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 ">
         ¿Tienes dudas o necesitas más detalles?
       </h2>
-      <p className="text-gray-600 max-w-xl mx-auto mb-8">
+      <p className="text-gray-600 max-w-xl mx-auto mb-4 sm:mb-6 text-[15px] sm:text-base">
         Si tienes alguna pregunta o deseas más información sobre nuestros tours,
         envíanos el tour que te interesa.
       </p>

@@ -13,7 +13,7 @@ import type { ReactElement } from "react";
 
 export default function TopBar(): ReactElement {
   return (
-    <nav className="bg-oliva-o text-white text-xs xl:text-sm px-5 py-1.5">
+    <nav className="bg-oliva-o text-white text-[11px] sm:text-xs xl:text-sm px-5 py-1.5">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
         {/* Contacto a la izquierda */}
         <div className="flex items-center gap-4">
@@ -95,7 +95,11 @@ interface SocialLinkProps {
   label: string;
 }
 
-export function SocialLink({ href, icon, label }: SocialLinkProps): ReactElement {
+export function SocialLink({
+  href,
+  icon,
+  label,
+}: SocialLinkProps): ReactElement {
   return (
     <a
       href={href}

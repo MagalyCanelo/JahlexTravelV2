@@ -103,7 +103,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           <Image
             src={logo.src}
             alt="Logo de la empresa"
-            className="lg:w-50 w-60 xl:w-65"
+            className="w-55 lg:w-50 sm:w-60 xl:w-65"
             height={1080}
             width={1080}
           />
@@ -158,7 +158,7 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           </Link>
         </nav>
 
-        <div className="flex flex-row text-sm pr-1 lg:text-lg md:text-md justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
+        <div className="flex flex-row text-[13px] sm:text-sm pr-1 lg:text-lg md:text-md justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
           <IoMenu
             onClick={toggleMenu}
             className="oliva-c text-3xl lg:hidden cursor-pointer"

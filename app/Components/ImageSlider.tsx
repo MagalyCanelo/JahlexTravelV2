@@ -47,7 +47,7 @@ const ImageSlider: React.FC = () => {
           style={{
             transform: "scale(1.08)",
             animation: "scaleUp 9s linear infinite",
-            filter: "brightness(0.7)", // darkens the image
+            filter: "brightness(0.8)", // darkens the image
           }}
           className="absolute inset-0 object-cover transition-opacity duration-1000 animate-fade-out scaleUp"
         />
@@ -61,16 +61,16 @@ const ImageSlider: React.FC = () => {
         style={{
           transform: "scale(1.08)",
           animation: "scaleUp 9s linear infinite",
-          filter: "brightness(0.7)", // darkens the image
+          filter: "brightness(0.8)", // darkens the image
         }}
         className="absolute inset-0 object-cover transition-opacity duration-1000 animate-fade-in scaleUp"
       />
 
-      <div className="absolute bottom-3 left-3 bg-white/80 text-black pl-2 pr-4 py-1 rounded-2xl max-w-[80%] flex items-center gap-2 z-10">
+      <div className="absolute bottom-3 left-3 bg-white/80 text-black pl-2 pr-4 py-1 rounded-2xl max-w-[80%] flex items-center gap-1.5 z-10">
         <FaMapMarkerAlt className="text-[#ff2d2e] text-2xl" />
         <div>
           <span className="text-sm font-semibold">{currImg.title}</span>
-          <p className="text-xs">{currImg.location}</p>
+          <p className="text-xs text-left">{currImg.location}</p>
         </div>
       </div>
     </div>

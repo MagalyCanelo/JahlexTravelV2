@@ -12,7 +12,7 @@ import {
 
 export default function WhyChooseUs() {
   return (
-    <section className="pt-4 pb-11 bg-stone-50 grid grid-cols-1 lg:grid-cols-2 gap-10 px-6 lg:pr-6 lg:pl-8 place-items-center">
+    <section className="pt-4 pb-11 bg-stone-50 grid grid-cols-1 lg:grid-cols-2 gap-1 sm:gap-10 px-6 lg:pr-6 lg:pl-8 place-items-center">
       {/* Imágenes */}
       <div className="relative w-full max-w-xl h-[22rem] lg:h-[400px] xl:h-[440px] flex justify-center items-center mb-6 lg:pb-0 ">
         {/* Imagen delantera */}
@@ -22,25 +22,25 @@ export default function WhyChooseUs() {
             width={1080}
             height={1080}
             alt="Paisaje"
-            className="w-50 lg:w-80 h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
+            className="w-45 sm:w-50 lg:w-80 h-70 sm:h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
           />
         </div>
 
         {/* Imagen trasera */}
-        <div className="absolute left-40 md:left-55 top-18 z-0 transform rotate-[2deg] transition-transform duration-300 hover:scale-105">
+        <div className="absolute left-31 sm:left-40 md:left-55 top-18 z-0 transform rotate-[2deg] transition-transform duration-300 hover:scale-105">
           <Image
             src={ib}
             width={1080}
             height={1080}
             alt="Paisaje"
-            className="w-50 lg:w-80 h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
+            className="w-45 sm:w-50 lg:w-80 h-70 sm:h-80 lg:h-96 xl:w-85 xl:h-100 object-cover rounded-xl border-4 border-white shadow-lg"
           />
         </div>
       </div>
 
       {/* Contenido */}
       <div className="w-full max-w-2xl xl:max-w-3xl flex flex-col">
-        <h2 className="text-[40px] xl:text-5xl font-extrabold text-gray-800 mb-4">
+        <h2 className="text-[35px] sm:text-[40px] xl:text-5xl font-extrabold text-gray-800 mb-4">
           ¿Por qué <span className="oliva-o">elegirnos</span>?
         </h2>
 
