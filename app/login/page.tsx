@@ -74,7 +74,7 @@ function page() {
         className="bg-pink-400 col-span-1 h-full"
       />
       <section className="bg-white col-span-1 h-full flex flex-col items-center justify-center">
-        <Image src={logo} alt="Logo Jahlex" className="w-60 mx-auto my-6" />
+        <Image src={logo} alt="Logo Jahlex" className="w-65 mx-auto my-6" />
         <div className="flex flex-col items-center justify-center gap-4 mb-4">
           <h1 className="text-[56px] font-bold hero-banner-title oliva-c text-white leading-14 xl:leading-20 tracking-wide">
             BIENVENIDO
@@ -124,7 +124,7 @@ function page() {
             </p>
           </div>
 
-          <div className="border border-stone-200 shadow rounded-lg w-fit mt-4 mb-2 p-2 mx-auto">
+          <div className="border border-stone-200 text-black w-fit p-4 rounded-lg shadow-md flex items-center gap-2 mx-auto mt-7 mb-4 hover:bg-stone-50 transition">
             <SignInButton forceRedirectUrl={"/"}>
               <FcGoogle size={32} />
             </SignInButton>
@@ -134,7 +134,7 @@ function page() {
             className="text-stone-500 font-semibold w-full text-center mt-2 mb-5"
           >
             ¿No tienes cuenta?
-            <span className="font-bold text-black">Regístrate ahora</span>
+            <span className="font-bold text-black"> Regístrate ahora</span>
           </Link>
         </form>
       </section>

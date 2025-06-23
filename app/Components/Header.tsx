@@ -158,82 +158,86 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
           </Link>
         </nav>
 
-        <div className="flex flex-row text-[13px] sm:text-sm pr-1 lg:text-lg md:text-md justify-between w-full lg:w-fit items-center space-x-6 text-x text-md xl:text-lg font-semibold">
+        <div className="flex justify-between items-center w-full lg:w-fit">
+          {/* Icono hamburguesa a la izquierda, visible solo en sm y md */}
           <IoMenu
             onClick={toggleMenu}
-            className="oliva-c text-3xl lg:hidden cursor-pointer"
+            className="oliva-c text-3xl cursor-pointer lg:hidden"
           />
           <SidebarMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
 
-          {!user.user.isAuthenticated ? (
-            <div className="flex flex-row gap-4">
-              <ActionButton
-                onClick={() => {
-                  router.push("/login");
-                }}
-                tipo="secondary"
-                title="Iniciar Sesión"
-              />
-              <ActionButton
-                onClick={() => {
-                  router.push("/register");
-                }}
-                tipo="primary"
-                title="Regístrate"
-              />
-            </div>
-          ) : (
-            <>
-              {/* Ícono de usuario con opciones */}
-              <div className="relative" ref={userMenuRef}>
-                <FiUser
-                  className="h-6 w-6 cursor-pointer"
-                  onClick={handleUserClick} // Abre o cierra el menú
+          {/* Contenedor con los 3 íconos */}
+          <div className="flex items-center space-x-6">
+            {!user.user.isAuthenticated ? (
+              <div className="flex flex-row gap-4">
+                <ActionButton
+                  onClick={() => {
+                    router.push("/login");
+                  }}
+                  tipo="secondary"
+                  title="Iniciar Sesión"
+                  className="font-semibold"
                 />
-                {userMenuOpen && (
-                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-36 bg-white border rounded-lg shadow-lg z-10">
-                    {/* "Cachito" en la parte superior */}
-                    <div className="absolute left-1/2 transform -translate-x-1/2 top-[-8px] w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white z-20" />
-
-                    <ul className="text-[13px] font-medium flex flex-col text-gray-600">
-                      <Link
-                        href={`/micuenta/${user.user!.id}`}
-                        className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
-                      >
-                        Mi Cuenta
-                      </Link>
-                      <Link
-                        href={`/compras/${user.user!.id}`}
-                        className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
-                      >
-                        Mis Compras
-                      </Link>
-                      <Link
-                        href={`/resenas/${user.user!.id}`}
-                        className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
-                      >
-                        Mis Reseñas
-                      </Link>
-                      <SignOutButton redirectUrl="/">
-                        <button
-                          onClick={() => {
-                            user.clearUser();
-                          }}
+                <ActionButton
+                  onClick={() => {
+                    router.push("/register");
+                  }}
+                  tipo="primary"
+                  title="Regístrate"
+                  className="font-semibold"
+                />
+              </div>
+            ) : (
+              <>
+                {/* Ícono de usuario con menú */}
+                <div className="relative" ref={userMenuRef}>
+                  <FiUser
+                    className="h-6 w-6 cursor-pointer"
+                    onClick={handleUserClick}
+                  />
+                  {userMenuOpen && (
+                    <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-36 bg-white border rounded-lg shadow-lg z-10">
+                      <div className="absolute left-1/2 transform -translate-x-1/2 top-[-8px] w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-white z-20" />
+                      <ul className="text-[13px] font-medium flex flex-col text-gray-600">
+                        <Link
+                          href={`/micuenta/${user.user.id}`}
                           className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
                         >
-                          Cerrar Sesión
-                        </button>
-                      </SignOutButton>
-                    </ul>
-                  </div>
-                )}
-              </div>
-              <FiHeart className="h-6 w-6" />
-              <Link href={`/carrito/${user.user.id}`}>
-                <FiShoppingBag className="h-6 w-6 cursor-pointer" />
-              </Link>
-            </>
-          )}
+                          Mi Cuenta
+                        </Link>
+                        <Link
+                          href={`/compras/${user.user.id}`}
+                          className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
+                        >
+                          Mis Compras
+                        </Link>
+                        <Link
+                          href={`/resenas/${user.user.id}`}
+                          className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
+                        >
+                          Mis Reseñas
+                        </Link>
+                        <SignOutButton redirectUrl="/">
+                          <button
+                            onClick={() => {
+                              user.clearUser();
+                            }}
+                            className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
+                          >
+                            Cerrar Sesión
+                          </button>
+                        </SignOutButton>
+                      </ul>
+                    </div>
+                  )}
+                </div>
+                <FiHeart className="h-6 w-6" />
+                <Link href={`/carrito/${user.user.id}`}>
+                  <FiShoppingBag className="h-6 w-6 cursor-pointer" />
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </header>

@@ -1,17 +1,16 @@
 import Header from "@/app/Components/Header";
 import React from "react";
-import ContenedorDatos from "./Components/ContenedorDatos";
 import DatosGroup from "./Components/DatosGroup";
 
-function page() {
+function Page() {
   return (
-    <div className="text-black">
+    <div className="min-h-screen bg-gray-50 text-black">
       <Header />
-      <div className="grid grid-cols-8 p-8">
+      <main className="w-full p-4 sm:p-6 md:p-8">
         <DatosGroup />
-      </div>
+      </main>
     </div>
   );
 }
 
-export default page;
+export default Page;
