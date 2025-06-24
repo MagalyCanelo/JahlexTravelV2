@@ -1,5 +1,5 @@
 "use client";
-import { TourReview, BaseTour } from "@/app/interface/Tour";
+import { TourReview } from "@/app/interface/Tour";
 import { useUserStore } from "@/app/store/Usuario";
 import { useToursStore } from "@/app/store/ToursStore";
 import { getUserComments } from "@/service/FirebaseService";
@@ -25,26 +25,36 @@ export default function CommentList() {
       qualification: 4,
       image:
         "https://www.pngitem.com/pimgs/m/130-1300253_female-user-icon-png-download-user-image-color.png",
-      username: "John Doe",
+      username: "Jane Smith",
       createdAt: new Date().getUTCDate().toLocaleString(),
     },
   ]);
-  /*  useEffect(() => {
+
+  /* useEffect(() => {
     if (user.user.id !== "" && user.user.id) {
       getUserComments(user.user.id).then((tr) => setReviews(tr));
     }
-    console.log(user);
-  }, [user.user.id]); */ return (
-    <div className="text-black p-8">
-      <h1 className="text-3xl border-b-2 w-fit mb-8">Reseñas del Tour</h1>
-      <div className="flex flex-row gap-8">
-        <section>
+  }, [user.user.id]); */
+
+  return (
+    <div className="text-black">
+      {/* Franja superior */}
+      <div className="bg-oliva-c py-2 mx-8 mt-2 rounded-xl shadow-md">
+        <h1 className="text-center text-white text-3xl font-bold hero-banner-title tracking-wide">
+          Mis Reseñas
+        </h1>
+      </div>
+
+      {/* Contenido */}
+      <div className="flex flex-row gap-8 p-6">
+        {/* Tours column */}
+        <section className="w-1/2">
           {tours.map((v) => (
             <TourCard key={v.id} tour={v} isStatic />
           ))}
         </section>
 
-        {/* Reviews Column */}
+        {/* Reviews column */}
         <div className="w-1/2">
           <section className="flex flex-col gap-4">
             {reviews?.map((tr, index) => (
@@ -54,7 +64,7 @@ export default function CommentList() {
               >
                 <Image
                   src={tr.image}
-                  alt=""
+                  alt="User avatar"
                   width={1080}
                   height={1080}
                   className="w-12 h-12 rounded-full"
@@ -62,11 +72,11 @@ export default function CommentList() {
                 <div className="flex flex-col justify-center items-start">
                   <p className="font-semibold">{tr.username}</p>
                   <div className="flex flex-row gap-1 my-1">
-                    {Array.from({ length: 5 }).map((_, index) => (
+                    {Array.from({ length: 5 }).map((_, i) => (
                       <FaStar
-                        key={`star-${index}`}
+                        key={`star-${i}`}
                         className={
-                          index + 1 <= tr.qualification
+                          i + 1 <= tr.qualification
                             ? "text-[#F7D547]"
                             : "text-[#919191]"
                         }

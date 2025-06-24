@@ -63,7 +63,7 @@ function ListaTours() {
   };
 
   return (
-    <div className="px-6 pt-5 pb-5.5 bg-white rounded-lg shadow-sm">
+    <div className="px-4 pt-3 pb-3.5">
       {/* Modal Confirmation */}
       <dialog
         open={openModal}

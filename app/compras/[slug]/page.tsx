@@ -1,15 +1,23 @@
+"use client";
 import Header from "@/app/Components/Header";
 import React from "react";
-import { BaseTourExtended } from "@/app/interface/Tour";
 import PurchaseList from "./Components/PurchaseList";
 
-function page() {
+function Page() {
   return (
     <div className="text-black">
       <Header />
-      <h1 className="pl-8 pt-4 text-3xl">Mis compras</h1>
-      <main className="grid grid-cols-8 px-8 pt-4">
-        <div className="flex flex-col gap-8 col-span-8 h-96 overflow-auto">
+
+      {/* Franja de título con margen horizontal */}
+      <div className="mx-8 mt-2 bg-oliva-c py-2 rounded-xl shadow-md">
+        <h1 className="text-center text-white tracking-wide text-3xl font-bold hero-banner-title">
+          Mis Compras
+        </h1>
+      </div>
+
+      {/* Contenido principal con mismo margen */}
+      <main className="mx-8 mt-6">
+        <div className="flex flex-col gap-8 h-96 overflow-auto">
           <PurchaseList />
         </div>
       </main>
@@ -17,4 +25,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
