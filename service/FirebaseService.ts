@@ -204,14 +204,29 @@ export async function getOneTour(tourId: string) {
   }
 }
 
-export async function createPurchase(userId: string, purchaseData: any) {
-  const ref = doc(db, `Users/${userId}/purchases/${new Date().getTime()}`);
+export async function createPurchase(
+  userId: string,
+  purchaseData: BaseTourExtended[],
+  total: number,
+  userData: {
+    nombres: string;
+    apellidos: string;
+    correo: string;
+    prefijo: string;
+    celular: number;
+  }
+) {
+  const ref = doc(db, `Users/${userData.correo}/purchases/${new Date().getTime()}`);
   try {
     await setDoc(ref, {
-      ...purchaseData,
+      tours: purchaseData,
+      userData: userData,
+      total: total.toFixed(2),
       createdAt: new Date().toISOString(),
       status: "completed",
     });
+    // Limpiar el carrito después de la compra
+    await cleanUserShoppingCar(userId);
     return true;
   } catch (error) {
     console.error("Error creating purchase:", error);
@@ -248,5 +263,19 @@ export async function getUserComments(username: string) {
   } catch (error) {
     console.error("Error getting user comments:", error);
     return [];
+  }
+}
+
+export async function addCliente(clienteData: any) {
+  try {
+    const ref = doc(collection(db, "cliente")); // genera un id automático
+    await setDoc(ref, {
+      ...clienteData,
+      createdAt: new Date().toISOString(),
+    });
+    return true;
+  } catch (error) {
+    console.error("Error agregando cliente:", error);
+    return false;
   }
 }

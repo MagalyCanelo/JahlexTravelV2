@@ -21,7 +21,7 @@ export default function NavLeft({ activeMenu, onSelectMenu }: NavLeftProps) {
 
   return (
     <div
-      className={`h-screen bg-white border-r border-gray-200 shadow-sm flex flex-col justify-between group transition-all duration-300 ease-in-out ${
+      className={`h-screen sticky top-0 bg-white border-r border-gray-200 shadow-sm flex flex-col justify-between group transition-all duration-300 ease-in-out ${
         isOpen ? "w-64" : "w-20" // El ancho cambia cuando el menú está abierto o cerrado
       }`}
       onMouseEnter={handleMouseEnter} // Abre el menú cuando el ratón pasa por encima
