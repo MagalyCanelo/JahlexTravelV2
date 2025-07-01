@@ -192,7 +192,7 @@ function ToursForm({ func, tourId }: ToursFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="grid grid-cols-1 gap-6 p-6 rounded-lg shadow-md bg-white"
+      className="grid col-span-full row-span-full grid-cols-2 h-full gap-6 p-6 rounded-lg shadow-md bg-white"
     >
       {/* Título */}
       <div className="flex flex-col">

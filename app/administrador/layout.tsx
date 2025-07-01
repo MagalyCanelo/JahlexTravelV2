@@ -88,12 +88,12 @@ export default function Layout({ children }: LayoutProps) {
   };
 
   return (
-    <div className="flex">
+    <div className="flex ">
       {/* NavLeft */}
       <NavLeft activeMenu={activeMenu} onSelectMenu={handleMenuSelect} />
 
       {/* Contenido principal */}
-      <main className="flex-1 p-6">
+      <main className="flex-1 p-6 ">
         <header className="bg-[#cbf199] border-b-4 border-[#588f10] flex flex-row rounded-lg rounded-b-none items-center justify-center p-4">
           {/* Aquí agregamos los enlaces con el diseño de botón secundario */}
           {renderHeaderLinks()}

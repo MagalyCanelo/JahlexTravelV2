@@ -71,7 +71,8 @@ function page() {
       <Image
         src={images}
         alt="Imagen tour"
-        className="bg-pink-400 col-span-1 h-full"
+        className=" col-span-1 h-full"
+        fetchPriority="high"
       />
       <section className="bg-white col-span-1 h-full flex flex-col items-center justify-center">
         <Image src={logo} alt="Logo Jahlex" className="w-65 mx-auto my-6" />
