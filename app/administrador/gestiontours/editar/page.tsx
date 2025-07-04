@@ -1,4 +1,5 @@
-import TurForm from "../../TurForm";
+import TurForm from "../../components/TurForm";
+
 
 function page() {
   return (
