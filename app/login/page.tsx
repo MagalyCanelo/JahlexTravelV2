@@ -22,14 +22,22 @@ function page() {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
   const { signIn, setActive } = useSignIn();
   const { getToken } = useAuth();
-  const logInWithFirebaseViaClerk = async (email: string, password: string) => {
+  const logInWithFirebaseViaClerk = async (email: string, password: string): Promise<boolean> => {
     setLoading(true);
     setError(null);
     try {
       // 1️⃣ Login en Clerk
       const res = await signIn!.create({ identifier: email, password });
+      
+      // Si necesita verificación de email
+      if (res.status === "needs_first_factor") {
+        setError("Tu cuenta requiere verificación de email. Haz clic en 'Olvidé mi contraseña' para verificar tu cuenta.");
+        return false;
+      }
+      
       if (res.status !== "complete") {
         throw new Error("Clerk sign-in not completed");
       }
@@ -58,13 +66,36 @@ function page() {
         isAuthenticated: fbUser.emailVerified,
         phone: fbUser.phoneNumber,
       } as User);
+      
+      return true; // Login exitoso
     } catch (err: any) {
       console.error(err);
-      setError(err.message || "Error al iniciar sesión");
+      
+      // Manejar errores específicos de Clerk
+      if (err.errors && err.errors.length > 0) {
+        const clerkError = err.errors[0];
+        if (clerkError.code === 'form_identifier_not_found') {
+          setError("El correo electrónico no está registrado");
+        } else if (clerkError.code === 'form_password_incorrect') {
+          setError("La contraseña es incorrecta");
+        } else if (clerkError.code === 'verification_required') {
+          setError("Tu cuenta requiere verificación de email. Haz clic en 'Olvidé mi contraseña' para verificar tu cuenta.");
+        } else {
+          setError(clerkError.message || "Error al iniciar sesión");
+        }
+      } else {
+        setError(err.message || "Error al iniciar sesión");
+      }
+      
+      return false; // Login fallido
     } finally {
       setLoading(false);
     }
   };
+
+
+
+
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 h-dvh">
@@ -84,18 +115,45 @@ function page() {
             Inicia Sesión
           </p>
         </div>
-        <form
-          action=""
-          onSubmit={async (e) => {
-            e.preventDefault();
-            const formData = new FormData(e.target as HTMLFormElement);
-            const email = formData.get("email") as string;
-            const password = formData.get("password") as string;
-            await logInWithFirebaseViaClerk(email, password);
-            router.push("/");
-          }}
-          className="flex flex-col w-full  gap-0 lg:px-32 px-2"
-        >
+        
+        {/* Mostrar mensaje de error */}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4 mx-2 lg:mx-32">
+            <p className="font-semibold">Error de autenticación:</p>
+            <p>
+              {error.includes("Olvidé mi contraseña") ? (
+                <>
+                  Tu cuenta requiere verificación de email.{" "}
+                  <Link 
+                    href="/passrecovery" 
+                    className="text-blue-600 hover:text-blue-800 underline font-semibold"
+                  >
+                    Haz clic aquí para verificar tu cuenta
+                  </Link>
+                </>
+              ) : (
+                error
+              )}
+            </p>
+          </div>
+        )}
+        
+
+          <form
+            action=""
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target as HTMLFormElement);
+              const email = formData.get("email") as string;
+              const password = formData.get("password") as string;
+              const loginSuccess = await logInWithFirebaseViaClerk(email, password);
+              // Solo redirigir si el login fue exitoso
+              if (loginSuccess) {
+                router.push("/");
+              }
+            }}
+            className="flex flex-col w-full  gap-0 lg:px-32 px-2"
+          >
           <div className="flex flex-col gap-8 px-2">
             <EmailInput name="email" />
             <PasswordInput name="password" />
@@ -113,8 +171,9 @@ function page() {
                 type="submit"
                 onClick={() => {}}
                 tipo="primary"
-                title="Iniciar Sesión"
+                title={loading ? "Iniciando sesión..." : "Iniciar Sesión"}
                 className="w-full" // Esto asegura que el botón ocupe todo el ancho
+                disabled={loading}
               />
             </div>
           </div>

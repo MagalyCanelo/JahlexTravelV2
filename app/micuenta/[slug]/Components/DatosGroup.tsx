@@ -1,12 +1,14 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import ContenedorDatos from "./ContenedorDatos";
 import { useUserStore } from "@/app/store/Usuario";
 import ActionButton from "@/app/Components/ActionButton";
 import Link from "next/link";
+import ChangePassword from "./ChangePassword";
 
 function DatosGroup() {
   const user = useUserStore();
+  const [showChangePassword, setShowChangePassword] = useState(false);
 
   return (
     <div className="w-full">
@@ -72,8 +74,8 @@ function DatosGroup() {
             <ContenedorDatos dato={user.user.email ?? "Sin datos"} />
           </div>
 
-          {/* Botón */}
-          <div className="md:col-span-2 pt-2 flex justify-start">
+          {/* Botones */}
+          <div className="md:col-span-2 pt-2 flex justify-start gap-4">
             <Link href="/.">
               <ActionButton
                 tipo="primary"
@@ -81,9 +83,22 @@ function DatosGroup() {
                 className="font-semibold"
               />
             </Link>
+            <ActionButton
+              tipo="secondary"
+              title={showChangePassword ? "Ocultar Cambio de Contraseña" : "Cambiar Contraseña"}
+              onClick={() => setShowChangePassword(!showChangePassword)}
+              className="font-semibold"
+            />
           </div>
         </div>
       </section>
+
+      {/* Sección de cambio de contraseña */}
+      {showChangePassword && (
+        <div className="mt-8">
+          <ChangePassword />
+        </div>
+      )}
     </div>
   );
 }

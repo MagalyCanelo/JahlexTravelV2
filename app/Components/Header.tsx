@@ -217,6 +217,14 @@ const Header = (props: { className?: string; onClick?: () => void }) => {
                         >
                           Mis Reseñas
                         </Link>
+                        {!clerkUser.user?.externalAccounts || clerkUser.user.externalAccounts.length === 0 ? (
+                          <Link
+                            href="/cambiar-contrasena"
+                            className="p-1.5 hover:text-gray-800 hover:rounded-lg cursor-pointer text-center"
+                          >
+                            Cambiar Contraseña
+                          </Link>
+                        ) : null}
                         <SignOutButton redirectUrl="/">
                           <button
                             onClick={() => {

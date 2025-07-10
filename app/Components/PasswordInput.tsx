@@ -21,11 +21,11 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
   return (
     <div className={`flex flex-col relative text-black ${containerClassName}`}>
       <label
-        htmlFor="password"
+        htmlFor={props.name || "password"}
         className={`absolute text-base transition-all duration-200 ${
           isFocused || props.value?.toString() !== ""
             ? "oliva-c font-bold -top-3 !bg-white z-10 px-2 left-3 "
-            : "text-gray-700 top-3 left-3"
+            : "text-gray-700 top-3 left-12 "
         }`}
       >
         {label}
@@ -44,9 +44,9 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
           {showPassword ? <TbLockPassword /> : <LuEye />}
         </button>
         <input
-          id="password"
-          name="password"
-          className="outline-none w-full"
+          id={props.name || "password"}
+          name={props.name || "password"}
+          className="outline-none w-full bg-transparent"
           type={showPassword ? "text" : "password"}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}

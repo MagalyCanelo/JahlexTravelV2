@@ -27,7 +27,7 @@ const EmailInput: React.FC<EmailInputProps> = ({
         className={`absolute text-base transition-all duration-200 ${
           isFocused || props.value?.toString() !== ""
             ? "oliva-c font-bold -top-3 bg-white px-2 left-3 "
-            : "text-gray-700 top-3 left-3"
+            : "text-gray-700 top-3 left-12"
         }`}
       >
         {label}
