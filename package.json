@@ -6,12 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "mp:env": "echo 'NEXT_PUBLIC_MP_PUBLIC_KEY=APP_USR-e5b56ecc-b0f3-4774-a92a-3c273bdaf0fb\nMP_ACCESS_TOKEN=APP_USR-862588463277952-071012-396017ca5548162c9c9afe0de2fae330-1331541179' > .env.local"
   },
   "dependencies": {
     "@clerk/nextjs": "^6.21.0",
     "firebase": "^11.7.1",
     "keen-slider": "^6.8.6",
+    "mercadopago": "^2.8.0",
     "next": "15.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

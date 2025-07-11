@@ -1,14 +1,23 @@
 "use client";
+import { add } from "@/app/actions";
+import { api } from "@/app/api";
+import { ShoppingCarTour } from "@/app/interface/Tour";
 import { useShoppingCar } from "@/app/store/ToursStore";
+import { useUserStore } from "@/app/store/Usuario";
+import { randomUUID } from "crypto";
 import Link from "next/link";
+import { useState } from "react";
 
 function TotalCarrito() {
+  const useUser = useUserStore();
   const { tours } = useShoppingCar();
   const subtotal = (tours ?? []).reduce(
     (acc, tour) => acc + tour.price * tour.quantity,
     0
   );
   const total = subtotal * 1.18;
+
+
 
   return (
     <div className="px-6 pt-2 pb-6 bg-stone-50">
@@ -42,6 +51,7 @@ function TotalCarrito() {
         >
           Finalizar compra
         </Link>
+        
       </div>
     </div>
   );
