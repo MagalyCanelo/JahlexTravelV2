@@ -3,23 +3,34 @@ import { FaChevronDown } from "react-icons/fa";
 import { LuFilter, LuFilterX } from "react-icons/lu";
 
 const locations = ["Paracas", "Ica", "Cañete", "Nazca", "Cusco"];
-const tourTypes = ["Solo un Tour", "Full Day", "Tour Privado", "Tour Grupal"];
+const tourTypes = ["Aventura", "Cultural", "Naturaleza", "Marítimo"];
+// const tourTypes = ["Solo un Tour", "Full Day", "Tour Privado", "Tour Grupal"];
 
-const DestinoFilter = () => {
-  const [selectedLocation, setSelectedLocation] = useState<string>("");
-  const [selectedTourType, setSelectedTourType] = useState<string>("");
-  const [price, setPrice] = useState<number>(250);
+interface Props {
+  selectedLocation: string;
+  setSelectedLocation: (value: string) => void;
+  selectedTourType: string;
+  setSelectedTourType: (value: string) => void;
+  maxPrice: number;
+  setMaxPrice: (value: number) => void;
+}
 
+const DestinoFilter = ({
+  selectedLocation,
+  setSelectedLocation,
+  selectedTourType,
+  setSelectedTourType,
+  maxPrice,
+  setMaxPrice,
+}: Props) => {
   const [showLocationOptions, setShowLocationOptions] = useState(false);
   const [showTourOptions, setShowTourOptions] = useState(false);
   const [showPriceOptions, setShowPriceOptions] = useState(false);
 
-  // Referencias a los filtros
   const locationRef = useRef<HTMLDivElement>(null);
   const tourRef = useRef<HTMLDivElement>(null);
   const priceRef = useRef<HTMLDivElement>(null);
 
-  // Detectar clic fuera de los dropdowns
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -45,28 +56,10 @@ const DestinoFilter = () => {
   const resetFilters = () => {
     setSelectedLocation("");
     setSelectedTourType("");
-    setPrice(250);
+    setMaxPrice(250);
     setShowLocationOptions(false);
     setShowTourOptions(false);
     setShowPriceOptions(false);
-  };
-
-  const handleLocationClick = () => {
-    setShowLocationOptions(!showLocationOptions);
-    setShowTourOptions(false);
-    setShowPriceOptions(false);
-  };
-
-  const handleTourClick = () => {
-    setShowTourOptions(!showTourOptions);
-    setShowLocationOptions(false);
-    setShowPriceOptions(false);
-  };
-
-  const handlePriceClick = () => {
-    setShowPriceOptions(!showPriceOptions);
-    setShowLocationOptions(false);
-    setShowTourOptions(false);
   };
 
   return (
@@ -86,7 +79,6 @@ const DestinoFilter = () => {
         </button>
       </div>
 
-      {/* Filtros */}
       <div className="flex flex-wrap gap-4 text-gray-800">
         {/* Destino */}
         <div ref={locationRef}>
@@ -96,10 +88,10 @@ const DestinoFilter = () => {
             options={locations}
             onSelect={(value) => {
               setSelectedLocation(value);
-              setShowLocationOptions(false); // Cerrar el dropdown de ubicación
+              setShowLocationOptions(false);
             }}
             show={showLocationOptions}
-            setShow={handleLocationClick}
+            setShow={setShowLocationOptions}
           />
         </div>
 
@@ -111,10 +103,10 @@ const DestinoFilter = () => {
             options={tourTypes}
             onSelect={(value) => {
               setSelectedTourType(value);
-              setShowTourOptions(false); // Cerrar el dropdown de tipo de tour
+              setShowTourOptions(false);
             }}
             show={showTourOptions}
-            setShow={handleTourClick}
+            setShow={setShowTourOptions}
           />
         </div>
 
@@ -124,10 +116,10 @@ const DestinoFilter = () => {
             Precio máximo
           </label>
           <button
-            onClick={handlePriceClick}
+            onClick={() => setShowPriceOptions(!showPriceOptions)}
             className="w-full flex items-center justify-between bg-white border border-gray-300 rounded px-3 py-2 text-sm text-gray-800 hover:border-oliva-o"
           >
-            <span>S/ {price}</span>
+            <span>S/ {maxPrice}</span>
             <FaChevronDown className="text-xs" />
           </button>
 
@@ -138,22 +130,22 @@ const DestinoFilter = () => {
                 min={50}
                 max={1000}
                 step={10}
-                value={price}
-                onChange={(e) => setPrice(Number(e.target.value))}
+                value={maxPrice}
+                onChange={(e) => setMaxPrice(Number(e.target.value))}
                 className="w-full h-1 bg-stone-200 rounded-lg appearance-none cursor-pointer
-    [&::-webkit-slider-thumb]:appearance-none
-    [&::-webkit-slider-thumb]:w-3
-    [&::-webkit-slider-thumb]:h-3
-    [&::-webkit-slider-thumb]:bg-[#65830B]
-    [&::-webkit-slider-thumb]:rounded-full
-    [&::-webkit-slider-thumb]:shadow
-    [&::-moz-range-thumb]:w-3
-    [&::-moz-range-thumb]:h-3
-    [&::-moz-range-thumb]:bg-[#65830B]
-    [&::-moz-range-thumb]:rounded-full"
+                  [&::-webkit-slider-thumb]:appearance-none
+                  [&::-webkit-slider-thumb]:w-3
+                  [&::-webkit-slider-thumb]:h-3
+                  [&::-webkit-slider-thumb]:bg-[#65830B]
+                  [&::-webkit-slider-thumb]:rounded-full
+                  [&::-webkit-slider-thumb]:shadow
+                  [&::-moz-range-thumb]:w-3
+                  [&::-moz-range-thumb]:h-3
+                  [&::-moz-range-thumb]:bg-[#65830B]
+                  [&::-moz-range-thumb]:rounded-full"
               />
               <div className="text-center text-sm mt-2 text-oliva-o font-medium">
-                S/ {price}
+                S/ {maxPrice}
               </div>
             </div>
           )}
