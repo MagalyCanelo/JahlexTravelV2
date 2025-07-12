@@ -11,14 +11,34 @@ import { useToursStore } from "@/app/store/ToursStore";
 function ListaTours() {
   const [search, setSearch] = useState("");
   const [listaTours, setListaTours] = useState<BaseTour[]>([]);
+
+  const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedTourType, setSelectedTourType] = useState("");
+  const [maxPrice, setMaxPrice] = useState(250);
+
   const { setTours } = useToursStore();
 
   useEffect(() => {
     getTours().then((tours) => {
       setTours(tours as BaseTour[]);
-      return setListaTours(tours as BaseTour[]);
+      setListaTours(tours as BaseTour[]);
     });
   }, []);
+
+  const filteredTours = listaTours.filter((tour) => {
+    const matchesTitle = tour.title
+      .toLowerCase()
+      .includes(search.toLowerCase());
+    const matchesLocation = selectedLocation
+      ? tour.location === selectedLocation
+      : true;
+    const matchesType = selectedTourType
+      ? tour.category === selectedTourType
+      : true;
+    const matchesPrice = tour.priceRegular <= maxPrice;
+
+    return matchesTitle && matchesLocation && matchesType && matchesPrice;
+  });
 
   return (
     <div className="bg-stone-50 pt-2">
@@ -55,31 +75,32 @@ function ListaTours() {
             </div>
           </div>
 
-          {/* Otros filtros u opciones */}
+          {/* Filtros adicionales */}
           <div className="flex items-center gap-6 pb-2 text-black">
-            <DestinoFilter />
+            <DestinoFilter
+              selectedLocation={selectedLocation}
+              setSelectedLocation={setSelectedLocation}
+              selectedTourType={selectedTourType}
+              setSelectedTourType={setSelectedTourType}
+              maxPrice={maxPrice}
+              setMaxPrice={setMaxPrice}
+            />
           </div>
         </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 place-content-center gap-4 px-8 py-7 h-full">
-        {(() => {
-          const filteredTours = listaTours.filter((tour) =>
-            tour.title.toLowerCase().includes(search.toLowerCase())
-          );
-          if (filteredTours.length === 0) {
-            return (
-              <div className="col-span-full text-center h-96 flex flex-col items-center justify-center text-stone-600">
-                No se encontró el tour
-              </div>
-            );
-          }
-          return filteredTours.map((tour) => (
+        {filteredTours.length === 0 ? (
+          <div className="col-span-full text-center h-96 flex flex-col items-center justify-center text-stone-600">
+            No se encontró el tour
+          </div>
+        ) : (
+          filteredTours.map((tour) => (
             <div className="flex justify-center" key={tour.id}>
-              <TourCard tour={tour} isStatic={false}></TourCard>
+              <TourCard tour={tour} isStatic={false} />
             </div>
-          ));
-        })()}
+          ))
+        )}
       </div>
     </div>
   );
