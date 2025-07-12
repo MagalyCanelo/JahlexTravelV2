@@ -1,3 +1,4 @@
+"use client"
 import { getAllOrders } from '@/service/FirebaseService';
 import { useEffect, useState } from 'react';
 import OrderDetailsModal from './OrderDetailsModal';
