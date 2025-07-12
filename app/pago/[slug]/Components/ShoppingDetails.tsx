@@ -62,9 +62,17 @@ export default function ShoppingDetails() {
           <span>Subtotal:</span>
           <span className="font-medium text-gray-700">
             PEN{" "}
-            {userShoppingCar?.tours
-              .reduce((acc, tour) => acc + tour.price * tour.quantity, 0)
-              .toFixed(2)}
+            {
+            ((userShoppingCar?.tours ?? []).reduce(
+              (acc, tour) => acc + tour.price * tour.quantity,
+              0
+            ) 
+             - 
+              (userShoppingCar?.tours ?? []).reduce(
+                (acc, tour) => acc + tour.price * tour.quantity,
+                0
+              ) * 0.18).toFixed(2)
+            }
           </span>
         </div>
         <div className="flex justify-between text-gray-800">
@@ -87,12 +95,9 @@ export default function ShoppingDetails() {
           <span>Total:</span>
           <span>
             PEN{" "}
-            {(
-              (userShoppingCar?.tours ?? []).reduce(
-                (acc, tour) => acc + tour.price * tour.quantity,
-                0
-              ) * 1.18
-            ).toFixed(2)}
+            {userShoppingCar?.tours
+              .reduce((acc, tour) => acc + tour.price * tour.quantity, 0)
+              .toFixed(2)}
           </span>
         </div>
       </div>

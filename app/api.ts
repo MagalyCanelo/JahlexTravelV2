@@ -22,13 +22,17 @@ export const api = {
     ): Promise<string> {
       // Creamos la preferencia incluyendo el precio, titulo y metadata. La información de `items` es standard de Mercado Pago. La información que nosotros necesitamos para nuestra DB debería vivir en `metadata`.
       console.log("Tours en el carrito:", cart.tours);
-      const itemsList = cart.tours.map((tour: any, idx: number) => ({
-        id: tour.id?.toString() || idx.toString(), // Aseguramos unicidad
-        title: tour.title || "Tour",
-        unit_price: Number.parseInt(tour.price),
-        quantity: tour.quantity || 1,
-        currency_id: "PEN",
-      }));
+      // Si hay al menos un elemento en el carrito, generamos la lista de items normalmente
+      const itemsList =
+        Array.isArray(cart.tours) && cart.tours.length > 0
+          ? cart.tours.map((tour: any, idx: number) => ({
+              id: tour.id?.toString() || idx.toString(), // Aseguramos unicidad
+              title: tour.title || "Tour",
+              unit_price: Number.parseInt(tour.price),
+              quantity: tour.quantity || 1,
+              currency_id: "PEN",
+            }))
+          : []; // Si no hay elementos, devolvemos un array vacío
       const preference = await new Preference(mercadopago!).create({
         body: {
           // Primero generamos la lista de items y la retornamos para poder setearla después

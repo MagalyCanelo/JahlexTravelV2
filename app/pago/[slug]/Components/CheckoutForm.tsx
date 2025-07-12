@@ -61,31 +61,13 @@ const CheckoutForm = () => {
         Monto a pagar:{" "}
         <span className="oliva-o font-bold">
           PEN{" "}
-          {(
-            (userShoppingCar?.tours ?? []).reduce(
-              (acc, tour) => acc + tour.price * tour.quantity,
-              0
-            ) * 1.18
-          ).toFixed(2)}
+          {userShoppingCar?.tours
+              .reduce((acc, tour) => acc + tour.price * tour.quantity, 0)
+              .toFixed(2)}
         </span>
       </p>
       <PaymentMethod />
-      {loading ? (
-        <div className="flex flex-col items-center justify-center mt-4 ">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-oliva-o"></div>
-          <span className="text-oliva-o font-semibold">
-            Rellene los datos de contacto para completar su pedido
-          </span>
-        </div>
-      ) : (
-        <button
-          onClick={handleSubmit}
-          type="button"
-          className="mt-4 w-full bg-oliva-c bg-oliva-o-hover text-white py-2 rounded font-semibold"
-        >
-          Completar mi pedido
-        </button>
-      )}
+
     </div>
   );
 };
