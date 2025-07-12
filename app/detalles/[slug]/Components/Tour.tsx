@@ -141,7 +141,7 @@ function Tour(props: { tourid: string }) {
                     user.user.id!
                   ).then((v) => alert("Completado"));
                 }}
-                className="bg-white text-black mb-8 flex flex-col gap-4 w-full p-8 shadow-md rounded-lg"
+                className="bg-white text-black mb-8 flex flex-col gap-4 w-full p-8 shadow-sm rounded-lg"
               >
                 <div className="flex flex-row gap-4 ">
                   <Image
@@ -166,9 +166,9 @@ function Tour(props: { tourid: string }) {
                     <textarea
                       name="opinion"
                       id="opinion"
-                      className="p-2 rounded-lg w-full outline-none border-stone-500 border"
+                      className="p-2 my-1 rounded-lg w-full outline-none bg-stone-50 border-2 border-stone-100 focus:border-[#588f10] transition-colors"
                       rows={5}
-                      placeholder="Una excelente experiencia . . . "
+                      placeholder="¿Qué te pareció el tour? Cuéntanos tu experiencia."
                     ></textarea>
                     <div className="flex flex-row w-full items-center justify-end">
                       <ActionButton
@@ -182,7 +182,9 @@ function Tour(props: { tourid: string }) {
               </form>
             )}
             {comments.length < 1 ? (
-              <p className="text-black text-2xl ">No hay comentarios aún</p>
+              <p className="bg-white w-full rounded-lg px-8 py-6 shadow-sm flex items-center justify-center text-black text-lg ">
+                Sin comentarios
+              </p>
             ) : (
               comments.map((v) => {
                 return <Coment {...v} key={v.username} />;
