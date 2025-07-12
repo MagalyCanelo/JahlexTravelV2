@@ -44,7 +44,7 @@ export const api = {
             email: email,
           },
           notification_url:
-            "https://s4pphp5x-3000.brs.devtunnels.ms/api/mercadopago/pago",
+            "https://jahlex-travel-v2.vercel.app/api/mercadopago/pago",
           metadata: {
             cart,
             email,
