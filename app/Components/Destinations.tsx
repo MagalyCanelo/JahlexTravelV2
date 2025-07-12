@@ -1,8 +1,8 @@
 import cusco from "@/public/Destinos/cusco.jpg";
-import paracas from "@/public/paracas2.jpg";
-import ica from "@/public/huacachina2.jpg";
+import paracas from "@/public/Destinos/paracas.jpg";
+import ica from "@/public/Destinos/ica.jpg";
 import cañete from "@/public/Destinos/cañete.jpg";
-import nazca from "@/public/nazca2.jpg";
+import nazca from "@/public/Destinos/nazca.jpg";
 import Image from "next/image";
 
 const destinations = [

@@ -1,18 +1,24 @@
-"use client"
+"use client";
 import { useState } from "react";
 import { addCliente } from "@/service/FirebaseService";
 import { useUserStore } from "@/app/store/Usuario";
 
-const InfoFields = ({setLoading, setUserData}:{setLoading: (loading: boolean) => void, setUserData: (userData: {
-  nombres: string;
-  apellidos: string;
-  correo: string;
-  prefijo: string;
-  celular: number;
-  pais: string;
-  tipoIdentificacion: string;
-  numeroIdentificacion: string;
-}) => void}) => {
+const InfoFields = ({
+  setLoading,
+  setUserData,
+}: {
+  setLoading: (loading: boolean) => void;
+  setUserData: (userData: {
+    nombres: string;
+    apellidos: string;
+    correo: string;
+    prefijo: string;
+    celular: number;
+    pais: string;
+    tipoIdentificacion: string;
+    numeroIdentificacion: string;
+  }) => void;
+}) => {
   const { user } = useUserStore();
   const [form, setForm] = useState({
     nombres: "",
@@ -28,7 +34,9 @@ const InfoFields = ({setLoading, setUserData}:{setLoading: (loading: boolean) =>
   const inputClass =
     "border border-gray-300 rounded px-3 py-2 w-full text-gray-600 text-md bg-white";
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
@@ -163,7 +171,9 @@ const InfoFields = ({setLoading, setUserData}:{setLoading: (loading: boolean) =>
           onChange={handleChange}
         />
       </div>
-      {mensaje && <div className="text-center text-green-600 font-semibold">{mensaje}</div>}
+      {mensaje && (
+        <div className="text-center oliva-o font-semibold">{mensaje}</div>
+      )}
       <button
         type="submit"
         className="w-full bg-oliva-o text-white py-2 rounded hover:bg-oliva-o transition"
