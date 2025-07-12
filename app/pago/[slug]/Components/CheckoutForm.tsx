@@ -18,12 +18,18 @@ const CheckoutForm = () => {
     correo: string;
     prefijo: string;
     celular: number;
+    pais: string;
+    tipoIdentificacion: string;
+    numeroIdentificacion: string;
   }>({
     nombres: "",
     apellidos: "",
     correo: "",
     prefijo: "",
     celular: 0,
+    pais: "",
+    tipoIdentificacion: "",
+    numeroIdentificacion: "",
   });
 
   const [userShoppingCar, setUserShoppingCar] =
@@ -43,22 +49,9 @@ const CheckoutForm = () => {
       return;
     }
 
-    const exito = await createPurchase(
-      user.id!,
-      userShoppingCar.tours,
-      (userShoppingCar?.tours ?? []).reduce(
-        (acc, tour) => acc + tour.price * tour.quantity,
-        0
-      ) * 1.18,
-      userData
-    );
+
     setLoading(false);
-    if (exito) {
-      alert("Compra realizada correctamente");
-      router.push("/");
-    } else {
-      alert("Error al realizar la compra");
-    }
+
   };
   return (
     <div className="bg-white text-black p-6 rounded-xl shadow-sm">

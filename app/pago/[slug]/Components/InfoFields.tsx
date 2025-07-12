@@ -9,6 +9,9 @@ const InfoFields = ({setLoading, setUserData}:{setLoading: (loading: boolean) =>
   correo: string;
   prefijo: string;
   celular: number;
+  pais: string;
+  tipoIdentificacion: string;
+  numeroIdentificacion: string;
 }) => void}) => {
   const { user } = useUserStore();
   const [form, setForm] = useState({
@@ -38,8 +41,14 @@ const InfoFields = ({setLoading, setUserData}:{setLoading: (loading: boolean) =>
       celular: Number(form.celular),
     });
     setUserData({
-      ...form,
+      nombres: form.nombres,
+      apellidos: form.apellidos,
+      correo: form.correo,
+      prefijo: form.prefijo,
       celular: Number(form.celular),
+      pais: form.pais,
+      tipoIdentificacion: form.tipoIdentificacion,
+      numeroIdentificacion: form.numeroIdentificacion,
     });
     if (exito) {
       setMensaje("¡Datos enviados correctamente!");

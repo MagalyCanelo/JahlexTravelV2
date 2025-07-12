@@ -20,3 +20,7 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 
 export const db= getFirestore(app);
+
+// Configuración de Mercado Pago
+export const MP_PUBLIC_KEY = process.env.NEXT_PUBLIC_MP_PUBLIC_KEY!;
+export const MP_ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN!;

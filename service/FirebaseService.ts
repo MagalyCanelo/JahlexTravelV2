@@ -10,6 +10,7 @@ import {
   arrayUnion,
   collection,
   collectionGroup,
+  deleteDoc,
   doc,
   documentId,
   getDoc,
@@ -73,15 +74,13 @@ export async function cleanTourFromUserShoppingCar(
 }
 
 export async function cleanUserShoppingCar(userId: string) {
-  const ref = doc(db, `Carrito/${userId}`);
+  // Elimina todos los tours del carrito del usuario, pero no elimina el documento
   try {
-    const docData = {
-      tours: [], // Reset tours to an empty array
-    };
-    await setDoc(ref, docData, { merge: true });
+    const ref = doc(db, `Carrito/${userId}`);
+    await setDoc(ref, { tours: [] }, { merge: true });
     return true;
   } catch (error) {
-    console.error("Error cleaning shopping cart:", error);
+    console.error("Error al limpiar el carrito de compras:", error);
     return false;
   }
 }
@@ -208,15 +207,19 @@ export async function createPurchase(
   userId: string,
   purchaseData: BaseTourExtended[],
   total: number,
+  id: number,
   userData: {
     nombres: string;
     apellidos: string;
     correo: string;
     prefijo: string;
     celular: number;
+    pais: string;
+    tipoIdentificacion: string;
+    numeroIdentificacion: string;
   }
 ) {
-  const ref = doc(db, `Users/${userData.correo}/purchases/${new Date().getTime()}`);
+  const ref = doc(db, `Users/${userData.correo}/purchases/${id}`);
   try {
     await setDoc(ref, {
       tours: purchaseData,
@@ -224,6 +227,7 @@ export async function createPurchase(
       total: total.toFixed(2),
       createdAt: new Date().toISOString(),
       status: "completed",
+      userId: userId, // Asociar con el ID del usuario
     });
     // Limpiar el carrito después de la compra
     await cleanUserShoppingCar(userId);
@@ -268,14 +272,63 @@ export async function getUserComments(username: string) {
 
 export async function addCliente(clienteData: any) {
   try {
-    const ref = doc(collection(db, "cliente")); // genera un id automático
+    // Guardar en la colección de clientes con ID automático
+    const ref = doc(collection(db, "cliente"));
     await setDoc(ref, {
       ...clienteData,
       createdAt: new Date().toISOString(),
     });
+
+    // También guardar en la colección de usuarios para asociar con el ID del usuario
+    if (clienteData.user) {
+      const userRef = doc(db, `Users/${clienteData.correo}`);
+      await setDoc(
+        userRef,
+        {
+          ...clienteData,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+        },
+        { merge: true }
+      );
+    }
+
     return true;
   } catch (error) {
     console.error("Error agregando cliente:", error);
     return false;
+  }
+}
+
+export async function getUserProfile(userId: string) {
+  const ref = doc(db, `Users/${userId}`);
+  try {
+    const docSnap = await getDoc(ref);
+    if (docSnap.exists()) {
+      return docSnap.data();
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error getting user profile:", error);
+    return null;
+  }
+}
+
+export async function getAllOrders() {
+  try {
+    const ordenesRef = collectionGroup(db, "purchases");
+    const snapshot = await getDocs(ordenesRef);
+    const orders: any[] = [];
+    snapshot.forEach((doc) => {
+      orders.push({
+        id: doc.id,
+        ...doc.data(),
+      });
+    });
+    return orders;
+  } catch (error) {
+    console.error("Error getting all orders:", error);
+    return [];
   }
 }
