@@ -17,8 +17,6 @@ function TotalCarrito() {
   );
   const total = subtotal * 1.18;
 
-
-
   return (
     <div className="px-6 pt-2 pb-6 bg-stone-50">
       <div className="max-w-md mx-auto sm:ml-auto sm:mr-0 bg-white shadow-sm rounded-2xl p-5">
@@ -29,17 +27,11 @@ function TotalCarrito() {
         <table className="min-w-full text-sm text-gray-700">
           <tbody>
             <tr className="border-b border-stone-200">
-              <td className="px-4 py-2 text-left font-medium">Subtotal</td>
-              <td className="px-4 py-2 text-right sm:text-center">
-                PEN {subtotal.toFixed(2)}
-              </td>
-            </tr>
-            <tr className="border-b border-stone-200">
               <td className="px-4 py-2 text-left font-medium">
                 Total (incl. IGV)
               </td>
               <td className="px-4 py-2 text-right sm:text-center">
-                PEN {total.toFixed(2)}
+                PEN {subtotal.toFixed(2)}
               </td>
             </tr>
           </tbody>
@@ -51,7 +43,6 @@ function TotalCarrito() {
         >
           Finalizar compra
         </Link>
-        
       </div>
     </div>
   );

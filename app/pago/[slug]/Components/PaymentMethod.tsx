@@ -3,13 +3,18 @@ import { add } from "@/app/actions";
 import { useShoppingCar } from "@/app/store/ToursStore";
 import { useUserStore } from "@/app/store/Usuario";
 import izipay from "@/public/izipay.png";
+import { getUserShoppingCar } from "@/service/FirebaseService";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const PaymentMethod = () => {
   const [loading, setLoading] = useState(false);
   const useUser = useUserStore();
-  const { tours } = useShoppingCar();
+  const { tours, setTours } = useShoppingCar();
+
+  useEffect(() => {
+    getUserShoppingCar(useUser.user.id!).then((v) => setTours(v!.tours));
+  }, []);
 
   const handleMercadoPago = async () => {
     setLoading(true);
@@ -19,7 +24,7 @@ const PaymentMethod = () => {
         setLoading(false);
         return;
       }
-      if (useUser.user.email && useUser.user.id) {
+      if (useUser.user.email && useUser.user.id && tours.length > 0) {
         const email = useUser!.user!.email!;
         const id = useUser!.user!.id!;
         add({ tours }, id, email);
@@ -40,21 +45,6 @@ const PaymentMethod = () => {
       >
         {loading ? "Redirigiendo a Mercado Pago..." : "Pagar con Mercado Pago"}
       </button>
-      <label className="flex items-center mt-4 text-xs lg:text-[12.5px] xl:text-md gap-1">
-        <input type="checkbox" required className="w-3 h-3 accent-stone-500" />
-        <span>
-          Declaro que he leído y aceptado los{" "}
-          <a
-            href="/terminos-y-condiciones"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="underline text-gray-600 hover:text-gray-800"
-          >
-            términos y condiciones
-          </a>
-          .
-        </span>
-      </label>
     </div>
   );
 };
